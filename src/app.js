@@ -1,3 +1,5 @@
+import { Form } from 'Components/MyDailly/form';
+
 export const App = () => {
-  return <h1>Water Tracer</h1>;
+  return <Form />;
 };
