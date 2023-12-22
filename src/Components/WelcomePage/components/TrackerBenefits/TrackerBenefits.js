@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-//import { Button } from 'CommonStyle/Buttons/Button.styled';
+import { Button } from '/CommonStyle/Button/Button.styled';
+
 import {
   BenefitsList,
   BenefitsItems,
@@ -9,7 +10,7 @@ import {
   StatisticsIcon,
   SettingsIcon,
 } from './TrackerBenefits.styled';
-import { MainTitle, SubTitle } from '/src/CommonStyle/Title/Title.styled';
+import { MainTitle, SubTitle } from '/CommonStyle/Title/Title.styled';
 
 export const TrackerBenefits = () => {
   const navigate = useNavigate();

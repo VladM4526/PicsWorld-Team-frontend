@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from 'CommonStyle/themeJSX';
 
 export const TrackerInfoContainer = styled.div`
   background-color: #ecf2ff;
@@ -22,7 +21,7 @@ export const InfoItems = styled.li`
   align-items: center;
   gap: 8px;
 
-  font-size: ${theme.fontSizes.small};
+  font-size: 16px;
   line-height: calc(20 / 16);
 
   &::before {
