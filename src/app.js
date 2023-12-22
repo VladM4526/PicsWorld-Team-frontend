@@ -1,5 +1,5 @@
-import { Form } from 'Components/MyDailly/form';
+import { WelcomePage } from './Components/WelcomePage/WelcomePage';
 
 export const App = () => {
-  return <Form />;
+  return <WelcomePage />;
 };
