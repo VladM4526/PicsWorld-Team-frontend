@@ -33,7 +33,7 @@ export const DailyNormaModal = () => {
   // const user = useSelector(selectUser);
 
   const [formData, setFormData] = useState(initialValues);
-  const [calculateWater, setCalculatedWater] = useState("1.8");
+  const [calculateWater, setCalculatedWater] = useState("0");
 
   useEffect(() => {
     const calculateWater = (values) => {
@@ -46,7 +46,7 @@ export const DailyNormaModal = () => {
         const waterValue = numericWeight * multiplier + numericTime * (sex === 'For girl' ? 0.4 : 0.6);
         setCalculatedWater(waterValue.toFixed(1));
       } else {
-        setCalculatedWater("1.8");
+        setCalculatedWater("0");
       }
     };
   
