@@ -1,5 +1,6 @@
-import { Form } from 'Components/MyDailly/form';
+import { DailyNormaModal } from 'Components/DailyNormaModal/DailyNormaModal';
 
 export const App = () => {
-  return <Form />;
+  return <DailyNormaModal />;
+  
 };
