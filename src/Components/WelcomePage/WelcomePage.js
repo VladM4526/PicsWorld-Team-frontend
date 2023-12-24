@@ -1,7 +1,7 @@
 import { Tracker } from './WelcomePage.styled';
-import { TrackerBenefits } from './components/TrackerBenefits/TrackerBenefits';
-import { TrackerInfo } from './components/TrackerInfo/TrackerInfo';
-import { Header } from './components/Header/Header';
+import { TrackerBenefits } from './TrackerBenefits/TrackerBenefits';
+import { TrackerInfo } from './TrackerInfo/TrackerInfo';
+import { Header } from './Header/Header';
 
 export const WelcomePage = () => {
   return (

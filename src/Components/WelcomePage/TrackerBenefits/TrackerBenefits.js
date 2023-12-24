@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-import { Button } from '../../../../CommonStyle/Button/Button.styled';
+// import { useNavigate } from 'react-router-dom';
+// import { Button } from '../../../CommonStyle/Button/Button';
 
 import {
   BenefitsList,
@@ -10,39 +10,40 @@ import {
   StatisticsIcon,
   SettingsIcon,
 } from './TrackerBenefits.styled';
-import {
-  MainTitle,
-  SubTitle,
-} from '../../../../CommonStyle/Title/Title.styled.js';
+import { MainTitle, SubTitle } from '../../../CommonStyle/Title/Title.styled';
+import WaterTracker from '../../WelcomePage/img/set-icons.svg';
 
 export const TrackerBenefits = () => {
-  const navigate = useNavigate();
-  function TryClick() {
-    navigate('/signup');
-  }
+  // const navigate = useNavigate();
+  // function TryClick() {
+  //   navigate('/signup');
+  // }
   return (
     <Container>
       <MainTitle>Water consumption tracker</MainTitle>
       <Descr>Record daily water intake and track</Descr>
+      {/* DescribeText */}
       <SubTitle>Tracker Benefits</SubTitle>
       <BenefitsList>
         <BenefitsItems>
-          <CalendarIcon />
+          <svg>
+            <use href={`${WaterTracker}#icon-user-profile`}></use>
+          </svg>
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
-          <StatisticsIcon />
+          <svg />
           View statistics
         </BenefitsItems>
         <BenefitsItems>
-          <SettingsIcon />
+          <svg />
           Personal rate setting
         </BenefitsItems>
       </BenefitsList>
 
-      <Button type="button" onClick={TryClick}>
+      {/* <Button type="button" onClick={TryClick}>
         Try tracker
-      </Button>
+      </Button> */}
     </Container>
   );
 };
