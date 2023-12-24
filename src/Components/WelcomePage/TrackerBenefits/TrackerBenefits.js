@@ -6,9 +6,6 @@ import {
   BenefitsItems,
   DescribeText,
   Container,
-  CalendarIcon,
-  StatisticsIcon,
-  SettingsIcon,
 } from './TrackerBenefits.styled';
 import { MainTitle, SubTitle } from '../Title/Title.styled';
 import WaterTracker from '../../WelcomePage/img/set-icons.svg';
@@ -21,15 +18,21 @@ export const TrackerBenefits = () => {
       <SubTitle>Tracker Benefits</SubTitle>
       <BenefitsList>
         <BenefitsItems>
-          <CalendarIcon />
+          <svg>
+            <use href={`${WaterTracker}#icon-calendar`}></use>
+          </svg>
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
-          <StatisticsIcon />
+          <svg>
+            <use href={`${WaterTracker}#icon-calendar`}></use>
+          </svg>
           View statistics
         </BenefitsItems>
         <BenefitsItems>
-          <SettingsIcon />
+          <svg>
+            <use href={`${WaterTracker}#icon-calendar`}></use>
+          </svg>
           Personal rate setting
         </BenefitsItems>
       </BenefitsList>

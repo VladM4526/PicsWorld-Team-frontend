@@ -5,13 +5,14 @@ import { Header } from './Header/Header';
 
 export const WelcomePage = () => {
   return (
-    <Header>
+    <>
+      <Header />
       <div>
         <Tracker>
           <TrackerBenefits />
           <TrackerInfo />
         </Tracker>
       </div>
-    </Header>
+    </>
   );
 };
