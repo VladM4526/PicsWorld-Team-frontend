@@ -4,44 +4,35 @@
 import {
   BenefitsList,
   BenefitsItems,
-  Descr,
+  DescribeText,
   Container,
   CalendarIcon,
   StatisticsIcon,
   SettingsIcon,
 } from './TrackerBenefits.styled';
-import { MainTitle, SubTitle } from '../../../CommonStyle/Title/Title.styled';
+import { MainTitle, SubTitle } from '../Title/Title.styled';
 import WaterTracker from '../../WelcomePage/img/set-icons.svg';
 
 export const TrackerBenefits = () => {
-  // const navigate = useNavigate();
-  // function TryClick() {
-  //   navigate('/signup');
-  // }
   return (
     <Container>
       <MainTitle>Water consumption tracker</MainTitle>
-      <Descr>Record daily water intake and track</Descr>
-      {/* DescribeText */}
+      <DescribeText>Record daily water intake and track</DescribeText>
       <SubTitle>Tracker Benefits</SubTitle>
       <BenefitsList>
         <BenefitsItems>
-          <svg />
+          <CalendarIcon />
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
-          <svg />
+          <StatisticsIcon />
           View statistics
         </BenefitsItems>
         <BenefitsItems>
-          <svg />
+          <SettingsIcon />
           Personal rate setting
         </BenefitsItems>
       </BenefitsList>
-
-      {/* <Button type="button" onClick={TryClick}>
-        Try tracker
-      </Button> */}
     </Container>
   );
 };

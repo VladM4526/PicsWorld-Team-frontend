@@ -1,4 +1,4 @@
-import { SubTitle } from '../../../CommonStyle/Title/Title.styled';
+import { SubTitle } from '../Title/Title.styled';
 import {
   InfoItems,
   InfoList,

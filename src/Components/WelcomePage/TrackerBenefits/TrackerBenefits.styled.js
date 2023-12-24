@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-// import { ReactComponent as CalendarIconSvg } from '../../../CommonStyle/img/calendar.png';
-// import { ReactComponent as StatisticsIconSvg } from '../../../CommonStyle/img/outline.png';
-// import { ReactComponent as SettingsIconSvg } from '../../../CommonStyle/img/setting.png';
+import { ReactComponent as CalendarIcon } from '../../../CommonStyle/img/calendar.png';
+import { ReactComponent as StatisticsIcon } from '../../../CommonStyle/img/outline.png';
+import { ReactComponent as SettingsIcon } from '../../../CommonStyle/img/setting.png';
 
 export const BenefitsList = styled.ul`
   font-size: 16px;
@@ -32,7 +32,7 @@ export const BenefitsItems = styled.li`
   }
 `;
 
-export const Descr = styled.p`
+export const DescribeText = styled.p`
   font-size: 24px;
   line-height: calc(30 / 24);
   color: #2f2f2f;
@@ -56,21 +56,21 @@ export const Container = styled.div`
   }
 `;
 
-// export const CalendarIcon = styled(CalendarIconSvg)`
-//   margin-right: 8px;
-//   @media only screen and (max-width: 767px) {
-//     height: 32px;
-//   }
-// `;
-// export const StatisticsIcon = styled(StatisticsIconSvg)`
-//   margin-right: 8px;
-//   @media only screen and (max-width: 767px) {
-//     height: 32px;
-//   }
-// `;
-// export const SettingsIcon = styled(SettingsIconSvg)`
-//   margin-right: 8px;
-//   @media only screen and (max-width: 767px) {
-//     height: 32px;
-//   }
-// `;
+export const CalendarIcon = styled.svg`
+  margin-right: 8px;
+  @media only screen and (max-width: 767px) {
+    height: 32px;
+  }
+`;
+export const StatisticsIcon = styled.svg`
+  margin-right: 8px;
+  @media only screen and (max-width: 767px) {
+    height: 32px;
+  }
+`;
+export const SettingsIcon = styled.svg`
+  margin-right: 8px;
+  @media only screen and (max-width: 767px) {
+    height: 32px;
+  }
+`;
