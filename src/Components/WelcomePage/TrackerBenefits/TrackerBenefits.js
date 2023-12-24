@@ -26,9 +26,7 @@ export const TrackerBenefits = () => {
       <SubTitle>Tracker Benefits</SubTitle>
       <BenefitsList>
         <BenefitsItems>
-          <svg>
-            <use href={`${WaterTracker}#icon-user-profile`}></use>
-          </svg>
+          <svg />
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
