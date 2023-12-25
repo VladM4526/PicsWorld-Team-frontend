@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const HeaderSection = styled.header`
   margin: 0 auto;
@@ -55,7 +54,7 @@ export const HeaderUserIcon = styled.div`
   height: 28px;
 `;
 
-export const HeaderLink = styled(Link)`
+export const HeaderLink = styled.a`
   display: flex;
   align-items: center;
   display: flex;

@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <div>
       <HeaderSection>
-        <HeaderLink to="/">
+        <HeaderLink>
           <svg>
             <use href={`${WaterTracker}#icon-logo-app`}></use>
           </svg>
@@ -20,7 +20,7 @@ export const Header = () => {
           </LogoText>
         </HeaderLink>
 
-        <HeaderLink to="/signin">
+        <HeaderLink>
           <HeaderWrapper>
             <HeaderBtn type="button">Sign in</HeaderBtn>
             <div>
