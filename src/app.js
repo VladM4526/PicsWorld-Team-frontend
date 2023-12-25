@@ -1,6 +1,6 @@
-import { DailyNormaModal } from 'Components/DailyNormaModal/DailyNormaModal';
+import DailyNorma from "Components/DailyNorma/DailyNorma";
+
 
 export const App = () => {
-  return  <DailyNormaModal />;
-  
+  return  <DailyNorma/>;
 };

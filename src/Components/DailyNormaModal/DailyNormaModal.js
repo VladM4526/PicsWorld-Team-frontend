@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
+import Modal from "react-modal";
 import { ErrorMessage, Formik} from 'formik';
 import * as Yup from 'yup';
-import { LiterSpan, LabelRadio, FormHeader, ModalHeader, Label, LabelBold, StyledField, StyledForm, Button, SexDiv, Formula, ExplainFormula } from './DailyNormaModal.styled';
+import { customStyles, LiterSpan, LabelRadio, FormHeader, ModalHeader, Label, LabelBold, StyledField, StyledForm, Button, SexDiv, Formula, ExplainFormula } from './DailyNormaModal.styled';
 
 const initialValues = {
   weight: 0,
@@ -22,7 +23,7 @@ const validationSchema = Yup.object().shape({
 //   sex: 'Girl'
 // }
 
-export const DailyNormaModal = () => {
+export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
   // const dispatch = useDispatch();
   // const [selectedSex, setSelectedSex] = useState('girl');
   // const user = useSelector(selectUser);
@@ -66,7 +67,10 @@ export const DailyNormaModal = () => {
   };
   
   return (
-  <div>
+    <Modal
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
+        style={customStyles}>
     <ModalHeader>My daily norma</ModalHeader>
     <SexDiv>
       <p>For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula> </p>
@@ -113,11 +117,11 @@ export const DailyNormaModal = () => {
             <ErrorMessage name="water" component="div"/>
           </LabelBold>
 
-          <Button type="submit">Save</Button>
+          <Button type="submit" onClick={onRequestClose}>Save</Button>
         </StyledForm>
       )}
     </Formik>
-  </div>
+    </Modal>
   )
 };
 
