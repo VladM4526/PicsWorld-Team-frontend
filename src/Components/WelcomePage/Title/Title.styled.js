@@ -6,8 +6,8 @@ export const MainTitle = styled.h1`
   font-weight: 700;
   color: #2f2f2f;
 
-  margin-bottom: ${props => props.$marginBottom || '16px'};
-  margin-top: ${props => props.$marginTop || '16px'};
+  margin-bottom: 16px;
+  margin-top: 16px;
 
   @media only screen and (max-width: 767px) {
     font-size: 28px;
@@ -20,9 +20,8 @@ export const Title = styled.h2`
   line-height: calc(32 / 26);
   font-weight: 500;
   color: #2f2f2f;
-
-  margin-bottom: ${props => props.$marginBottom || ''};
-  margin-top: ${props => props.$marginTop || ''};
+  margin-bottom: 16px;
+  margin-top: 16px;
 `;
 
 export const TitleMedium = styled.h2`
@@ -30,9 +29,8 @@ export const TitleMedium = styled.h2`
   line-height: calc(20 / 18);
   font-weight: 500;
   color: #2f2f2f;
-
-  margin-bottom: ${props => props.$marginBottom || ''};
-  margin-top: ${props => props.$marginTop || ''};
+  margin-bottom: 16px;
+  margin-top: 16px;
 `;
 
 export const SubTitle = styled.h2`
