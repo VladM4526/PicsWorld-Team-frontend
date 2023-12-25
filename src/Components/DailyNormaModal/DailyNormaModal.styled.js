@@ -73,7 +73,7 @@ export const customStyles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(229, 227, 234, 0.8)',
+        backgroundColor: 'rgba(0, 0, 0, 0.80)',
         zIndex: '1200',        
 },
   content: {
@@ -82,11 +82,15 @@ export const customStyles = {
       right: 'auto',
       bottom: 'auto',
       transform: 'translate(-50%, -50%)', 
-      padding: '0', 
-      border: 'none', 
+      padding: '24px 12px', 
+      border: 'none',
+      borderRadius: '10px', 
       maxWidth: 'calc(100vw - 48px)',
       maxHeight: 'calc(100vh - 24px)',
       overflow: 'hidden',
+      '@media screen (max-width: 769px)': {
+        padding: '32px 24px', 
+      }, 
   },
 };
 

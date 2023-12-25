@@ -19,7 +19,7 @@ const DailyNorma = () => {
     <DailyNormaWrapper>
         <DailyNormaHeader>My daily norma</DailyNormaHeader>
         <LiterWrapper>
-        <LiterSpan> L</LiterSpan>
+        <LiterSpan>2.0 L</LiterSpan>
        <EditButton onClick={handleEditClick}>Edit</EditButton>
        </LiterWrapper>
       {isEditing && (

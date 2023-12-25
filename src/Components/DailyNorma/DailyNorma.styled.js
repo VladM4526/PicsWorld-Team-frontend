@@ -50,9 +50,9 @@ background: none;
 border: none;
   &:hover,
   &:focus {
-    ;
+    
   }
-`;
+`
 
 export const TextContact = styled.div`
     color: #4e4e4e;
