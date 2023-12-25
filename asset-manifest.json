@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/PicsWorld-Team-frontend/static/js/main.962816e0.js",
+    "main.js": "/PicsWorld-Team-frontend/static/js/main.b9b3e103.js",
+    "static/media/set-icons.svg": "/PicsWorld-Team-frontend/static/media/set-icons.b453750c8159f7b86e4ec0e961cfb8c0.svg",
     "index.html": "/PicsWorld-Team-frontend/index.html",
-    "main.962816e0.js.map": "/PicsWorld-Team-frontend/static/js/main.962816e0.js.map"
+    "main.b9b3e103.js.map": "/PicsWorld-Team-frontend/static/js/main.b9b3e103.js.map"
   },
   "entrypoints": [
-    "static/js/main.962816e0.js"
+    "static/js/main.b9b3e103.js"
   ]
 }
