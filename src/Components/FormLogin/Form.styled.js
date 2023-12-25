@@ -34,12 +34,15 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
+  
 `;
 
 export const StyledField = styled.input`
   display: flex;
   padding: 12px 10px;
   align-items: center;
+  position: relative;
+  width: 100%;
   gap: 10px;
   border-radius: 6px;
   border: 1px solid #D7E3FF;
@@ -82,7 +85,15 @@ export const Button = styled.button`
     box-shadow: 0px;
   }
 `
-
+export const SvgStyled = styled.svg`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+`
+export const InputWrapper = styled.div`
+  position: relative;
+`
 // export const ErrorMsg = styled(ErrorMessage)`
 //   font-size: 14px;
 //   color: red;

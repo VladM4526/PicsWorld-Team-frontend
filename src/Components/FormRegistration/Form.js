@@ -1,9 +1,12 @@
-import { Button, FormWrapper, Label, SignInHeader, StyledField} from 'Components/FormLogin/Form.styled';
+import { Button, FormWrapper, InputWrapper, Label, SignInHeader, StyledField, SvgStyled} from 'Components/FormLogin/Form.styled';
 import { useFormik } from 'formik';
+import { useState } from 'react';
+
 import * as Yup from 'yup';
-// import WaterTrackerIcons from './img/set-icons.svg';
+import WaterTrackerIcons from './img/set-icons.svg';
 
 export const FormSignUp= () => {
+    const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -16,6 +19,9 @@ export const FormSignUp= () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState);
+  };
 
   return (
     <FormWrapper>
@@ -37,30 +43,38 @@ export const FormSignUp= () => {
         {/* <ErrorMsg name="email" component="div"/> */}
         </Label>
         <Label>Enter your password
+        <InputWrapper>
         <StyledField
           id="password"
           name="password"
-          type="text"
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
+                <SvgStyled height="16" width="16" onClick={togglePasswordVisibility}>
+                  <use href={`${WaterTrackerIcons}#${showPassword ? "icon-eye-open" : "icon-open-closed"}`}></use>
+        </SvgStyled>
+        </InputWrapper>
         </Label>
         <Label>Repeat password
+            <InputWrapper>
         <StyledField
           id="password"
           name="password"
-          type="text"
+          type={showPassword ? "text" : "password"}
           placeholder="Repeat password"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
+        <SvgStyled height="16" width="16" onClick={togglePasswordVisibility}>
+                  <use href={`${WaterTrackerIcons}#${showPassword ? "icon-eye-open" : "icon-open-closed"}`}></use>
+        </SvgStyled>
+        </InputWrapper>
         </Label>
-        {/* <svg>
-          <use href={`${WaterTrackerIcons}#icon-user-profile`}></use>
-        </svg> */}
+        
         <Button type='submit'>Sign Up</Button>
-      
+    
       </form>
     </FormWrapper>
   );
