@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import WaterTrackerIcons from './img/set-icons.svg';
+// import WaterTrackerIcons from './img/set-icons.svg';
+import { Button, FormWrapper, Label, SignInHeader, StyledField } from './Form.styled';
 
 export const FormSignIn = () => {
   const formik = useFormik({
@@ -17,34 +18,39 @@ export const FormSignIn = () => {
   });
 
   return (
-    <>
+    <FormWrapper>
+      <SignInHeader>Sign In</SignInHeader>
       <form onSubmit={formik.handleSubmit}>
-        <label>Email</label>
-        <input
+        <Label>Enter your email
+        <StyledField
           id="email"
           name="email"
           type="text"
+          placeholder="Enter your email"
           onChange={formik.handleChange}
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
-
-        <label>Password</label>
-        <input
+        {/* <ErrorMsg name="email" component="div"/> */}
+        </Label>
+        <Label>Password
+        <StyledField
           id="password"
           name="password"
           type="text"
+          placeholder="Enter your password"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        <svg>
+        </Label>
+        {/* <svg>
           <use href={`${WaterTrackerIcons}#icon-user-profile`}></use>
-        </svg>
-
-        <button type="submit">Submit</button>
+        </svg> */}
+        <Button type='submit'>Sign In</Button>
+      
       </form>
-    </>
+    </FormWrapper>
   );
 };
