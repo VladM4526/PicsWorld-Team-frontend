@@ -7,7 +7,7 @@ import {
   HoverCloseBtn,
   Button,
 } from './LogOutModal.styled.js';
-import WaterTracker from '../../WelcomePage/img/set-icons.svg';
+import WaterTracker from '../WelcomePage/img/set-icons.svg';
 
 export const LogOutModal = ({ onClose }) => {
   return (
