@@ -4,6 +4,8 @@ import {
   LogOutHeader,
   LogOutText,
   LogOutWindow,
+  HoverCloseBtn,
+  Button,
 } from './LogOutModal.styled.js';
 import WaterTracker from '../../WelcomePage/img/set-icons.svg';
 
@@ -12,7 +14,7 @@ export const LogOutModal = ({ onClose }) => {
     <LogOutWindow>
       <LogOutHeader>
         <p>Log out</p>
-        <LogOutClose onClick={handleCancel}>
+        <LogOutClose>
           <HoverCloseBtn>
             <svg>
               <use href={`${WaterTracker}#icon-open-closed`}></use>
@@ -24,10 +26,10 @@ export const LogOutModal = ({ onClose }) => {
         <p>Do you really want to leave?</p>
       </LogOutText>
       <LogOutBtns>
-        <Button typeStyle="escape" $width="160px" onClick={handleCancel}>
+        <Button typeStyle="escape" $width="160px">
           Cancel
         </Button>
-        <Button typeStyle="accept" $width="160px" onClick={handleLogout}>
+        <Button typeStyle="accept" $width="160px">
           Log out
         </Button>
       </LogOutBtns>

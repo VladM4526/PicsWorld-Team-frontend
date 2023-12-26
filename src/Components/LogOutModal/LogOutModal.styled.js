@@ -106,3 +106,31 @@ export const LogOutClose = styled.button`
     }
   }
 `;
+
+export const HoverCloseBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 100%;
+  transition: background-color 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+  &:hover {
+    background-color: #d7e3ff;
+  }
+`;
+
+export const Button = styled.button`
+  width: 280px;
+  height: 36px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: calc(24 / 18);
+    width: 336px;
+    height: 44px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 384px;
+    height: 44px;
+  }
+`;
