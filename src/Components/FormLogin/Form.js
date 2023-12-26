@@ -1,24 +1,36 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
-
-import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { signInThunk } from '../../Redux/Auth/backendRequest';
 import WaterTrackerIcons from './img/set-icons.svg';
-import { Button, FormWrapper, InputWrapper, Label, NavLinkStyled, SignInHeader, StyledField, SvgStyled } from './Form.styled';
+import {
+  Button,
+  FormWrapper,
+  InputWrapper,
+  Label,
+  NavLinkStyled,
+  SignInHeader,
+  StyledField,
+  SvgStyled,
+} from './Form.styled';
+
+import { validateSchema } from './validationSchema';
 
 export const FormSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
-  const formik = useFormik({
+  const onSubmit = e => {
+    dispatch(signInThunk(e));
+  };
+
+  const { handleSubmit, handleChange, values, touched, errors } = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    validationSchema: Yup.object({
-      email: Yup.string().required('Required'),
-    }),
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    validationSchema: validateSchema,
+    onSubmit,
   });
 
   const togglePasswordVisibility = () => {
@@ -28,47 +40,48 @@ export const FormSignIn = () => {
   return (
     <FormWrapper>
       <SignInHeader>Sign In</SignInHeader>
-      <form onSubmit={formik.handleSubmit}>
-        <Label>Enter your email
-        <StyledField
-          id="email"
-          name="email"
-          type="text"
-          placeholder="Enter your email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
-        ) : null}
-        {/* <ErrorMsg name="email" component="div"/> */}
+      <form onSubmit={handleSubmit}>
+        <Label>
+          Enter your email
+          <StyledField
+            id="email"
+            name="email"
+            type="text"
+            placeholder="Enter your email"
+            onChange={handleChange}
+            value={values.email}
+          />
+          {touched.email && errors.email ? <div>{errors.email}</div> : null}
+          {/* <ErrorMsg name="email" component="div"/> */}
         </Label>
-        <Label>Enter your password
+        <Label>
+          Enter your password
           <InputWrapper>
-              <StyledField
-                id="password"
-                name="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-              <SvgStyled height="16" width="16" onClick={togglePasswordVisibility}>
-                  <use href={`${WaterTrackerIcons}#${showPassword ? "icon-eye-open" : "icon-open-closed"}`}></use>
-              </SvgStyled>
-            </InputWrapper>
-            </Label>
-        
-        
-            
-         
+            <StyledField
+              id="password"
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Enter your password"
+              onChange={handleChange}
+              value={values.password}
+            />
+            <SvgStyled
+              height="16"
+              width="16"
+              onClick={togglePasswordVisibility}
+            >
+              <use
+                href={`${WaterTrackerIcons}#${
+                  showPassword ? 'icon-eye-open' : 'icon-open-closed'
+                }`}
+              ></use>
+            </SvgStyled>
+          </InputWrapper>
+        </Label>
 
-        <Button type='submit'>Sign In</Button>
-        
-        
-        <NavLinkStyled to="/FormReg">
-          Sign Up
-        </NavLinkStyled>
+        <Button type="submit">Sign In</Button>
+
+        <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
       </form>
     </FormWrapper>
   );
