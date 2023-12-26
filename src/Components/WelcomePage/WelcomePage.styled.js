@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const Tracker = styled.div`
-  @media screen and (max-width: 767px) {
-    padding-bottom: 40px;
-  }
+  margin-top: 24px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    padding-bottom: 50px;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
   }
 
   @media only screen and (min-width: 1440px) {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
+    margin-top: 80px;
   }
 `;

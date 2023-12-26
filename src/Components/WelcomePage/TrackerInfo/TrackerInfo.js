@@ -1,9 +1,10 @@
-import { SubTitle } from '../Title/Title.styled';
 import {
   InfoItems,
   InfoList,
   TrackerInfoContainer,
-} from './TrackerInfo.styled';
+  SubTitle,
+  InfoDescribeItems,
+} from '../MainStyles.styled';
 
 export const TrackerInfo = () => {
   return (
@@ -11,16 +12,38 @@ export const TrackerInfo = () => {
       <TrackerInfoContainer>
         <SubTitle>Why drink water</SubTitle>
         <InfoList>
-          <InfoItems>Supply of nutrients to all organs</InfoItems>
-          <InfoItems>Providing oxygen to the lungs</InfoItems>
-          <InfoItems>Maintaining the work of the heart</InfoItems>
-          <InfoItems>Release of processed substances</InfoItems>
           <InfoItems>
-            Ensuring the stabiInfoItemsty of the internal environment
+            <InfoDescribeItems>
+              Supply of nutrients to all organs
+            </InfoDescribeItems>
           </InfoItems>
-          <InfoItems>Maintaining within the normal temperature</InfoItems>
           <InfoItems>
-            Maintaining an immune system capable of resisting disease
+            <InfoDescribeItems>Providing oxygen to the lungs</InfoDescribeItems>
+          </InfoItems>
+          <InfoItems>
+            <InfoDescribeItems>
+              Maintaining the work of the heart
+            </InfoDescribeItems>
+          </InfoItems>
+          <InfoItems>
+            <InfoDescribeItems>
+              Release of processed substances
+            </InfoDescribeItems>
+          </InfoItems>
+          <InfoItems>
+            <InfoDescribeItems>
+              Ensuring the stabiInfoItemsty of the internal environment
+            </InfoDescribeItems>
+          </InfoItems>
+          <InfoItems>
+            <InfoDescribeItems>
+              Maintaining within the normal temperature
+            </InfoDescribeItems>
+          </InfoItems>
+          <InfoItems>
+            <InfoDescribeItems>
+              Maintaining an immune system capable of resisting disease
+            </InfoDescribeItems>
           </InfoItems>
         </InfoList>
       </TrackerInfoContainer>

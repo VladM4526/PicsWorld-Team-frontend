@@ -3,33 +3,28 @@ import styled from 'styled-components';
 export const HeaderSection = styled.header`
   margin: 0 auto;
   padding: 8px 20px 0;
-  width: 320px;
+  max-width: 320px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
 
   @media (min-width: 768px) {
-    width: 768px;
+    max-width: 704px;
     padding: 16px 32px 0;
   }
 
   @media (min-width: 1440px) {
-    width: 1440px;
+    max-width: 1440px;
     padding: 12px 112px 0;
   }
 `;
 
-export const LogoText = styled.p`
-  width: 58x;
-  color: #407bff;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: normal;
-  text-transform: uppercase;
+export const LogoApp = styled.svg`
+  width: 102px;
+  height: 48px;
 `;
+
 export const HeaderWrapper = styled.div`
   display: flex;
-  cursor: pointer;
   align-items: center;
 `;
 export const HeaderBtn = styled.button`
@@ -49,25 +44,26 @@ export const HeaderBtn = styled.button`
     line-height: 1.33;
   }
 `;
-export const HeaderUserIcon = styled.div`
+export const HeaderUserIcon = styled.svg`
   width: 28px;
   height: 28px;
+  margin-left: 8px;
 `;
 
-export const HeaderLink = styled.a`
+export const LogoContainer = styled.div`
+  max-width: 280px;
   display: flex;
   align-items: center;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-`;
-export const LogoIcon = styled.svg`
-  width: 40px;
-  @media only screen and (max-width: 767px) {
-    height: 48px;
+
+  @media only screen and (max-width: 768px) {
+    max-width: 704px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    max-width: 1216px;
   }
 `;
-export const UserIcon = styled.svg`
+export const LogoIcon = styled.svg`
   width: 40px;
   @media only screen and (max-width: 767px) {
     height: 48px;

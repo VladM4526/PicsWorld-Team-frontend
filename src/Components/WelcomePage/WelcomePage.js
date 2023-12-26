@@ -7,12 +7,10 @@ export const WelcomePage = () => {
   return (
     <>
       <Header />
-      <div>
-        <Tracker>
-          <TrackerBenefits />
-          <TrackerInfo />
-        </Tracker>
-      </div>
+      <Tracker>
+        <TrackerBenefits />
+        <TrackerInfo />
+      </Tracker>
     </>
   );
 };

@@ -1,36 +1,30 @@
 import {
   HeaderSection,
-  LogoText,
   HeaderWrapper,
   HeaderBtn,
-  HeaderLink,
+  LogoApp,
+  HeaderUserIcon,
+  LogoContainer,
 } from './Header.styled.js';
 import WaterTracker from '../../WelcomePage/img/set-icons.svg';
 
 export const Header = () => {
   return (
-    <div>
+    <>
       <HeaderSection>
-        <HeaderLink>
-          <svg>
-            <use href={`${WaterTracker}#icon-logo-app`}></use>
-          </svg>
-          <LogoText>
-            tracker<br></br>of water
-          </LogoText>
-        </HeaderLink>
+        <LogoContainer>
+          <LogoApp>
+            <use href={`${WaterTracker}#icon-logo`}></use>
+          </LogoApp>
+        </LogoContainer>
 
-        <HeaderLink>
-          <HeaderWrapper>
-            <HeaderBtn type="button">Sign in</HeaderBtn>
-            <div>
-              <svg>
-                <use href={`${WaterTracker}#icon-user-profile`}></use>
-              </svg>
-            </div>
-          </HeaderWrapper>
-        </HeaderLink>
+        <HeaderWrapper>
+          <HeaderBtn type="button">Sign in</HeaderBtn>
+          <HeaderUserIcon>
+            <use href={`${WaterTracker}#icon-user-profile`}></use>
+          </HeaderUserIcon>
+        </HeaderWrapper>
       </HeaderSection>
-    </div>
+    </>
   );
 };

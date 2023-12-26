@@ -1,13 +1,14 @@
-// import { useNavigate } from 'react-router-dom';
-// import { Button } from '../../../CommonStyle/Button/Button';
-
 import {
-  BenefitsList,
+  BenefitsItemsList,
   BenefitsItems,
   DescribeText,
   Container,
-} from './TrackerBenefits.styled';
-import { MainTitle, SubTitle } from '../Title/Title.styled';
+  SetIcons,
+  DescribeTextItem,
+  MainTitle,
+  SubTitleBenefits,
+  ButtonTry,
+} from '../MainStyles.styled';
 import WaterTracker from '../../WelcomePage/img/set-icons.svg';
 
 export const TrackerBenefits = () => {
@@ -15,27 +16,28 @@ export const TrackerBenefits = () => {
     <Container>
       <MainTitle>Water consumption tracker</MainTitle>
       <DescribeText>Record daily water intake and track</DescribeText>
-      <SubTitle>Tracker Benefits</SubTitle>
-      <BenefitsList>
+      <SubTitleBenefits>Tracker Benefits</SubTitleBenefits>
+      <BenefitsItemsList>
         <BenefitsItems>
-          <svg>
+          <SetIcons>
             <use href={`${WaterTracker}#icon-calendar`}></use>
-          </svg>
-          Habit drive
+          </SetIcons>
+          <DescribeTextItem>Habit drive</DescribeTextItem>
         </BenefitsItems>
         <BenefitsItems>
-          <svg>
-            <use href={`${WaterTracker}#icon-calendar`}></use>
-          </svg>
-          View statistics
+          <SetIcons>
+            <use href={`${WaterTracker}#icon-presentation-chart`}></use>
+          </SetIcons>
+          <DescribeTextItem>View statistics</DescribeTextItem>
         </BenefitsItems>
         <BenefitsItems>
-          <svg>
-            <use href={`${WaterTracker}#icon-calendar`}></use>
-          </svg>
-          Personal rate setting
+          <SetIcons>
+            <use href={`${WaterTracker}#icon-setting-welcome-page`}></use>
+          </SetIcons>
+          <DescribeTextItem>Personal rate setting</DescribeTextItem>
         </BenefitsItems>
-      </BenefitsList>
+      </BenefitsItemsList>
+      <ButtonTry type="button">Try tracker</ButtonTry>
     </Container>
   );
 };
