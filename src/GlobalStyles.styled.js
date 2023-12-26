@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
 export const GlobalStyles = createGlobalStyle`
 * {
@@ -7,7 +8,6 @@ export const GlobalStyles = createGlobalStyle`
   list-style: none;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
 }
 
 button {
