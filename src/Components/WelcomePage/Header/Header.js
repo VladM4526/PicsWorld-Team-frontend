@@ -14,7 +14,7 @@ export const Header = () => {
     <>
       <HeaderSection>
         <LogoContainer>
-          <NavLink to="/WelcomePage">
+          <NavLink to="/">
             <LogoApp>
               <use href={`${WaterTracker}#icon-logo`}></use>
             </LogoApp>
