@@ -3,6 +3,7 @@ import {
   FormWrapper,
   InputWrapper,
   Label,
+  NavLinkStyled,
   SignInHeader,
   StyledField,
   SvgStyled,
@@ -100,6 +101,9 @@ export const FormSignUp = () => {
         </Label>
 
         <Button type="submit">Sign Up</Button>
+        <NavLinkStyled to="/FormLogin">
+          Sign in
+        </NavLinkStyled>
       </form>
     </FormWrapper>
   );
