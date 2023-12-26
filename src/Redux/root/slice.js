@@ -11,8 +11,8 @@ export const rootSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(action => action.type.endsWith('/pending'), handlePending)
-      .addCase(action => action.type.endsWith('/rejected'), handleRejected);
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
