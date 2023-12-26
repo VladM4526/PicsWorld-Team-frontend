@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import {
   HeaderSection,
   HeaderWrapper,
@@ -13,13 +14,17 @@ export const Header = () => {
     <>
       <HeaderSection>
         <LogoContainer>
-          <LogoApp>
-            <use href={`${WaterTracker}#icon-logo`}></use>
-          </LogoApp>
+          <NavLink to="/WelcomePage">
+            <LogoApp>
+              <use href={`${WaterTracker}#icon-logo`}></use>
+            </LogoApp>
+          </NavLink>
         </LogoContainer>
 
         <HeaderWrapper>
-          <HeaderBtn type="button">Sign in</HeaderBtn>
+          <HeaderBtn type="button">
+            <NavLink to="/FormLogin">Sign in</NavLink>
+          </HeaderBtn>
           <HeaderUserIcon>
             <use href={`${WaterTracker}#icon-user-profile`}></use>
           </HeaderUserIcon>
