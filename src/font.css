@@ -1,6 +1,9 @@
 @font-face {
     font-family: 'Roboto', sans-serif;
     src: url('./Fonts/Roboto-Medium.ttf') format('truetype'),
+        url("./Fonts/Roboto-Medium.woff2") format('woff2'),
         url('./Fonts/Roboto-Bold.ttf') format('truetype'),
+        url("./Fonts/Roboto-Bold.woff2") format('woff2'),
         url('./Fonts/Roboto-Regular.ttf') format('truetype'),
+        url("./Fonts/Roboto-Regular.woff2") format('woff2')
 }
