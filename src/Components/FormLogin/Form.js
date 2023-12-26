@@ -1,8 +1,9 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
+
 import * as Yup from 'yup';
 import WaterTrackerIcons from './img/set-icons.svg';
-import { Button, FormWrapper, InputWrapper, Label, SignInHeader, StyledField, SvgStyled } from './Form.styled';
+import { Button, FormWrapper, InputWrapper, Label, NavLinkStyled, SignInHeader, StyledField, SvgStyled } from './Form.styled';
 
 export const FormSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -63,7 +64,11 @@ export const FormSignIn = () => {
          
 
         <Button type='submit'>Sign In</Button>
-      
+        
+        
+        <NavLinkStyled to="/FormReg">
+          Sign Up
+        </NavLinkStyled>
       </form>
     </FormWrapper>
   );
