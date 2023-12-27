@@ -1,8 +1,8 @@
 import Spinner from 'react-spinner-material';
 import { TimePicker } from './TimePicker';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { getTimeHhMm } from 'helpers/getNowTime';
+import { Field, Formik } from 'formik';
+// import { useDispatch } from 'react-redux';
+// import { getTimeHhMm } from 'helpers/getNowTime';
 import { AmountWater } from './AmountWater';
 import { volumeWaterSchema } from 'helpers/volumeWaterSchema';
 import {
@@ -23,7 +23,7 @@ const initialValues = {
 
 const step = 50;
 
-export const AddEditWater = ({ onClose, editData = true }) => {
+export const AddEditWater = ({ onClose, editData = true, act }) => {
   const isLoading = false;
 
   const handleSubmit = values => {

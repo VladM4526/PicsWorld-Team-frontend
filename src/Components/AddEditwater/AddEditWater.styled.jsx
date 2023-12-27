@@ -27,12 +27,10 @@ export const FormStyled = styled(Form)`
     border-radius: 6px;
     border: 1px solid #d7e3ff;
   }
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     & input {
       width: 100%;
     }
-  }
-  @media (min-width: 1440px) {
   }
 `;
 
@@ -46,12 +44,10 @@ export const FormWrapStyled = styled.div`
   & .react-datepicker__header {
     background-color: #d7e3ff;
   }
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     & .react-datepicker-wrapper {
       width: 100%;
     }
-  }
-  @media (min-width: 1440px) {
   }
 `;
 
@@ -76,14 +72,12 @@ export const EditWaterStyled = styled.div`
     width: 60px;
     color: #407bff;
     font-size: 18px;
-    /* font-weight: 400; */
     line-height: 1.3333;
   }
   & .edit-time {
     width: 82px;
     color: #2f2f2f;
     font-size: 12px;
-    /* font-weight: 400; */
     line-height: 2;
   }
 `;
@@ -113,7 +107,7 @@ export const AmountWrapStyled = styled.div`
     align-items: center;
     border-radius: 30px;
     border: 1px solid #9ebbff;
-    background: #fff;
+    background-color: #fff;
     transition: all 0.2s linear;
     &:hover {
       box-shadow: 0px 0px 14px 0px rgba(64, 123, 255, 0.54);
@@ -155,7 +149,7 @@ export const AddWaterFooterStyled = styled.div`
     align-items: center;
     border: none;
     border-radius: 10px;
-    background: #407bff;
+    background-color: #407bff;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     transition: all 0.2s linear;
     &:hover {
@@ -165,7 +159,7 @@ export const AddWaterFooterStyled = styled.div`
       box-shadow: none;
     }
   }
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: flex-end;
     gap: 24px;

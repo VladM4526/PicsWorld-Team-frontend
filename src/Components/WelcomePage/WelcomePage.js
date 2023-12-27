@@ -4,7 +4,8 @@ import { TrackerInfo } from './TrackerInfo/TrackerInfo';
 import { Header } from './Header/Header';
 
 //  для розробки
-import { Modal } from 'Components/Modal';
+// import { Modal } from 'Components/Modal';
+// import { MyApp } from 'Components/Calendar/Calendar';
 
 export const WelcomePage = () => {
   return (
@@ -14,9 +15,9 @@ export const WelcomePage = () => {
         <TrackerBenefits />
         <TrackerInfo />
       </Tracker>
-
-      <Modal />
       {/*для розробки */}
+      {/* <Modal />
+      <MyApp /> */}
     </>
   );
 };
