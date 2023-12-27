@@ -2,9 +2,9 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router';
 import { selectUserToken } from '../Redux/Auth/selectors';
 
-export const PublicRoute = ({ children }) => {
+export const PublicRoute = ({ component }) => {
   const token = useSelector(selectUserToken);
   const location = useLocation();
 
-  return !token ? children : <Navigate to={location.state ?? '/'} />;
+  return !token ? component : <Navigate to={location.state ?? '/'} />;
 };

@@ -1,16 +1,23 @@
 import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { signin, signup, refreshUser } from '../API/api';
+import { signin, signup, refreshUser, setToken } from '../API/api';
 
 export const signInThunk = createAsyncThunk(
   'users/signin',
   async (body, { rejectWithValue }) => {
     try {
       const data = await signin(body);
+      setToken(data.token);
+      if (data) {
+        toast.success('Hello! You are successful login in', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        return;
+      }
       return data;
     } catch (error) {
-      toast.error(`Email or password is wrong. Try again`);
+      // toast.error(`Email or password is wrong. Try again`);
       return rejectWithValue(error.message);
     }
   }
@@ -21,10 +28,14 @@ export const signUpThunk = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const data = await signup(body);
+
       console.log(data);
-      toast.success('Hello! You are successful registration', {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      if (data) {
+        toast.success('Hello! You are successful registration', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+
       return data;
     } catch (error) {
       console.log(body);

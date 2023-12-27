@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import { Layout } from './Layout';
 import { selectUserToken } from './Redux/Auth/selectors';
@@ -53,13 +52,8 @@ export const App = () => {
               />
             }
           />
-          {/* <Route index path="/" element={<WelcomePage />} />
-          <Route index path="/FormLogin" element={<FormLogin />} />
-          <Route index path="/FormReg" element={<FormReg />} /> */}
         </Route>
       </Routes>
-
-      <ToastContainer />
     </>
   );
 };
