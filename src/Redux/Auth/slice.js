@@ -1,27 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signInThunk, signUpThunk } from './backendRequest';
-import { handleAuth } from './Errors';
+import { refreshUserAccount, signUpThunk } from './backendRequest';
 
 const initialState = {
-  user: {
-    email: '',
-    avatarURL: '',
-    userName: '',
-    gender: '',
-    waterRate: '',
-  },
+  user: { name: null, email: null },
   token: null,
-  stayAuth: false,
+  isLoggedIn: false,
   isRefreshing: false,
 };
 
 const authSlice = createSlice({
-  name: 'users',
+  name: 'auth',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(signInThunk.fulfilled, handleAuth)
-      .addCase(signUpThunk.fulfilled, handleAuth);
+      .addCase(signUpThunk.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(refreshUserAccount.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUserAccount.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUserAccount.rejected, state => {
+        state.isRefreshing = false;
+      });
   },
 });
 

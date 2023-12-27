@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { signin, signup } from '../API/api';
+import { signin, signup, refreshUser } from '../API/api';
 
 export const signInThunk = createAsyncThunk(
   'users/signin',
@@ -33,5 +33,31 @@ export const signUpThunk = createAsyncThunk(
       });
       return rejectWithValue(error.message);
     }
+  }
+);
+
+export const refreshUserAccount = createAsyncThunk(
+  'users/current',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const {
+        auth: { token },
+      } = getState();
+      const data = await refreshUser(token);
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+  {
+    condition: (_, thunkApi) => {
+      const {
+        auth: { token },
+      } = thunkApi.getState();
+      if (!token) {
+        return false;
+      }
+    },
   }
 );
