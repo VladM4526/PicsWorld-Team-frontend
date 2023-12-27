@@ -1,8 +1,3 @@
-import { useFormik } from 'formik';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { signInThunk } from '../../Redux/Auth/backendRequest';
-import WaterTrackerIcons from './img/set-icons.svg';
 import {
   Button,
   FormWrapper,
@@ -12,22 +7,28 @@ import {
   SignInHeader,
   StyledField,
   SvgStyled,
-} from './Form.styled';
-
+} from 'Components/FormLogin/Form.styled';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { validateSchema } from './validationSchema';
 
-export const FormSignIn = () => {
+import WaterTrackerIcons from './img/set-icons.svg';
+import { signUpThunk } from '../../Redux/Auth/backendRequest';
+
+export const FormSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const onSubmit = e => {
-    dispatch(signInThunk(e));
+    dispatch(signUpThunk(e));
   };
 
   const { handleSubmit, handleChange, values, touched, errors } = useFormik({
     initialValues: {
       email: '',
       password: '',
+      // repeatPassword: ""
     },
     validationSchema: validateSchema,
     onSubmit,
@@ -39,7 +40,7 @@ export const FormSignIn = () => {
 
   return (
     <FormWrapper>
-      <SignInHeader>Sign In</SignInHeader>
+      <SignInHeader>Sign Up</SignInHeader>
       <form onSubmit={handleSubmit}>
         <Label>
           Enter your email
@@ -47,7 +48,7 @@ export const FormSignIn = () => {
             id="email"
             name="email"
             type="text"
-            placeholder="Enter your email"
+            placeholder="Email"
             onChange={handleChange}
             value={values.email}
           />
@@ -61,7 +62,7 @@ export const FormSignIn = () => {
               id="password"
               name="password"
               type={showPassword ? 'text' : 'password'}
-              placeholder="Enter your password"
+              placeholder="Password"
               onChange={handleChange}
               value={values.password}
             />
@@ -78,11 +79,34 @@ export const FormSignIn = () => {
             </SvgStyled>
           </InputWrapper>
         </Label>
+        {/* <Label>
+          Repeat password
+          <InputWrapper>
+            <StyledField
+              id="passwordrepeat"
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Repeat password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+            />
+            <SvgStyled
+              height="16"
+              width="16"
+              onClick={togglePasswordVisibility}
+            >
+              <use
+                href={`${WaterTrackerIcons}#${
+                  showPassword ? 'icon-eye-open' : 'icon-open-closed'
+                }`}
+              ></use>
+            </SvgStyled>
+          </InputWrapper>
+        </Label> */}
 
-        <Button type="submit">Sign In</Button>
-
-        <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
+        <Button type="submit">Sign Up</Button>
       </form>
+      <NavLinkStyled to="/FormLogin">Sign in</NavLinkStyled>
     </FormWrapper>
   );
 };
