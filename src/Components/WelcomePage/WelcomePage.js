@@ -3,6 +3,9 @@ import { TrackerBenefits } from './TrackerBenefits/TrackerBenefits';
 import { TrackerInfo } from './TrackerInfo/TrackerInfo';
 import { Header } from './Header/Header';
 
+//  для розробки
+import { Modal } from 'Components/Modal';
+
 export const WelcomePage = () => {
   return (
     <>
@@ -11,6 +14,9 @@ export const WelcomePage = () => {
         <TrackerBenefits />
         <TrackerInfo />
       </Tracker>
+
+      <Modal />
+      {/*для розробки */}
     </>
   );
 };
