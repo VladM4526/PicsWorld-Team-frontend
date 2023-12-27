@@ -1,14 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import { WelcomePage } from './Components/WelcomePage/WelcomePage';
-import { FormLogin } from 'Components/FormLogin/FormLogin';
-import { FormReg } from 'Components/FormRegistration/FormSignUp';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Layout = () => {
   return (
     <>
-      <WelcomePage />
-      <FormLogin />
-      <FormReg />
+      <ToastContainer />
       <Outlet />
     </>
   );

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-// import {ErrorMessage} from 'formik';
+import  {NavLink} from 'react-router-dom';
+import {ErrorMessage} from 'formik';
 
 // export const Form = styled.div`
 //   @media screen and (min-width: 768px) {
@@ -11,6 +12,32 @@ import styled from 'styled-components';
     
 //   }
 // `;
+
+export const FormSection = styled.div`
+  margin: 0 auto;
+  padding: 8px 20px 0;
+  max-width: 280px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+
+  @media (min-width: 768px) {
+    max-width: 704px;
+    padding: 16px 32px 0;
+    
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+    padding: 12px 112px 0;
+  }
+`;
+export const ImgBottle = styled.div`
+width: 280px;
+height: 210px;
+`
+
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -78,6 +105,7 @@ export const Button = styled.button`
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: none;
   width: 100%;
+  margin-bottom: 16px;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
@@ -85,6 +113,21 @@ export const Button = styled.button`
     box-shadow: 0px;
   }
 `
+
+export const NavLinkStyled = styled(NavLink)`
+    color: #8BAEFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+  background: none;
+  border: none;
+    &:hover,
+    &:focus {
+     color: #FF9D43;
+    }
+`
+
 export const SvgStyled = styled.svg`
   position: absolute;
   top: 50%;
@@ -94,7 +137,7 @@ export const SvgStyled = styled.svg`
 export const InputWrapper = styled.div`
   position: relative;
 `
-// export const ErrorMsg = styled(ErrorMessage)`
-//   font-size: 14px;
-//   color: red;
-// `;
+export const ErrorMsg = styled(ErrorMessage)`
+  font-size: 14px;
+  color: red;
+`;

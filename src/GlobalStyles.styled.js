@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
 export const GlobalStyles = createGlobalStyle`
 * {
@@ -7,5 +8,11 @@ export const GlobalStyles = createGlobalStyle`
   list-style: none;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
+}
+
+button {
+  border: none;
+  outline: none;
+  display: block;
 }
 `;
