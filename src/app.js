@@ -6,7 +6,7 @@ import { selectUserToken } from './Redux/Auth/selectors';
 import { FormLogin } from 'Components/FormLogin/FormLogin';
 import { FormReg } from 'Components/FormRegistration/FormSignUp';
 import { WelcomePage } from './Components/WelcomePage/WelcomePage';
-import { LogOutModal } from 'Components/LogOutModal/LogOutModal';
+// import { LogOutModal } from 'Components/LogOutModal/LogOutModal';
 import { PublicRoute } from './Routers/Public';
 import { PrivateRoute } from './Routers/Private';
 import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
@@ -27,10 +27,10 @@ export const App = () => {
           <Route index path="/" element={<WelcomePage />} />
           <Route
             index
-            path="/MyDailyNormaPage"
+            path="/FormLogin"
             element={
               <PrivateRoute
-                redirectTo="/FormLogin"
+                redirectTo="/MyDailyNormaPage"
                 component={<MyDailyNormaPage />}
               />
             }
