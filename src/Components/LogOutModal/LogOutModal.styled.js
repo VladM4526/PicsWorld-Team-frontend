@@ -125,7 +125,7 @@ export const Button = styled.button`
   height: 36px;
   @media screen and (min-width: 768px) {
     font-size: 18px;
-    line-height: calc(24 / 18);
+    line-height: 1, 33;
     width: 336px;
     height: 44px;
   }
