@@ -14,11 +14,11 @@ const setToken = token => {
 //   localStorage.removeItem('token');
 // };
 
-// export const signup = async body => {
-//   const { data } = await baseURL.post('/auth/signup', body);
-//   setToken(data.token);
-//   return data;
-// };
+export const signup = async body => {
+  const { data } = await baseURL.post('/auth/signup', body);
+  setToken(data.token);
+  return data;
+};
 
 export const signin = async body => {
   const { data } = await baseURL.post('/auth/signin', body);

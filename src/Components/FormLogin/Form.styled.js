@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import  {NavLink} from 'react-router-dom';
-// import {ErrorMessage} from 'formik';
+import {ErrorMessage} from 'formik';
 
 // export const Form = styled.div`
 //   @media screen and (min-width: 768px) {
@@ -137,7 +137,7 @@ export const SvgStyled = styled.svg`
 export const InputWrapper = styled.div`
   position: relative;
 `
-// export const ErrorMsg = styled(ErrorMessage)`
-//   font-size: 14px;
-//   color: red;
-// `;
+export const ErrorMsg = styled(ErrorMessage)`
+  font-size: 14px;
+  color: red;
+`;
