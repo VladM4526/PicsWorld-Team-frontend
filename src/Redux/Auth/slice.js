@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signInThunk } from './backendRequest';
+import { signInThunk, signUpThunk } from './backendRequest';
 import { handleAuth } from './Errors';
 
 const initialState = {
@@ -19,7 +19,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
-    builder.addCase(signInThunk.fulfilled, handleAuth);
+    builder
+    .addCase(signInThunk.fulfilled, handleAuth)
+    .addCase(signUpThunk.fulfilled, handleAuth)
   },
 });
 
