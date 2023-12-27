@@ -9,25 +9,31 @@ import {
   SvgStyled,
 } from 'Components/FormLogin/Form.styled';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { validateSchema } from './validationSchema';
 
-import * as Yup from 'yup';
 import WaterTrackerIcons from './img/set-icons.svg';
+import { signUpThunk } from '../../Redux/Auth/backendRequest';
 
 export const FormSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const formik = useFormik({
+  const dispatch = useDispatch();
+
+  const onSubmit = e => {
+    dispatch(signUpThunk(e));
+  };
+
+  const { handleSubmit, handleChange, values, touched, errors } = useFormik({
     initialValues: {
       email: '',
       password: '',
+      // repeatPassword: ""
     },
-    validationSchema: Yup.object({
-      email: Yup.string().required('Required'),
-    }),
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    validationSchema: validateSchema,
+    onSubmit,
   });
+
   const togglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
   };
@@ -35,7 +41,7 @@ export const FormSignUp = () => {
   return (
     <FormWrapper>
       <SignInHeader>Sign Up</SignInHeader>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Label>
           Enter your email
           <StyledField
@@ -43,12 +49,10 @@ export const FormSignUp = () => {
             name="email"
             type="text"
             placeholder="Email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
+            onChange={handleChange}
+            value={values.email}
           />
-          {formik.touched.email && formik.errors.email ? (
-            <div>{formik.errors.email}</div>
-          ) : null}
+          {touched.email && errors.email ? <div>{errors.email}</div> : null}
           {/* <ErrorMsg name="email" component="div"/> */}
         </Label>
         <Label>
@@ -59,8 +63,8 @@ export const FormSignUp = () => {
               name="password"
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
+              onChange={handleChange}
+              value={values.password}
             />
             <SvgStyled
               height="16"
@@ -75,7 +79,7 @@ export const FormSignUp = () => {
             </SvgStyled>
           </InputWrapper>
         </Label>
-        <Label>
+        {/* <Label>
           Repeat password
           <InputWrapper>
             <StyledField
@@ -98,13 +102,11 @@ export const FormSignUp = () => {
               ></use>
             </SvgStyled>
           </InputWrapper>
-        </Label>
+        </Label> */}
 
         <Button type="submit">Sign Up</Button>
-        <NavLinkStyled to="/FormLogin">
-          Sign in
-        </NavLinkStyled>
       </form>
+      <NavLinkStyled to="/FormLogin">Sign in</NavLinkStyled>
     </FormWrapper>
   );
 };
