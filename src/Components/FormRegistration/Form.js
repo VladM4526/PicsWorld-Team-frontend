@@ -16,7 +16,6 @@ import { validateSchema } from './validationSchema';
 import WaterTrackerIcons from './img/set-icons.svg';
 import { signUpThunk } from '../../Redux/Auth/backendRequest';
 
-
 export const FormSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
@@ -29,6 +28,7 @@ export const FormSignUp = () => {
     initialValues: {
       email: '',
       password: '',
+      // repeatPassword: ""
     },
     validationSchema: validateSchema,
     onSubmit,
@@ -52,9 +52,7 @@ export const FormSignUp = () => {
             onChange={handleChange}
             value={values.email}
           />
-          {touched.email && errors.email ? (
-            <div>{errors.email}</div>
-          ) : null}
+          {touched.email && errors.email ? <div>{errors.email}</div> : null}
           {/* <ErrorMsg name="email" component="div"/> */}
         </Label>
         <Label>
@@ -65,8 +63,8 @@ export const FormSignUp = () => {
               name="password"
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
-            onChange={handleChange}
-           value={values.password}
+              onChange={handleChange}
+              value={values.password}
             />
             <SvgStyled
               height="16"
@@ -107,11 +105,8 @@ export const FormSignUp = () => {
         </Label> */}
 
         <Button type="submit">Sign Up</Button>
-        
-        </form>
-      <NavLinkStyled to="/FormLogin">
-          Sign in
-        </NavLinkStyled>
+      </form>
+      <NavLinkStyled to="/FormLogin">Sign in</NavLinkStyled>
     </FormWrapper>
   );
 };

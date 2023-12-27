@@ -4,6 +4,8 @@ import { FormLogin } from 'Components/FormLogin/FormLogin';
 import { FormReg } from 'Components/FormRegistration/FormSignUp';
 import { WelcomePage } from './Components/WelcomePage/WelcomePage';
 
+import { ToastContainer } from 'react-toastify';
+
 export const App = () => {
   return (
     <>
@@ -14,6 +16,8 @@ export const App = () => {
           <Route index path="/FormReg" element={<FormReg />} />
         </Route>
       </Routes>
+
+      <ToastContainer />
     </>
   );
 };

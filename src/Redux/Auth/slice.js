@@ -16,12 +16,12 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'users',
   initialState,
   extraReducers: builder => {
     builder
-    .addCase(signInThunk.fulfilled, handleAuth)
-    .addCase(signUpThunk.fulfilled, handleAuth)
+      .addCase(signInThunk.fulfilled, handleAuth)
+      .addCase(signUpThunk.fulfilled, handleAuth);
   },
 });
 
