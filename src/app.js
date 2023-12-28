@@ -6,12 +6,13 @@ import { selectUserToken } from './Redux/Auth/selectors';
 import { FormLogin } from 'Components/FormLogin/FormLogin';
 import { FormReg } from 'Components/FormRegistration/FormSignUp';
 import { WelcomePage } from './Components/WelcomePage/WelcomePage';
+import { HomePage } from 'pages/HomePage';
 // import { LogOutModal } from 'Components/LogOutModal/LogOutModal';
 import { PublicRoute } from './Routers/Public';
 import { PrivateRoute } from './Routers/Private';
-import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
+// import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
 
-export const App = () => {
+export const App = users => {
   const dispatch = useDispatch();
   const token = useSelector(selectUserToken);
 
@@ -24,33 +25,31 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index path="/" element={<WelcomePage />} />
           <Route
             index
-            path="/FormLogin"
+            path="/"
+            element={users ? <WelcomePage /> : <HomePage />}
+          />
+          <Route
+            index
+            path="WelcomePage"
             element={
               <PrivateRoute
-                redirectTo="/MyDailyNormaPage"
-                component={<MyDailyNormaPage />}
+                redirectTo="FormLogin"
+                component={users ? <FormLogin /> : <HomePage />}
               />
             }
           />
           <Route
-            path="/FormReg"
+            path="FormReg"
             element={
-              <PublicRoute
-                redirectTo="/MyDailyNormaPage"
-                component={<FormReg />}
-              />
+              <PublicRoute redirectTo="HomePage" component={<FormReg />} />
             }
           />
           <Route
-            path="/FormLogin"
+            path="FormLogin"
             element={
-              <PublicRoute
-                redirectTo="/MyDailyNormaPage"
-                component={<FormLogin />}
-              />
+              <PublicRoute redirectTo="HomePage" component={<FormLogin />} />
             }
           />
         </Route>

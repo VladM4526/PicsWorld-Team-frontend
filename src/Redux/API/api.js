@@ -5,7 +5,7 @@ const baseURL = 'https://trackerwaterapp.onrender.com';
 axios.defaults.baseURL = baseURL;
 
 export const setToken = token => {
-  baseURL.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   localStorage.setItem('token', token);
 };
 

@@ -78,10 +78,8 @@ export const FormSignIn = () => {
             </SvgStyled>
           </InputWrapper>
         </Label>
-
-        <NavLinkStyled to="/MyDailyNormaPage">
-          <Button type="submit">Sign In</Button>
-        </NavLinkStyled>
+        <Button type="submit">Sign In</Button>
+        <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
       </form>
     </FormWrapper>
   );
