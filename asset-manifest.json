@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/PicsWorld-Team-frontend/static/css/main.1a24fdc4.css",
-    "main.js": "/PicsWorld-Team-frontend/static/js/main.5cd1898e.js",
+    "main.js": "/PicsWorld-Team-frontend/static/js/main.4e596871.js",
     "static/media/set-icons.svg": "/PicsWorld-Team-frontend/static/media/set-icons.b453750c8159f7b86e4ec0e961cfb8c0.svg",
     "index.html": "/PicsWorld-Team-frontend/index.html",
     "main.1a24fdc4.css.map": "/PicsWorld-Team-frontend/static/css/main.1a24fdc4.css.map",
-    "main.5cd1898e.js.map": "/PicsWorld-Team-frontend/static/js/main.5cd1898e.js.map"
+    "main.4e596871.js.map": "/PicsWorld-Team-frontend/static/js/main.4e596871.js.map"
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.5cd1898e.js"
+    "static/js/main.4e596871.js"
   ]
 }
