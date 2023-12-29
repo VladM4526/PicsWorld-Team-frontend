@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/PicsWorld-Team-frontend/static/css/main.83d77f03.css",
+    "main.css": "/PicsWorld-Team-frontend/static/css/main.91559b1a.css",
     "main.js": "/PicsWorld-Team-frontend/static/js/main.b3687e4f.js",
     "static/media/Roboto-Medium.ttf": "/PicsWorld-Team-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/PicsWorld-Team-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
@@ -10,11 +10,11 @@
     "static/media/Roboto-Medium.woff2": "/PicsWorld-Team-frontend/static/media/Roboto-Medium.62ced72e5832f02c2796.woff2",
     "static/media/Roboto-Bold.woff2": "/PicsWorld-Team-frontend/static/media/Roboto-Bold.d010f1f324e111a22e53.woff2",
     "index.html": "/PicsWorld-Team-frontend/index.html",
-    "main.83d77f03.css.map": "/PicsWorld-Team-frontend/static/css/main.83d77f03.css.map",
+    "main.91559b1a.css.map": "/PicsWorld-Team-frontend/static/css/main.91559b1a.css.map",
     "main.b3687e4f.js.map": "/PicsWorld-Team-frontend/static/js/main.b3687e4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.83d77f03.css",
+    "static/css/main.91559b1a.css",
     "static/js/main.b3687e4f.js"
   ]
 }
