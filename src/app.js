@@ -12,7 +12,7 @@ import { PublicRoute } from './Routers/Public';
 import { PrivateRoute } from './Routers/Private';
 // import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
 
-export const App = users => {
+export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectUserToken);
 
@@ -25,19 +25,12 @@ export const App = users => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            path="/"
-            element={users ? <WelcomePage /> : <HomePage />}
-          />
+          <Route index path="/" element={<WelcomePage />} />
           <Route
             index
             path="WelcomePage"
             element={
-              <PrivateRoute
-                redirectTo="FormLogin"
-                component={users ? <FormLogin /> : <HomePage />}
-              />
+              <PrivateRoute redirectTo="HomePage" component={<HomePage />} />
             }
           />
           <Route

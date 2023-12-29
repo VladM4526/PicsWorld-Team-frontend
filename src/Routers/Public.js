@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate } from 'react-router';
 import { selectUserToken } from '../Redux/Auth/selectors';
 
-export const PublicRoute = ({ component }) => {
-  const token = useSelector(selectUserToken);
-  const location = useLocation();
+export const PublicRoute = ({ component: Component, redirectTo = '/' }) => {
+  const isLoggedIn = useSelector(selectUserToken);
 
-  return !token ? component : <Navigate to={location.state ?? '/'} />;
+  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };

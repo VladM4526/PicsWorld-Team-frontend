@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://trackerwaterapp.onrender.com';
+const baseURL = 'https://trackerwaterapp.onrender.com/api';
 
 axios.defaults.baseURL = baseURL;
 
@@ -15,19 +15,19 @@ export const setToken = token => {
 // };
 
 export const signup = async body => {
-  const { data } = await axios.post('/users/signup', body);
+  const { data } = await axios.post('/auth/signup', body);
   setToken(data.token);
   return data;
 };
 
 export const signin = async body => {
-  const { data } = await axios.post('/users/signin', body);
+  const { data } = await axios.post('/auth/signin', body);
   setToken(data.token);
   return data;
 };
 
 export const refreshUser = async token => {
   setToken(token);
-  const { data } = await axios.get('/users/current');
+  const { data } = await axios.get('/auth/current');
   return data;
 };
