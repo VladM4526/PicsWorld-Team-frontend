@@ -9,7 +9,7 @@ import {
   SubTitleBenefits,
   ButtonTry,
 } from '../MainStyles.styled';
-import WaterTracker from '../../WelcomePage/img/set-icons.svg';
+import WaterTracker from '../../../img/set-icons.svg';
 
 export const TrackerBenefits = () => {
   return (

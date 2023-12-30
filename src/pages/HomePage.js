@@ -3,13 +3,13 @@ import {
   LogoApp,
   LogoContainer,
 } from '../Components/WelcomePage/Header/Header.styled';
-import WaterTracker from '../Components/WelcomePage/img/set-icons.svg';
+import WaterTracker from '../img/set-icons.svg';
 
 export const HomePage = () => {
   return (
     <>
       <LogoContainer>
-        <NavLink to="/">
+        <NavLink to="/HomePage">
           <LogoApp>
             <use href={`${WaterTracker}#icon-logo`}></use>
           </LogoApp>
