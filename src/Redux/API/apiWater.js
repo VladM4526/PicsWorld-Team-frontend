@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const token = localStorage.getItem('token');
+// const token = localStorage.getItem('token');
 
-axios.defaults.baseURL = 'https://trackerwaterapp.onrender.com/water/';
-axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+// axios.defaults.baseURL = 'https://trackerwaterapp.onrender.com/water/';
+// axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 export const getWaterNotes = async () => {
   const { data } = await axios.get('/');

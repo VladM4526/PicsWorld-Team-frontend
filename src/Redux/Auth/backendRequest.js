@@ -13,9 +13,8 @@ export const signInThunk = createAsyncThunk(
         toast.success('Hello! You are successful login in', {
           position: toast.POSITION.TOP_CENTER,
         });
-        return;
       }
-      return data.token;
+      return data;
     } catch (error) {
       console.log(error);
       // toast.error(`Email or password is wrong. Try again`);
@@ -36,7 +35,7 @@ export const signUpThunk = createAsyncThunk(
           position: toast.POSITION.TOP_CENTER,
         });
       }
-      return responce.data.token;
+      return responce;
     } catch (error) {
       console.log(error);
       toast.error(`Email or password is wrong. Try again`, {

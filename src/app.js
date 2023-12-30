@@ -7,7 +7,7 @@ import { selectUserToken } from './Redux/Auth/selectors';
 import { FormLogin } from 'Components/FormLogin/FormLogin';
 import { FormReg } from 'Components/FormRegistration/FormSignUp';
 import { WelcomePage } from './Components/WelcomePage/WelcomePage';
-// import { HomePage } from 'pages/HomePage';
+import { HomePage } from 'pages/HomePage';
 // import { LogOutModal } from 'Components/LogOutModal/LogOutModal';
 import { PublicRoute } from './Routers/Public';
 import { PrivateRoute } from './Routers/Private';
@@ -30,21 +30,21 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
           <Route
-            path="WelcomePage"
-            element={
-              <PrivateRoute redirectTo="HomePage" component={<FormReg />} />
-            }
-          />
-          <Route
             path="FormReg"
             element={
-              <PublicRoute redirectTo="HomePage" component={<FormReg />} />
+              <PublicRoute redirectTo="/HomePage" component={<FormReg />} />
             }
           />
           <Route
             path="FormLogin"
             element={
-              <PublicRoute redirectTo="HomePage" component={<FormLogin />} />
+              <PublicRoute redirectTo="/HomePage" component={<FormLogin />} />
+            }
+          />
+          <Route
+            path="HomePage"
+            element={
+              <PrivateRoute redirectTo="/HomePage" component={<HomePage />} />
             }
           />
         </Route>
