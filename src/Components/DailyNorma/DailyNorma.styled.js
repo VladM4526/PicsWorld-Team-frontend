@@ -11,8 +11,6 @@ border-radius: 10px;
 border: 1px solid #ECF2FF;
 background: #FFF;
 box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-width: 164px;
-height: 76px;
 position: absolute;
 top: 80px;
 left: 20px;
