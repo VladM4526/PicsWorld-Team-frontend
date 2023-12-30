@@ -1,8 +1,7 @@
+import { useDispatch } from 'react-redux';
 import Spinner from 'react-spinner-material';
-import { TimePicker } from './TimePicker';
 import { Field, Formik } from 'formik';
-// import { useDispatch } from 'react-redux';
-// import { getTimeHhMm } from 'helpers/getNowTime';
+import { TimePicker } from './TimePicker';
 import { AmountWater } from './AmountWater';
 import { volumeWaterSchema } from 'helpers/volumeWaterSchema';
 import {
@@ -11,10 +10,9 @@ import {
   FormStyled,
   FormWrapStyled,
 } from './AddEditWater.styled';
-import { EditedData } from './EditedData';
-// import { RegisterSchema } from 'helpers/submitCheck';
-// import { register } from 'redux/auth/operations';
-// import { useAuth } from 'hooks/useAuth';
+import { EditNote } from './EditNote';
+import { addWater, editWater } from '../../Redux/water/waterOperations';
+import { useWater } from '../../Redux/hooks/useWater';
 
 const initialValues = {
   date: new Date(),
@@ -23,12 +21,17 @@ const initialValues = {
 
 const step = 50;
 
-export const AddEditWater = ({ onClose, editData = true, act }) => {
-  const isLoading = false;
+export const AddEditWater = ({ onClose, editNote = '250', isEdit }) => {
+  const dispatch = useDispatch();
+  const { isLoading } = useWater();
 
   const handleSubmit = values => {
-    console.log('values', values);
-    onClose();
+    if (isEdit) {
+      dispatch(editWater(editNote.id, values));
+      onClose();
+    } else {
+      dispatch(addWater(values));
+    }
   };
 
   return (
@@ -48,11 +51,9 @@ export const AddEditWater = ({ onClose, editData = true, act }) => {
 
         return (
           <FormStyled name="addWater">
-            {!!editData && (
-              <EditedData editedData={{ volume: 250, time: '07:00' }} />
-            )}
+            {isEdit && <EditNote editNote={editNote} />}
 
-            <h3>{!editData ? 'Choose a value:' : 'Correct entered data:'}</h3>
+            <h3>{isEdit ? 'Correct entered data:' : 'Choose a value:'}</h3>
 
             <FormWrapStyled>
               <label htmlFor="volumeWaterDisplay">
@@ -61,11 +62,12 @@ export const AddEditWater = ({ onClose, editData = true, act }) => {
                   onClick={handleAmountChange}
                   step={step}
                   volumeWater={volumeWater}
+                  name="volumeWaterDisplay"
                 />
               </label>
 
               <label htmlFor="time">
-                <h4>Recording time:</h4>{' '}
+                <h4>Recording time:</h4>
                 <ErrorMsgStyled name="time" component="div" />
                 <TimePicker
                   onChange={handleChangeTime}

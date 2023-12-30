@@ -7,7 +7,7 @@ import { CalendarHeaderStyled, Div } from './Calendar.styled';
 
 const currentDate = new Date();
 
-export function MyApp() {
+export function Calendar() {
   //   const [value, setValue] = useState();
   //   const [date, setDate] = useState(currentDate.getDate());
   const [month, setMonth] = useState(currentDate.getMonth());
@@ -30,7 +30,6 @@ export function MyApp() {
       setMonth(prevMonth => prevMonth + 1);
     }
   };
-  console.log('month', month);
   return (
     <Div>
       <CalendarHeaderStyled>
