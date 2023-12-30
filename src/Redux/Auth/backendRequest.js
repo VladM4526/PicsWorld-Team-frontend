@@ -15,7 +15,7 @@ export const signInThunk = createAsyncThunk(
         });
         return;
       }
-      return data;
+      return data.token;
     } catch (error) {
       console.log(error);
       // toast.error(`Email or password is wrong. Try again`);
@@ -36,7 +36,7 @@ export const signUpThunk = createAsyncThunk(
           position: toast.POSITION.TOP_CENTER,
         });
       }
-      return responce;
+      return responce.data.token;
     } catch (error) {
       console.log(error);
       toast.error(`Email or password is wrong. Try again`, {
@@ -48,27 +48,22 @@ export const signUpThunk = createAsyncThunk(
 );
 
 export const refreshUserAccount = createAsyncThunk(
-  'auth/current',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      const {
-        auth: { token },
-      } = getState();
-      const data = await refreshUser(token);
+  'auth/users/current',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    console.log(state);
 
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-  },
-  {
-    condition: (_, thunkApi) => {
-      const {
-        auth: { token },
-      } = thunkApi.getState();
-      if (!token) {
-        return false;
-      }
-    },
+
+    try {
+      setToken(persistedToken);
+      const responce = await refreshUser();
+      return responce.data.token;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const baseURL = 'https://trackerwaterapp.onrender.com/api';
+const baseURL = 'https://trackerwaterapp.onrender.com/api/';
 
 axios.defaults.baseURL = baseURL;
 
 export const setToken = token => {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  localStorage.setItem('token', token);
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
+
+console.log(setToken());
 
 // const removeToken = () => {
 //   delete baseURL.defaults.headers.common['Authorization'];
@@ -15,19 +16,21 @@ export const setToken = token => {
 // };
 
 export const signup = async body => {
-  const { data } = await axios.post('/auth/signup', body);
+  const { data } = await axios.post('auth/signup', body);
   setToken(data.token);
+  console.log(setToken(data.token));
   return data;
 };
 
 export const signin = async body => {
-  const { data } = await axios.post('/auth/signin', body);
+  const { data } = await axios.post('auth/signin', body);
   setToken(data.token);
+  console.log(setToken(data.token));
   return data;
 };
 
 export const refreshUser = async token => {
+  const { data } = await axios.get('auth/users/current');
   setToken(token);
-  const { data } = await axios.get('/auth/current');
   return data;
 };

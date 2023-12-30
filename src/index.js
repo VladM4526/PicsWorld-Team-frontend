@@ -9,13 +9,13 @@ import { persistor, store } from './Redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GlobalStyles />
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate persistor={persistor}>
       <Provider store={store}>
         <BrowserRouter basename="/PicsWorld-Team-frontend">
           <App />
         </BrowserRouter>
       </Provider>
     </PersistGate>
+    <GlobalStyles />
   </React.StrictMode>
 );

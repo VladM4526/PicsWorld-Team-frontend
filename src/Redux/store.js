@@ -14,9 +14,9 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/slice';
 
 const PersistConfig = {
-  key: 'root',
+  key: 'token',
   storage,
-  whitelist: ['token', 'stayAuth'],
+  whitelist: ['token'],
 };
 
 export const store = configureStore({
@@ -29,7 +29,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  evTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);
