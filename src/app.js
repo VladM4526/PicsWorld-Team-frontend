@@ -20,7 +20,7 @@ export const App = () => {
     if (token) {
       dispatch(selectUserToken());
     }
-  }, [dispatch, token]);
+  });
   return (
     <>
       <Routes>
