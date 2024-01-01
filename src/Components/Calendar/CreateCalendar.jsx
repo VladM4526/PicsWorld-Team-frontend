@@ -1,60 +1,83 @@
-import { useEffect, useRef, useState } from 'react';
-import { CalendarHover } from './CalendarHover';
+import { useState } from 'react';
 import { DayStyled } from './Calendar.styled';
 import { debounce } from 'helpers/debounce';
+import { getHoverPosition } from 'helpers/getHoverPosition';
+import { DaysGeneralStats } from './DaysGeneralStats';
+import { nanoid } from 'nanoid';
+import { useRef } from 'react';
+
+const dateOption = { year: 'numeric', month: 'short', day: 'numeric' };
+const water = {
+  norma: 1500,
+  fulfillment: 0.6,
+  count: 5,
+};
 
 export const CreateCalendar = ({ year, month, currentDate }) => {
   const [hoveredDay, setHoveredDay] = useState(null);
-  const [ulSize, setUlSize] = useState({});
-  const [pos, setPos] = useState({ top: 0, left: 0 });
+  const [hover, setHover] = useState({ left: 0, top: 0, with: 0, height: 188 });
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const daysOfMonth = Array(daysInMonth).fill('');
 
-  const ulRef = useRef(null);
+  const onMouseEnter = debounce((e, date) => {
+    handleOpen(e.target, date);
+  }, 50);
 
-  useEffect(() => {
-    setUlSize({ w: ulRef.current.offsetWidth, h: ulRef.current.offsetHeight });
-  }, [ulRef]);
-
-  const onMouseEnter = debounce((e, day) => {
-    const hoverSize = { w: 280, h: 188 };
-
-    const top = e.clientY;
-    // clientY + hoverSize.h > ulSize.h ? clientY - hoverSize.h : clientY;
-    const left = e.clientX;
-    // clientX + hoverSize.w < ulSize.w ? clientX : ulSize.w - hoverSize.w;
-    setPos({ top, left });
-    console.log('e', e.target.getBoundingClientRect());
-    console.log('ec', e.currentTarget.getBoundingClientRect());
-
-    setHoveredDay(day);
-  }, 300);
-
-  const onMouseLeave = () => {
+  const handleClose = () => {
     setHoveredDay(null);
   };
-  // console.log('pos', pos);
+
+  const handleOpen = (target, date) => {
+    setHover(getHoverPosition(target));
+    setHoveredDay(date);
+  };
+
+  const openHover = (e, date) => {
+    hoveredDay && hoveredDay.toDateString() === date.toDateString()
+      ? handleClose()
+      : handleOpen(e.target, date);
+  };
+
   return (
-    <ul ref={ulRef}>
-      {daysOfMonth.map((_, i) => {
-        const day = i + 1;
-        const date = `${year}-${month + 1}-${day}`;
-        const isNow =
-          currentDate.toDateString() === new Date(date).toDateString();
-        return (
-          <li key={date} data-active={isNow}>
-            <DayStyled
-              onMouseEnter={e => onMouseEnter(e, day)}
-              onMouseLeave={onMouseLeave}
-            >
-              <p>{day}</p>
-            </DayStyled>
-            <p>{'100%'}</p>
-            {hoveredDay && <CalendarHover day={day} pos={pos} />}
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul>
+        {daysOfMonth.map((_, i) => {
+          const date = new Date(year, month, i + 1);
+          const isNow = currentDate.toDateString() === date.toDateString();
+          const isFuture = currentDate < date;
+          return (
+            <li key={nanoid()} data-active={isNow}>
+              {window.innerWidth >= 1440 ? (
+                <DayStyled
+                  data-day={!isFuture}
+                  onMouseEnter={isFuture ? null : e => onMouseEnter(e, date)}
+                  onMouseLeave={handleClose}
+                >
+                  {i + 1}
+                </DayStyled>
+              ) : (
+                <DayStyled
+                  data-day
+                  disabled={isFuture}
+                  onClick={isFuture ? null : e => openHover(e, date)}
+                >
+                  {i + 1}
+                </DayStyled>
+              )}
+              <p>{isFuture ? '0%' : '100%'}</p>
+            </li>
+          );
+        })}
+      </ul>
+      {!!hoveredDay && (
+        <DaysGeneralStats
+          hover={hover}
+          date={hoveredDay}
+          water={water}
+          onClose={handleClose}
+        />
+      )}
+    </>
   );
 };
