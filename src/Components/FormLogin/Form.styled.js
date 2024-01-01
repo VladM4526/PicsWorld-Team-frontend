@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import  {NavLink} from 'react-router-dom';
 import {ErrorMessage} from 'formik';
+import bottleDesktop from '../../img/bottle_desktop_edited.png';
+import bottleMob from '../../img/bottle_phone_edited.png';
+import bottleTab from '../../img/bottle_tablet_edited.png';
 
 // export const Form = styled.div`
 //   @media screen and (min-width: 768px) {
@@ -30,19 +33,60 @@ export const FormSection = styled.div`
 
   @media (min-width: 1440px) {
     max-width: 1440px;
-    padding: 12px 112px 0;
+    padding: 112px 198px 0;
+    justify-content: flex-end;
   }
 `;
 export const ImgBottle = styled.div`
-width: 280px;
-height: 210px;
+  min-height: calc(100vh - 66px);
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(${bottleMob});
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    
+
+    @media screen and (min-width: 768px) {
+      background-image: url(${bottleTab});
+      background-size: 80%;
+      background-position: right 20px top 20px;
+
+    }
+
+    @media screen and (min-width: 1440px) {
+      background-image: url(${bottleDesktop});
+      background-position: left 0px top -20px;
+      background-size: 60%;
+    }
+    
+  }
 `
+
 
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 66px;
+  width: 280px;
+  @media (min-width: 768px) {
+    max-width: 336px;
+    
+  }
+
+  @media (min-width: 1440px) {
+    width: 384px;
+  }
 `
 
 export const SignInHeader = styled.h2`
