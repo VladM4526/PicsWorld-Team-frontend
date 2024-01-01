@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signInThunk } from '../../Redux/Auth/backendRequest';
-import WaterTrackerIcons from './img/set-icons.svg';
+import WaterTrackerIcons from '../../img/set-icons.svg';
 import {
   Button,
   FormWrapper,
@@ -38,6 +38,7 @@ export const FormSignIn = () => {
   };
 
   return (
+   
     <FormWrapper>
       <SignInHeader>Sign In</SignInHeader>
       <form onSubmit={handleSubmit}>

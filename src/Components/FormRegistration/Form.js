@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { validateSchema } from './validationSchema';
 
-import WaterTrackerIcons from './img/set-icons.svg';
+import WaterTrackerIcons from '../../img/set-icons.svg';
 import { signUpThunk } from '../../Redux/Auth/backendRequest';
 
 export const FormSignUp = () => {

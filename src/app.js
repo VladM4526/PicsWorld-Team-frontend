@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Layout } from './Layout';
+import { refreshUserAccount } from './Redux/Auth/backendRequest';
 import { selectUserToken } from './Redux/Auth/selectors';
 import { FormLogin } from 'Components/FormLogin/FormLogin';
 import { FormReg } from 'Components/FormRegistration/FormSignUp';
@@ -15,34 +16,35 @@ import { PrivateRoute } from './Routers/Private';
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectUserToken);
+  console.log(token);
 
   useEffect(() => {
     if (token) {
-      dispatch(selectUserToken());
+      dispatch(refreshUserAccount());
     }
-  }, [dispatch, token]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index path="/" element={<WelcomePage />} />
-          <Route
-            index
-            path="WelcomePage"
-            element={
-              <PrivateRoute redirectTo="HomePage" component={<HomePage />} />
-            }
-          />
+          <Route index element={<WelcomePage />} />
           <Route
             path="FormReg"
             element={
-              <PublicRoute redirectTo="HomePage" component={<FormReg />} />
+              <PublicRoute redirectTo="/HomePage" component={<FormReg />} />
             }
           />
           <Route
             path="FormLogin"
             element={
-              <PublicRoute redirectTo="HomePage" component={<FormLogin />} />
+              <PublicRoute redirectTo="/HomePage" component={<FormLogin />} />
+            }
+          />
+          <Route
+            path="HomePage"
+            element={
+              <PrivateRoute redirectTo="/HomePage" component={<HomePage />} />
             }
           />
         </Route>

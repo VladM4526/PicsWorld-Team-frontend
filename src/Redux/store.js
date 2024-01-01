@@ -15,9 +15,9 @@ import { authReducer } from './Auth/slice';
 import { waterReducer } from './water/waterSlice';
 
 const PersistConfig = {
-  key: 'root',
+  key: 'token',
   storage,
-  whitelist: ['token', 'stayAuth'],
+  whitelist: ['token'],
 };
 
 export const store = configureStore({

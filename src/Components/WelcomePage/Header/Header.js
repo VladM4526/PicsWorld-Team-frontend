@@ -7,7 +7,7 @@ import {
   HeaderUserIcon,
   LogoContainer,
 } from './Header.styled.js';
-import WaterTracker from '../../WelcomePage/img/set-icons.svg';
+import WaterTracker from '../../../img/set-icons.svg';
 
 export const Header = () => {
   return (
