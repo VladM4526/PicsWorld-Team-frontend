@@ -3,13 +3,11 @@ import svgIcons from 'img/set-icons.svg';
 
 import { getMonthName } from 'helpers/getMonthName';
 import { CreateCalendar } from './CreateCalendar';
-import { CalendarHeaderStyled, Div } from './Calendar.styled';
+import { CalendarHeaderStyled, CalendarStyled } from './Calendar.styled';
 
 const currentDate = new Date();
 
 export function Calendar() {
-  //   const [value, setValue] = useState();
-  //   const [date, setDate] = useState(currentDate.getDate());
   const [month, setMonth] = useState(currentDate.getMonth());
   const [year, setYear] = useState(currentDate.getFullYear());
 
@@ -31,7 +29,7 @@ export function Calendar() {
     }
   };
   return (
-    <Div>
+    <CalendarStyled>
       <CalendarHeaderStyled>
         <h3>Month</h3>
         <div>
@@ -41,7 +39,10 @@ export function Calendar() {
             </svg>
           </button>
           <p>{`${getMonthName(month)}, ${year}`}</p>
-          <button onClick={goToNextMonth}>
+          <button
+            onClick={goToNextMonth}
+            disabled={currentDate < new Date(year, month + 1)}
+          >
             <svg height="14" width="14" data-arrow="left">
               <use href={`${svgIcons}#icon-arrow`}></use>
             </svg>
@@ -49,6 +50,6 @@ export function Calendar() {
         </div>
       </CalendarHeaderStyled>
       <CreateCalendar year={year} month={month} currentDate={currentDate} />
-    </Div>
+    </CalendarStyled>
   );
 }

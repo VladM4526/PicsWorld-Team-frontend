@@ -15,9 +15,9 @@ export const WelcomePage = () => {
         <TrackerBenefits />
         <TrackerInfo />
       </Tracker>
-      {/*для розробки */}
-      {/* <Modal />
-      <Calendar /> */}
+      {/* для розробки  */}
+      {/* <Modal /> */}
+      {/* <Calendar /> */}
     </>
   );
 };
