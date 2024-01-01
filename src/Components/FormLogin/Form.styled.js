@@ -23,6 +23,7 @@ export const FormSection = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  
 
 
   @media (min-width: 768px) {
@@ -41,7 +42,7 @@ export const ImgBottle = styled.div`
   min-height: calc(100vh - 66px);
   position: relative;
   overflow: hidden;
-  z-index: -1;
+
 
   &:before {
     content: '';
@@ -166,6 +167,7 @@ export const NavLinkStyled = styled(NavLink)`
   line-height: 1.25;
   background: none;
   border: none;
+  z-index: 0;
     &:hover,
     &:focus {
      color: #FF9D43;

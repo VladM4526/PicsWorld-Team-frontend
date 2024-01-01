@@ -8,11 +8,11 @@ export const FormLogin = () => {
     <>
       <Header />
       <ImgBottle>
-      <FormSection>
+        <FormSection>
       {/* <BgPicture /> */}
-      <FormSignIn />
-    </FormSection>
-    </ImgBottle>
+          <FormSignIn />
+        </FormSection>
+      </ImgBottle>
     </>
   );
 };

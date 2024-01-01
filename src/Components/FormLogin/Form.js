@@ -80,8 +80,8 @@ export const FormSignIn = () => {
           </InputWrapper>
         </Label>
         <Button type="submit">Sign In</Button>
-        <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
       </form>
+      <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
     </FormWrapper>
   );
 };
