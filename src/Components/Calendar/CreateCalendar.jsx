@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DayStyled } from './Calendar.styled';
 import { debounce } from 'helpers/debounce';
 import { getHoverPosition } from 'helpers/getHoverPosition';
@@ -19,6 +19,8 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
   const daysOfMonth = Array(daysInMonth).fill('');
 
   const parentRef = useRef(null);
+
+  // const parentRect = parentRef.current.getBoundingClientRect();
 
   const onMouseEnter = debounce((e, date) => {
     handleOpen(e.target, date);
