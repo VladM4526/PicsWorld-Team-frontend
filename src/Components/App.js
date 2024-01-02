@@ -2,8 +2,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Layout } from './Layout/Layout';
-import { refreshUserAccount } from '../Redux/auth/backendRequest';
-import { selectUserToken } from '../Redux/auth/selectors';
 // import { FormLogin } from 'Components/FormLogin/FormLogin';
 // import { FormReg } from 'Components/FormRegistration/FormSignUp';
 // import { WelcomePage } from './Components/WelcomePage/Welcome';
@@ -15,6 +13,8 @@ import WelcomePage from 'pages/WelcomePage';
 import HomePage from 'pages/HomePage';
 import FormReg from 'pages/FormReg';
 import LoginPage from 'pages/LoginPage';
+import { selectUserToken } from '../Redux/auth/selectors';
+import { refreshUserAccount } from '../Redux/auth/backendRequest';
 // import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
 
 export const App = () => {
