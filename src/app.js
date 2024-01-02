@@ -13,8 +13,8 @@ import { PublicRoute } from './Routers/Public';
 import { PrivateRoute } from './Routers/Private';
 import WelcomePage from 'pages/WelcomePage';
 import HomePage from 'pages/HomePage';
-import FormLogin from 'pages/FormLogin';
 import FormReg from 'pages/FormReg';
+import LoginPage from 'pages/LoginPage';
 // import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
 
 export const App = () => {
@@ -42,7 +42,7 @@ export const App = () => {
           <Route
             path="FormLogin"
             element={
-              <PublicRoute redirectTo="/HomePage" component={<FormLogin />} />
+              <PublicRoute redirectTo="/HomePage" component={<LoginPage />} />
             }
           />
           <Route

@@ -2,7 +2,7 @@ import { Tracker } from './WelcomePage.styled';
 import { TrackerBenefits } from './TrackerBenefits/TrackerBenefits';
 import { TrackerInfo } from './TrackerInfo/TrackerInfo';
 // import { Header } from './Header/Header';
-import { Home } from 'Components/Home/Home';
+// import { Home } from 'Components/Home/Home';
 
 //  для розробки
 // import { Modal } from 'Components/Modal-window/Modal';
@@ -20,7 +20,7 @@ export const Welcome = () => {
       {/* для розробки  */}
       {/* <Modal /> */}
       {/* <Calendar /> */}
-      <Home />
+      {/* <Home /> */}
     </>
   );
 };

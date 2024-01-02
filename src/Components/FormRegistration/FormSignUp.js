@@ -8,10 +8,10 @@ import SignUpForm from './FormRegistration';
 export const FormReg = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <ImgBottle>
         <FormSection>
-          <SignUpForm/>
+          <SignUpForm />
         </FormSection>
       </ImgBottle>
     </>
