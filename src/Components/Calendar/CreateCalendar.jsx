@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DayStyled } from './Calendar.styled';
 import { debounce } from 'helpers/debounce';
 import { getHoverPosition } from 'helpers/getHoverPosition';
 import { DaysGeneralStats } from './DaysGeneralStats';
 import { nanoid } from 'nanoid';
-import { useRef } from 'react';
 
-const dateOption = { year: 'numeric', month: 'short', day: 'numeric' };
 const water = {
   norma: 1500,
   fulfillment: 0.6,
@@ -20,6 +18,10 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const daysOfMonth = Array(daysInMonth).fill('');
 
+  const parentRef = useRef(null);
+
+  // const parentRect = parentRef.current.getBoundingClientRect();
+
   const onMouseEnter = debounce((e, date) => {
     handleOpen(e.target, date);
   }, 50);
@@ -29,7 +31,8 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
   };
 
   const handleOpen = (target, date) => {
-    setHover(getHoverPosition(target));
+    const parentRect = parentRef.current.getBoundingClientRect();
+    setHover(getHoverPosition(target, parentRect));
     setHoveredDay(date);
   };
 
@@ -40,8 +43,8 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
   };
 
   return (
-    <>
-      <ul>
+    <div style={{ position: 'relative' }}>
+      <ul ref={parentRef}>
         {daysOfMonth.map((_, i) => {
           const date = new Date(year, month, i + 1);
           const isNow = currentDate.toDateString() === date.toDateString();
@@ -51,6 +54,7 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
               {window.innerWidth >= 1440 ? (
                 <DayStyled
                   data-day={!isFuture}
+                  disabled={isFuture}
                   onMouseEnter={isFuture ? null : e => onMouseEnter(e, date)}
                   onMouseLeave={handleClose}
                 >
@@ -78,6 +82,6 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
           onClose={handleClose}
         />
       )}
-    </>
+    </div>
   );
 };

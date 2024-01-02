@@ -32,7 +32,7 @@ export const DaysGeneralStats = ({ hover, date, water, onClose }) => {
   }, [onClose]);
 
   return (
-    <CalendarHoverStyled hover={hover} className="hover" data-hover>
+    <CalendarHoverStyled hover={hover} data-hover>
       <div>
         <h4>{`${date.getDate()}, ${getMonthName(date.getMonth())}`}</h4>
         {isMobil && (

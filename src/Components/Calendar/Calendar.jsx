@@ -3,7 +3,11 @@ import svgIcons from 'img/set-icons.svg';
 
 import { getMonthName } from 'helpers/getMonthName';
 import { CreateCalendar } from './CreateCalendar';
-import { CalendarHeaderStyled, CalendarStyled } from './Calendar.styled';
+import {
+  BtnArrowCalendarStyled,
+  CalendarHeaderStyled,
+  CalendarStyled,
+} from './Calendar.styled';
 
 const currentDate = new Date();
 
@@ -33,20 +37,20 @@ export function Calendar() {
       <CalendarHeaderStyled>
         <h3>Month</h3>
         <div>
-          <button onClick={goToPrevMonth}>
+          <BtnArrowCalendarStyled onClick={goToPrevMonth}>
             <svg height="14" width="14" data-arrow="right">
               <use href={`${svgIcons}#icon-arrow`}></use>
             </svg>
-          </button>
+          </BtnArrowCalendarStyled>
           <p>{`${getMonthName(month)}, ${year}`}</p>
-          <button
+          <BtnArrowCalendarStyled
             onClick={goToNextMonth}
             disabled={currentDate < new Date(year, month + 1)}
           >
             <svg height="14" width="14" data-arrow="left">
               <use href={`${svgIcons}#icon-arrow`}></use>
             </svg>
-          </button>
+          </BtnArrowCalendarStyled>
         </div>
       </CalendarHeaderStyled>
       <CreateCalendar year={year} month={month} currentDate={currentDate} />

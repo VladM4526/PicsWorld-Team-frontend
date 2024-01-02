@@ -1,14 +1,9 @@
 import styled from 'styled-components';
 
 export const CalendarStyled = styled.div`
-  position: relative;
-  width: 280px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-radius: 10px;
-  background-color: #ecf2ff;
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 
   & ul {
     display: grid;
@@ -69,24 +64,25 @@ export const CalendarHeaderStyled = styled.div`
       width: 125px;
     }
   }
-  & button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  & svg {
-    fill: #407bff;
-    cursor: pointer;
-  }
-  & svg[data-arrow='left'] {
-    transform: rotate(180deg);
-  }
-
   @media only screen and (min-width: 768px) {
     & h3 {
       font-size: 26px;
       line-height: 1.23;
     }
+  }
+`;
+
+export const BtnArrowCalendarStyled = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+
+  & svg {
+    fill: #407bff;
+  }
+  & svg[data-arrow='left'] {
+    transform: rotate(180deg);
   }
 `;
 
@@ -136,7 +132,8 @@ export const CalendarHoverStyled = styled.div`
 
   @media only screen and (min-width: 768px) {
     top: ${({ hover: { top } }) => top}px;
-    left: ${({ hover: { left } }) => left}px;
+    right: ${({ hover: { right } }) => right}px;
+    left: unset;
     transform: none;
     padding: 24px 16px;
   }
@@ -153,7 +150,7 @@ export const DayStyled = styled.button`
   border: 1px solid #ff9d43;
   background-color: #fff;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 
   @media only screen and (min-width: 768px) {
     width: 34px;
