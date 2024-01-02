@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/PicsWorld-Team-frontend/static/css/main.34395e71.css",
-    "main.js": "/PicsWorld-Team-frontend/static/js/main.a9ad5fe0.js",
+    "main.js": "/PicsWorld-Team-frontend/static/js/main.ef37e0d6.js",
     "static/media/bottle_desktop_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_desktop_edited.ee0ace430d38328969a0.png",
     "static/media/bottle_tablet_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_tablet_edited.50816e4236cc311f0d10.png",
     "static/media/set-icons.svg": "/PicsWorld-Team-frontend/static/media/set-icons.b453750c8159f7b86e4ec0e961cfb8c0.svg",
     "static/media/bottle_phone_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_phone_edited.b5b424b4c983460cf839.png",
     "index.html": "/PicsWorld-Team-frontend/index.html",
     "main.34395e71.css.map": "/PicsWorld-Team-frontend/static/css/main.34395e71.css.map",
-    "main.a9ad5fe0.js.map": "/PicsWorld-Team-frontend/static/js/main.a9ad5fe0.js.map"
+    "main.ef37e0d6.js.map": "/PicsWorld-Team-frontend/static/js/main.ef37e0d6.js.map"
   },
   "entrypoints": [
     "static/css/main.34395e71.css",
-    "static/js/main.a9ad5fe0.js"
+    "static/js/main.ef37e0d6.js"
   ]
 }
