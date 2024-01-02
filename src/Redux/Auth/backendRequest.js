@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { signin, signup, refreshUser, setToken } from '../API/api';
