@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
-export const CalendarStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+export const Div = styled.div`
+  /* display: flex; */
+  /* width: 280px; */
+  /* padding: 24px 8px; */
+  border-radius: 10px;
+  background-color: #ecf2ff;
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 
   & ul {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px 26px;
@@ -26,27 +30,13 @@ export const CalendarStyled = styled.div`
     font-size: 10px;
     line-height: 1.6;
   }
-
-  @media only screen and (min-width: 768px) {
-    width: 646px;
-    & ul {
-      grid-template-columns: repeat(10, 1fr);
-      gap: 20px 34px;
-    }
-  }
-
-  @media only screen and (min-width: 1440px) {
-    width: 538px;
-    & ul {
-      gap: 20px 22px;
-    }
-  }
 `;
 
 export const CalendarHeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
 
   & h3 {
     font-size: 24px;
@@ -64,22 +54,14 @@ export const CalendarHeaderStyled = styled.div`
       width: 125px;
     }
   }
-  @media only screen and (min-width: 768px) {
-    & h3 {
-      font-size: 26px;
-      line-height: 1.23;
-    }
+  & button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-`;
-
-export const BtnArrowCalendarStyled = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-
   & svg {
     fill: #407bff;
+    cursor: pointer;
   }
   & svg[data-arrow='left'] {
     transform: rotate(180deg);
@@ -88,72 +70,27 @@ export const BtnArrowCalendarStyled = styled.button`
 
 export const CalendarHoverStyled = styled.div`
   position: absolute;
-  width: ${({ hover: { width } }) => width}px;
-  height: ${({ hover: { height } }) => height}px;
-  left: 50%;
-  top: ${({ hover: { top } }) => top}px;
-  transform: translateX(-50%);
-  display: flex;
-  padding: 24px 13px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  width: 280px;
+  height: 188px;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
+  top: ${({ pos }) => pos.top}px;
+  left: ${({ pos }) => pos.left}px;
   z-index: 1000;
-  & div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #407bff;
-    font-size: 16px;
-    line-height: 1.25;
-    & h4 {
-      font-weight: 400;
-      line-height: 1.25;
-    }
-    & button {
-      background-color: inherit;
-    }
-  }
-  & p {
-    color: #2f2f2f;
-    font-size: 16px;
-    line-height: 1.25;
-    & span {
-      color: #407bff;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.3333;
-    }
-  }
-
-  @media only screen and (min-width: 768px) {
-    top: ${({ hover: { top } }) => top}px;
-    right: ${({ hover: { right } }) => right}px;
-    left: unset;
-    transform: none;
-    padding: 24px 16px;
-  }
 `;
 
-export const DayStyled = styled.button`
+export const DayStyled = styled.div`
   font-size: 14px;
-  line-height: 1;
   width: 32px;
   height: 32px;
+  /* margin-bottom: 4px; */
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #ff9d43;
   background-color: #fff;
   border-radius: 50%;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-
-  @media only screen and (min-width: 768px) {
-    width: 34px;
-    height: 34px;
+  cursor: pointer;
+  & > p {
+    height: 14px;
   }
 `;
