@@ -84,7 +84,6 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
       [name]: isNaN(numericValue) ? 0 : numericValue,
     }));
 
-    // Додайте перерахунок при зміні статі або часу
     if (name === 'sex' || name === 'time') {
       calculateWaterFunction({
         ...formikProps.values,

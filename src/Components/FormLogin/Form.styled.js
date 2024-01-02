@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import  {NavLink} from 'react-router-dom';
-import {ErrorMessage} from 'formik';
 import bottleDesktop from '../../img/bottle_desktop_edited.png';
 import bottleMob from '../../img/bottle_phone_edited.png';
 import bottleTab from '../../img/bottle_tablet_edited.png';
+import {Field} from 'formik';
 
 // export const Form = styled.div`
 //   @media screen and (min-width: 768px) {
@@ -43,7 +43,6 @@ export const ImgBottle = styled.div`
   position: relative;
   overflow: hidden;
 
-
   &:before {
     content: '';
     display: block;
@@ -80,6 +79,7 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   gap: 16px;
   width: 280px;
+  z-index: 1;
   @media (min-width: 768px) {
     max-width: 336px;
     
@@ -106,10 +106,9 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
-  
 `;
 
-export const StyledField = styled.input`
+export const StyledField = styled(Field)`
   display: flex;
   padding: 12px 10px;
   align-items: center;
@@ -151,6 +150,7 @@ export const Button = styled.button`
   border: none;
   width: 100%;
   margin-bottom: 16px;
+
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
@@ -183,7 +183,7 @@ export const SvgStyled = styled.svg`
 export const InputWrapper = styled.div`
   position: relative;
 `
-export const ErrorMsg = styled(ErrorMessage)`
+export const ErrorMsg = styled.div`
   font-size: 14px;
   color: red;
 `;
