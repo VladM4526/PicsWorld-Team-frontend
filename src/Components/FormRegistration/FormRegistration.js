@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { validateSchema } from './validationSchema';
 
 import WaterTrackerIcons from '../../img/set-icons.svg';
-import { signUpThunk } from '../../Redux/auth/backendRequest';
+import { signUpThunk } from '../../Redux/Auth/backendRequest';
 
 const initialValues = {
   email: '',
