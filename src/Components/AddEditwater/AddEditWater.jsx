@@ -18,16 +18,16 @@ const initialValues = {
   date: new Date(),
   volumeWater: 0,
 };
+
 const step = 50;
 
-export const AddEditWater = ({ onClose, data, isEdit }) => {
+export const AddEditWater = ({ onClose, editNote = '250', isEdit }) => {
   const dispatch = useDispatch();
-
   const { isLoading } = useWater();
 
   const handleSubmit = values => {
     if (isEdit) {
-      dispatch(editWater(values));
+      dispatch(editWater(editNote.id, values));
       onClose();
     } else {
       dispatch(addWater(values));
@@ -36,7 +36,7 @@ export const AddEditWater = ({ onClose, data, isEdit }) => {
 
   return (
     <Formik
-      initialValues={data || initialValues}
+      initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={volumeWaterSchema}
     >
@@ -47,13 +47,11 @@ export const AddEditWater = ({ onClose, data, isEdit }) => {
           setFieldValue('volumeWater', value * step + amount);
         };
 
-        const handleChangeTime = newDate => {
-          setFieldValue('date', newDate);
-        };
+        const handleChangeTime = newDate => setFieldValue('date', newDate);
 
         return (
           <FormStyled name="addWater">
-            {isEdit && <EditNote editNote={data} />}
+            {isEdit && <EditNote editNote={editNote} />}
 
             <h3>{isEdit ? 'Correct entered data:' : 'Choose a value:'}</h3>
 
