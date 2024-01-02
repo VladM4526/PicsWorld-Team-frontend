@@ -3,15 +3,16 @@ import styled from 'styled-components';
 export const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: auto;
-  padding: 0 20px 40px 20px;
+  padding: 8px 20px 40px;
 
   @media only screen and (min-width: 768px) {
-    padding: 0 32px 44px 32px;
+    padding: 16px 32px 44px;
   }
 
   @media only screen and (min-width: 1440px) {
-    padding: 0 112px 40px 122px;
+    padding: 12px 112px 40px;
   }
 `;
 /* background-image: url(${image}); */
