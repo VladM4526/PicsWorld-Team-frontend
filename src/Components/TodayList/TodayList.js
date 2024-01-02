@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid';
 import {
-    AddLink,
-    SvgPlus,
-    WaterList,
-    TodayWrapper,
-    TodayHeader,
-  } from './Today.styled';
-import WaterTrackerIcons from './img/set-icons.svg';
+  AddLink,
+  SvgPlus,
+  WaterList,
+  TodayWrapper,
+  TodayHeader,
+} from './Today.styled';
+import WaterTrackerIcons from '../../img/set-icons.svg';
 import TodayItem from './TodayItem';
 import { useState } from 'react';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
@@ -15,11 +15,11 @@ import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 const arrayItemsWater = [];
 
 for (let i = 0; i <= 5; i += 1) {
-    arrayItemsWater[i] = { id: nanoid(), water: 200, date: new Date() };
-} 
+  arrayItemsWater[i] = { id: nanoid(), water: 200, date: new Date() };
+}
 
 const TodayList = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
@@ -39,7 +39,7 @@ const TodayList = () => {
       </WaterList>
       {isOpen && (
         <ModalWrapper title="Add water" onClose={toggleModal}>
-          <AddEditWater onClose={toggleModal}/> 
+          <AddEditWater onClose={toggleModal} />
         </ModalWrapper>
       )}
     </TodayWrapper>

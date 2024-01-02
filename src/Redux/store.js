@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from './Auth/slice';
+import { authReducer } from './auth/slice';
 import { waterReducer } from './water/waterSlice';
 
 const PersistConfig = {

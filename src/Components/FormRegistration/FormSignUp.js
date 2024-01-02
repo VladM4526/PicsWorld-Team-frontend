@@ -1,11 +1,11 @@
 // import { BgPicture } from './BgPicture';
 
-import { Header } from '../WelcomePage/Header/Header';
+// import { Header } from '../WelcomePage/Header/Header';
 import { FormSection, ImgBottle } from 'Components/FormLogin/Form.styled';
 import SignUpForm from './FormRegistration';
 // import { FormSignUp } from './Form';
 
-export const FormReg = () => {
+export const FormSignUp = () => {
   return (
     <>
       {/* <Header /> */}
