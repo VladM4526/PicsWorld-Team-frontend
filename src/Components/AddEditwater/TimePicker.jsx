@@ -4,10 +4,10 @@ import ReactDatePicker, {
 } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import eu from 'date-fns/locale/eu';
+import { locale } from 'helpers/locale';
 registerLocale('eu', eu);
 
-const userLocale = navigator.language.split('-')[0] === 'en' ? 'en' : 'eu';
-setDefaultLocale(userLocale);
+setDefaultLocale(locale);
 
 export const TimePicker = ({ onChange, date }) => (
   <ReactDatePicker
