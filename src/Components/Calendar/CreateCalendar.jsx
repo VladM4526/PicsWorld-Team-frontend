@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { DayStyled } from './Calendar.styled';
 import { debounce } from 'helpers/debounce';
 import { getHoverPosition } from 'helpers/getHoverPosition';
