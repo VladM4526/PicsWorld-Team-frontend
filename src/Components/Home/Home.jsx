@@ -5,6 +5,7 @@ import {
   DailyWrapStyled,
   HomeWrapStyled,
 } from './Home.styled';
+import WaterRatioPanel from 'Components/WaterRatioPanel/WaterRatioPanel';
 
 export const Home = () => {
   return (
@@ -13,8 +14,8 @@ export const Home = () => {
         <DailyWrapStyled>
           <DailyNorma />
         </DailyWrapStyled>
-        {/* <DayTracker/> */}
-        <div style={{ minWidth: '280px', height: '134px' }}>Daily Tracker</div>
+        
+        <div style={{ minWidth: '280px', height: '134px' }}><WaterRatioPanel/></div>
       </DailyTrackerWrapStyled>
       <Today />
     </HomeWrapStyled>
