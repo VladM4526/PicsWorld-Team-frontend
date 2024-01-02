@@ -1,10 +1,11 @@
-import { useFormik } from 'formik';
+import { Formik, Form, ErrorMessage} from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signInThunk } from '../../Redux/Auth/backendRequest';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 import {
   Button,
+  ErrorMsg,
   FormWrapper,
   InputWrapper,
   Label,
@@ -24,14 +25,10 @@ export const FormSignIn = () => {
     dispatch(signInThunk(e));
   };
 
-  const { handleSubmit, handleChange, values, touched, errors } = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: validateSchema,
-    onSubmit,
-  });
+  const initialValues = {
+    email: '',
+    password: '',
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
@@ -41,7 +38,13 @@ export const FormSignIn = () => {
    
     <FormWrapper>
       <SignInHeader>Sign In</SignInHeader>
-      <form onSubmit={handleSubmit}>
+      <Formik
+              initialValues={initialValues}
+              validationSchema={validateSchema}
+              onSubmit={onSubmit}
+            >
+              {({ isSubmitting, errors, touched, values }) => (
+                <Form>
         <Label>
           Enter your email
           <StyledField
@@ -49,11 +52,11 @@ export const FormSignIn = () => {
             name="email"
             type="text"
             placeholder="Enter your email"
-            onChange={handleChange}
+            $hasError={touched.email && errors.email}
             value={values.email}
+            required
           />
-          {touched.email && errors.email ? <div>{errors.email}</div> : null}
-          {/* <ErrorMsg name="email" component="div"/> */}
+          <ErrorMessage name="email" component={ErrorMsg} />
         </Label>
         <Label>
           Enter your password
@@ -63,8 +66,9 @@ export const FormSignIn = () => {
               name="password"
               type={showPassword ? 'text' : 'password'}
               placeholder="Enter your password"
-              onChange={handleChange}
-              value={values.password}
+              $hasError={touched.password && errors.password}
+                        value={values.password}
+                        required
             />
             <SvgStyled
               height="16"
@@ -77,11 +81,14 @@ export const FormSignIn = () => {
                 }`}
               ></use>
             </SvgStyled>
+            <ErrorMessage name="password" component={ErrorMsg} />
           </InputWrapper>
         </Label>
         <Button type="submit">Sign In</Button>
-        <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
-      </form>
+      </Form>
+              )}
+              </Formik>
+      <NavLinkStyled to="/FormReg">Sign Up</NavLinkStyled>
     </FormWrapper>
   );
 };

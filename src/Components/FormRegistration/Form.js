@@ -39,6 +39,7 @@ export const FormSignUp = () => {
   };
 
   return (
+
     <FormWrapper>
       <SignInHeader>Sign Up</SignInHeader>
       <form onSubmit={handleSubmit}>
@@ -108,5 +109,6 @@ export const FormSignUp = () => {
       </form>
       <NavLinkStyled to="/FormLogin">Sign in</NavLinkStyled>
     </FormWrapper>
+
   );
 };
