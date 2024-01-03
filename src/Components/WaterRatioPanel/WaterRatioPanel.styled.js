@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 
 export const PanelContainer = styled.div`
@@ -37,7 +36,7 @@ export const WaterPanel = styled.div`
     content: '';
     position: absolute;
     top: 50%;
-    left: ${({ percentage }) => `calc(${percentage}%)`};
+    left: ${({ $percentage }) => `calc(${$percentage}%)`};
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
@@ -50,7 +49,7 @@ export const WaterPanel = styled.div`
   &::before {
     content: '';
     position: absolute;
-    width: ${({ percentage }) => `${percentage}%`};
+    width: ${({ $percentage }) => `${$percentage}%`};
     height: 100%;
     background: #407BFF;
     border-radius: 10px;

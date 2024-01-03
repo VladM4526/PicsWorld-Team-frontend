@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const DailyNormaWrapper = styled.div`
-  /* padding: 8px 20px; */
+  padding: 8px 20px;
+  width: 166px;
+  height: 76px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,9 +12,13 @@ export const DailyNormaWrapper = styled.div`
   border: 1px solid #ecf2ff;
   background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-  /* position: absolute;
-top: 80px;
-left: 20px; */
+  margin-top: 24px;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 52px;
+  }
 `;
 
 export const LiterWrapper = styled.div`

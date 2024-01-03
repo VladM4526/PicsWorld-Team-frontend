@@ -140,10 +140,24 @@ export const StyledField = styled(Field)`
   border: 1px solid #D7E3FF;
   background: #FFF;
   color: #407BFF;
-  /* &:focus-visible{
+   &:focus-visible{
         outline: 1px solid blue;
-  } */
+  } 
 `;
+
+export const WrapperLiter = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 6px;
+`
+
+export const TextLiter = styled.p`
+    width: 190px;
+    
+    @media (min-width: 768px){
+      width: 328px;
+      }
+`
 
 export const LiterSpan = styled.span`
   color: #407BFF;
@@ -156,6 +170,11 @@ export const ErrorMsg = styled(ErrorMessage)`
   font-size: 14px;
   color: red;
 `;
+
+export const ButtonWrapper = styled.div`
+display: flex;
+justify-content: flex-end;
+`
 
 export const Button = styled.button`
   display: inline-flex;
@@ -172,6 +191,7 @@ export const Button = styled.button`
   background: #407BFF;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: none;
+  width: 100%;
 
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
@@ -180,4 +200,8 @@ export const Button = styled.button`
   &:focus {
     box-shadow: 0px;
   }
+  @media screen and (min-width: 768px) {
+  width: 160px;
+
+}
 `

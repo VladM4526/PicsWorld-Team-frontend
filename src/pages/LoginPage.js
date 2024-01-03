@@ -1,5 +1,5 @@
-import { FormLogin } from '../Components/FormLogin/FormLogin';
+import { FormSignIn } from '../Components/FormLogin/FormSignIn';
 
 export default function LoginPage() {
-  return <FormLogin />;
+  return <FormSignIn />;
 }

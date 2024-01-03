@@ -2,11 +2,11 @@ import { PanelContainer, WaterPanel, WaterPercent} from "./WaterRatioPanel.style
 
 
 const WaterRatioPanel = () => {
-    const percentage = 60
+    const percentage = 40
   return (
     <PanelContainer>
           <p>Today</p>
-          <WaterPanel percentage={percentage}>
+          <WaterPanel $percentage={percentage}>
            
           </WaterPanel>
           <WaterPercent>

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'react-modal';
 import { ErrorMessage, Formik } from 'formik';
+import * as Yup from 'yup';
 import {
-  customStyles,
   LiterSpan,
   LabelRadio,
   FormHeader,
-  ModalHeader,
   Label,
   LabelBold,
   StyledField,
@@ -17,8 +15,9 @@ import {
   Formula,
   ExplainFormula,
   ButtonWrapper,
+  WrapperLiter,
+  TextLiter,
 } from './DailyNormaModal.styled';
-import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
 
 const initialValues = {
   weight: 0,
@@ -27,15 +26,31 @@ const initialValues = {
   water: 0,
 };
 
+const validationSchema = Yup.object().shape({
+  weight: Yup.number('Must be number')
+    .positive('Weight must be positive')
+    .min(20)
+    .required('Weight is required'),
+  time: Yup.number('Must be number')
+        .min(0)
+        .max(24, 'Time mustn`t be less than 24')
+        .required('Time is required'),
+  sex: Yup.string()
+    .oneOf(['For girl', 'For man'], 'Invalid sex')
+    .required('Sex is required'),
+  water: Yup.number('Must be number')
+    .positive('Water must be positive')
+    .required('Water is required'),
+});
+
 // const user = {
 //   sex: 'Girl'
 // }
 
-export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
+export const DailyNormaPortal = ({ onClose }) => {
   // const dispatch = useDispatch();
   // const [selectedSex, setSelectedSex] = useState('girl');
   // const user = useSelector(selectUser);
-
   const [formData, setFormData] = useState(initialValues);
   const [calculateWater, setCalculatedWater] = useState(0);
 
@@ -79,10 +94,9 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
-
-      <ModalHeader>My daily norma</ModalHeader>
-      <SexDiv>
+    
+   <>   
+       <SexDiv>
         <p>
           For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>{' '}
         </p>
@@ -101,8 +115,9 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
 
       <Formik
         initialValues={initialValues}
-        validationSchema={dailyNormaValidationSchema}
+        validationSchema={validationSchema}
         onSubmit={values => {
+            onClose()
           console.log(values); // тут треба зробити функцію, яка передає на бекенд значення поля water
         }}
       >
@@ -149,10 +164,10 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
               <ErrorMessage name="time" component="div" />
             </Label>
 
-            <p>
-              The required amount of water in liters per day:{' '}
-              <LiterSpan>{calculateWater} L</LiterSpan>{' '}
-            </p>
+            <WrapperLiter>
+              <TextLiter>The required amount of water in liters per day:</TextLiter>
+              <LiterSpan>{calculateWater} L</LiterSpan>
+            </WrapperLiter>
 
             <LabelBold>
               Write down how much water you will drink:
@@ -160,15 +175,15 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
               <ErrorMessage name="water" component="div" />
             </LabelBold>
             <ButtonWrapper>
-              <Button type="submit" onClick={onRequestClose}>
+              <Button type="submit">
                 Save
               </Button>
             </ButtonWrapper>
           </StyledForm>
         )}
       </Formik>
-    </Modal>
+      </>
   );
 };
 
-export default DailyNormaModal;
+export default DailyNormaPortal;
