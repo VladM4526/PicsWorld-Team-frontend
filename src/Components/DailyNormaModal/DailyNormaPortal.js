@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'react-modal';
 import { ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
 import {
-  customStyles,
   LiterSpan,
   LabelRadio,
   FormHeader,
-  ModalHeader,
   Label,
   LabelBold,
   StyledField,
@@ -46,11 +43,10 @@ const validationSchema = Yup.object().shape({
 //   sex: 'Girl'
 // }
 
-export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
+export const DailyNormaPortal = ({ onClose }) => {
   // const dispatch = useDispatch();
   // const [selectedSex, setSelectedSex] = useState('girl');
   // const user = useSelector(selectUser);
-
   const [formData, setFormData] = useState(initialValues);
   const [calculateWater, setCalculatedWater] = useState(0);
 
@@ -94,10 +90,9 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
-
-      <ModalHeader>My daily norma</ModalHeader>
-      <SexDiv>
+    
+   <>   
+       <SexDiv>
         <p>
           For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>{' '}
         </p>
@@ -118,6 +113,7 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={values => {
+            onClose()
           console.log(values); // тут треба зробити функцію, яка передає на бекенд значення поля water
         }}
       >
@@ -175,15 +171,15 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
               <ErrorMessage name="water" component="div" />
             </LabelBold>
             <ButtonWrapper>
-              <Button type="submit" onClick={onRequestClose}>
+              <Button type="submit">
                 Save
               </Button>
             </ButtonWrapper>
           </StyledForm>
         )}
       </Formik>
-    </Modal>
+      </>
   );
 };
 
-export default DailyNormaModal;
+export default DailyNormaPortal;
