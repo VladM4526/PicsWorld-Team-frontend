@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { validateSchema } from './validationSchema';
+import { validateSchema } from '../../schemas/validationSchema';
 
 import WaterTrackerIcons from '../../img/set-icons.svg';
 import { signUpThunk } from '../../Redux/Auth/backendRequest';
@@ -24,7 +24,7 @@ const initialValues = {
   repeatPassword: '',
 };
 
-const SignUpForm = () => {
+export const FormRegistration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const [repeatShowPassword, setRepeatShowPassword] = useState(false);
@@ -130,4 +130,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default FormRegistration;

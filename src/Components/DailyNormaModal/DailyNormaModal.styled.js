@@ -140,10 +140,24 @@ export const StyledField = styled(Field)`
   border: 1px solid #D7E3FF;
   background: #FFF;
   color: #407BFF;
-  /* &:focus-visible{
+   &:focus-visible{
         outline: 1px solid blue;
-  } */
+  } 
 `;
+
+export const WrapperLiter = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 6px;
+`
+
+export const TextLiter = styled.p`
+    width: 190px;
+    
+    @media (min-width: 768px){
+      width: 328px;
+      }
+`
 
 export const LiterSpan = styled.span`
   color: #407BFF;

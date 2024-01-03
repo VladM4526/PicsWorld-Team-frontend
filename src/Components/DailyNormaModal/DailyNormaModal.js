@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import { ErrorMessage, Formik } from 'formik';
-import * as Yup from 'yup';
 import {
   customStyles,
   LiterSpan,
@@ -19,6 +18,7 @@ import {
   ExplainFormula,
   ButtonWrapper,
 } from './DailyNormaModal.styled';
+import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
 
 const initialValues = {
   weight: 0,
@@ -26,21 +26,6 @@ const initialValues = {
   time: 0,
   water: 0,
 };
-
-const validationSchema = Yup.object().shape({
-  weight: Yup.number()
-    .positive('Weight must be positive')
-    .required('Weight is required'),
-  time: Yup.number()
-    .positive('Time must be positive')
-    .required('Time is required'),
-  sex: Yup.string()
-    .oneOf(['For girl', 'For man'], 'Invalid sex')
-    .required('Sex is required'),
-  water: Yup.number()
-    .positive('Water must be positive')
-    .required('Water is required'),
-});
 
 // const user = {
 //   sex: 'Girl'
@@ -116,7 +101,7 @@ export const DailyNormaModal = ({ isOpen, onRequestClose }) => {
 
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={dailyNormaValidationSchema}
         onSubmit={values => {
           console.log(values); // тут треба зробити функцію, яка передає на бекенд значення поля water
         }}

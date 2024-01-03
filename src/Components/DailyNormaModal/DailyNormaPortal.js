@@ -15,6 +15,8 @@ import {
   Formula,
   ExplainFormula,
   ButtonWrapper,
+  WrapperLiter,
+  TextLiter,
 } from './DailyNormaModal.styled';
 
 const initialValues = {
@@ -25,16 +27,18 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  weight: Yup.number()
+  weight: Yup.number('Must be number')
     .positive('Weight must be positive')
+    .min(20)
     .required('Weight is required'),
-  time: Yup.number()
-    .positive('Time must be positive')
-    .required('Time is required'),
+  time: Yup.number('Must be number')
+        .min(0)
+        .max(24, 'Time mustn`t be less than 24')
+        .required('Time is required'),
   sex: Yup.string()
     .oneOf(['For girl', 'For man'], 'Invalid sex')
     .required('Sex is required'),
-  water: Yup.number()
+  water: Yup.number('Must be number')
     .positive('Water must be positive')
     .required('Water is required'),
 });
@@ -160,10 +164,10 @@ export const DailyNormaPortal = ({ onClose }) => {
               <ErrorMessage name="time" component="div" />
             </Label>
 
-            <p>
-              The required amount of water in liters per day:{' '}
-              <LiterSpan>{calculateWater} L</LiterSpan>{' '}
-            </p>
+            <WrapperLiter>
+              <TextLiter>The required amount of water in liters per day:</TextLiter>
+              <LiterSpan>{calculateWater} L</LiterSpan>
+            </WrapperLiter>
 
             <LabelBold>
               Write down how much water you will drink:
