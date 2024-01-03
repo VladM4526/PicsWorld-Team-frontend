@@ -50,9 +50,6 @@ export const WaterPanel = styled.div`
   &::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
     width: ${({ percentage }) => `${percentage}%`};
     height: 100%;
     background: #407BFF;

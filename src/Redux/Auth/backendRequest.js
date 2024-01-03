@@ -7,7 +7,7 @@ export const signInThunk = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const data = await signin(body);
-      setToken(data.token);
+      setToken(data.newUser.token);
       if (data) {
         toast.success('Hello! You are successful login in', {
           position: toast.POSITION.TOP_CENTER,

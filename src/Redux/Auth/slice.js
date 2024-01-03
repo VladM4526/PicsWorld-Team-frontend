@@ -15,7 +15,7 @@ const authSlice = createSlice({
     builder
       .addCase(signInThunk.fulfilled, (state, action) => {
         state.user = action.payload.users;
-        state.token = action.payload.token;
+        state.token = action.payload.newUser.token;
         state.isLoggedIn = false;
       })
 
