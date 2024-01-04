@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import  {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import bottleDesktop from '../../img/bottle_desktop_edited.png';
 import bottleMob from '../../img/bottle_phone_edited.png';
 import bottleTab from '../../img/bottle_tablet_edited.png';
-import {Field} from 'formik';
+import { Field } from 'formik';
 
 // export const Form = styled.div`
 //   @media screen and (min-width: 768px) {
@@ -12,7 +12,7 @@ import {Field} from 'formik';
 //   }
 
 //   &:hover {
-    
+
 //   }
 // `;
 
@@ -23,13 +23,10 @@ export const FormSection = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
-
 
   @media (min-width: 768px) {
     max-width: 704px;
     padding: 16px 32px 0;
-    
   }
 
   @media (min-width: 1440px) {
@@ -55,13 +52,11 @@ export const ImgBottle = styled.div`
     background-size: contain;
     background-position: center bottom;
     background-repeat: no-repeat;
-    
 
     @media screen and (min-width: 768px) {
       background-image: url(${bottleTab});
       background-size: 80%;
       background-position: right 20px top 20px;
-
     }
 
     @media screen and (min-width: 1440px) {
@@ -69,10 +64,8 @@ export const ImgBottle = styled.div`
       background-position: left 0px top -20px;
       background-size: 60%;
     }
-    
   }
-`
-
+`;
 
 export const FormWrapper = styled.div`
   display: flex;
@@ -82,23 +75,22 @@ export const FormWrapper = styled.div`
   z-index: 1;
   @media (min-width: 768px) {
     max-width: 336px;
-    
   }
 
   @media (min-width: 1440px) {
     width: 384px;
   }
-`
+`;
 
 export const SignInHeader = styled.h2`
-  color: #2F2F2F;
+  color: #2f2f2f;
   font-size: 26px;
   font-weight: 500;
   line-height: 1.23;
 `;
 
 export const Label = styled.label`
-  color: #2F2F2F;
+  color: #2f2f2f;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
@@ -116,21 +108,20 @@ export const StyledField = styled(Field)`
   width: 100%;
   gap: 10px;
   border-radius: 6px;
-  border: 1px solid #D7E3FF;
-  background: #FFF;
-  color: #407BFF;
+  border: 1px solid #d7e3ff;
+  background: #fff;
+  color: #407bff;
   &::placeholder {
-    color: #9EBBFF;
+    color: #9ebbff;
 
     font-size: 16px;
 
     font-weight: 400;
     line-height: 1.25;
   }
-  &:focus-visible{
-        outline: none;
+  &:focus-visible {
+    outline: none;
   }
-
 `;
 
 export const Button = styled.button`
@@ -139,13 +130,13 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.33;
   border-radius: 10px;
-  background: #407BFF;
+  background: #407bff;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: none;
   width: 100%;
@@ -157,10 +148,10 @@ export const Button = styled.button`
   &:focus {
     box-shadow: 0px;
   }
-`
+`;
 
 export const NavLinkStyled = styled(NavLink)`
-    color: #8BAEFF;
+  color: #8baeff;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -168,21 +159,21 @@ export const NavLinkStyled = styled(NavLink)`
   background: none;
   border: none;
   z-index: 0;
-    &:hover,
-    &:focus {
-     color: #FF9D43;
-    }
-`
+  &:hover,
+  &:focus {
+    color: #ff9d43;
+  }
+`;
 
 export const SvgStyled = styled.svg`
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
-`
+`;
 export const InputWrapper = styled.div`
   position: relative;
-`
+`;
 export const ErrorMsg = styled.div`
   font-size: 14px;
   color: red;

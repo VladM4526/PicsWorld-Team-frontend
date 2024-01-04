@@ -1,8 +1,11 @@
-// import { BgPicture } from './BgPicture';
-// import { FormSignUp } from '../Components/FormRegistration/Form';
-
 import { FormSignUp } from 'Components/FormRegistration/FormSignUp';
+import { Header } from 'Components/WelcomePage/Header/Header';
 
 export default function FormReg() {
-  return <FormSignUp />;
+  return (
+    <>
+      <Header />
+      <FormSignUp />
+    </>
+  );
 }

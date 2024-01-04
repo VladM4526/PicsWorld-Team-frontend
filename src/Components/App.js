@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Layout } from './Layout/Layout';
@@ -9,8 +9,8 @@ import { Layout } from './Layout/Layout';
 // import { LogOutModal } from 'Components/LogOutModal/LogOutModal';
 import { PublicRoute } from './Routes/Public';
 import { PrivateRoute } from './Routes/Private';
-import WelcomePage from 'pages/WelcomePage';
-import HomePage from 'pages/HomePage';
+import { WelcomePage } from './WelcomePage/Welcome';
+import { HomePage } from 'pages/HomePage';
 import FormReg from 'pages/FormReg';
 import LoginPage from 'pages/LoginPage';
 import { selectUserToken } from '../redux/Auth/selectors';
@@ -52,7 +52,6 @@ export const App = () => {
             }
           />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
