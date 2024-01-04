@@ -4,8 +4,8 @@ import { useState } from "react";
 import { LiterSpan} from "Components/DailyNormaModal/DailyNormaModal.styled";
 import { ModalWrapper } from "Components/Modal-window/ModalWrapper";
 import DailyNormaPortal from "Components/DailyNormaModal/DailyNormaPortal";
-import { useSelector } from "react-redux";
-import { selectDailyNorma } from "../../Redux/Auth/selectors";
+// import { useSelector } from "react-redux";
+// import { selectDailyNorma } from "../../Redux/Auth/selectors";
 
 const DailyNorma = () => {
     // const [isEditing, setIsEditing] = useState(false);
