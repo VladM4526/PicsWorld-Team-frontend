@@ -11,8 +11,8 @@ import {
   FormWrapStyled,
 } from './AddEditWater.styled';
 import { EditNote } from './EditNote';
-import { addWater, editWater } from '../../Redux/water/waterOperations';
-import { useWater } from '../../Redux/hooks/useWater';
+import { addWater, editWater } from '../../redux/water/waterOperations';
+import { useWater } from '../../redux/hooks/useWater';
 
 const initialValues = {
   date: new Date(),

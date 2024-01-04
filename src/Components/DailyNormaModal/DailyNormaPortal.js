@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ErrorMessage, Formik } from 'formik';
 import {
   LiterSpan,
@@ -17,10 +17,9 @@ import {
   WrapperLiter,
   TextLiter,
 } from './DailyNormaModal.styled';
-import { addWaterRateThunk } from '../../Redux/Auth/backendRequest';
+import { addWaterRateThunk } from '../../redux/Auth/backendRequest';
 // import { selectUserToken } from '../../Redux/Auth/selectors';
 import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
-
 
 const initialValues = {
   weight: 0,
@@ -28,7 +27,6 @@ const initialValues = {
   time: 0,
   water: 0,
 };
-
 
 // const user = {
 //   sex: 'Girl'
@@ -40,7 +38,6 @@ export const DailyNormaPortal = ({ onClose }) => {
   // const user = useSelector(selectUser);
   const [formData, setFormData] = useState(initialValues);
   const [calculateWater, setCalculatedWater] = useState(0);
-   
 
   const calculateWaterFunction = values => {
     const { weight, sex, time } = values;
@@ -82,9 +79,8 @@ export const DailyNormaPortal = ({ onClose }) => {
   };
 
   return (
-    
-   <>   
-       <SexDiv>
+    <>
+      <SexDiv>
         <p>
           For girl: <Formula>V=(M*0,03) + (T*0,4)</Formula>{' '}
         </p>
@@ -105,10 +101,10 @@ export const DailyNormaPortal = ({ onClose }) => {
         initialValues={initialValues}
         validationSchema={dailyNormaValidationSchema}
         onSubmit={values => {
-            onClose()
+          onClose();
           console.log(values); // тут треба зробити функцію, яка передає на бекенд значення поля water
-          console.log(values.water*1000); 
-          dispatch(addWaterRateThunk(values.water*1000))
+          console.log(values.water * 1000);
+          dispatch(addWaterRateThunk(values.water * 1000));
         }}
       >
         {formikProps => (
@@ -155,7 +151,9 @@ export const DailyNormaPortal = ({ onClose }) => {
             </Label>
 
             <WrapperLiter>
-              <TextLiter>The required amount of water in liters per day:</TextLiter>
+              <TextLiter>
+                The required amount of water in liters per day:
+              </TextLiter>
               <LiterSpan>{calculateWater} L</LiterSpan>
             </WrapperLiter>
 
@@ -165,14 +163,12 @@ export const DailyNormaPortal = ({ onClose }) => {
               <ErrorMessage name="water" component="div" />
             </LabelBold>
             <ButtonWrapper>
-              <Button type="submit">
-                Save
-              </Button>
+              <Button type="submit">Save</Button>
             </ButtonWrapper>
           </StyledForm>
         )}
       </Formik>
-      </>
+    </>
   );
 };
 

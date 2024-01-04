@@ -5,7 +5,7 @@ import {
   deleteWaterNote,
   editWaterNote,
   getWaterNotes,
-} from '../API/apiWater.js';
+} from '../api/apiWaters.js';
 import { toast } from 'react-toastify';
 
 export const fetchWater = createAsyncThunk(
