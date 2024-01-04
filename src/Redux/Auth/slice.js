@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { refreshUserAccount, signInThunk } from './backendRequest';
+import { addWaterRateThunk, refreshUserAccount, signInThunk, } from './backendRequest';
 
 const initialState = {
-  user: { email: null },
+  user: { 
+    name: null,
+    email: null,
+    password: null,
+    avatarURL: null,
+    gender: null,
+    waterRate: null, 
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -29,6 +36,11 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserAccount.rejected, state => {
         state.isRefreshing = false;
+      })
+      .addCase(addWaterRateThunk.fulfilled, (state, {payload}) => {
+        console.log(payload)
+        state.isLoggedIn = true;
+        state.user.waterRate = payload;
       });
   },
 });

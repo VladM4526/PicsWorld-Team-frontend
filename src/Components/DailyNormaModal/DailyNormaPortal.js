@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { ErrorMessage, Formik } from 'formik';
-import * as Yup from 'yup';
 import {
   LiterSpan,
   LabelRadio,
@@ -18,6 +17,10 @@ import {
   WrapperLiter,
   TextLiter,
 } from './DailyNormaModal.styled';
+import { addWaterRateThunk } from '../../Redux/Auth/backendRequest';
+// import { selectUserToken } from '../../Redux/Auth/selectors';
+import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
+
 
 const initialValues = {
   weight: 0,
@@ -26,33 +29,18 @@ const initialValues = {
   water: 0,
 };
 
-const validationSchema = Yup.object().shape({
-  weight: Yup.number('Must be number')
-    .positive('Weight must be positive')
-    .min(20)
-    .required('Weight is required'),
-  time: Yup.number('Must be number')
-        .min(0)
-        .max(24, 'Time mustn`t be less than 24')
-        .required('Time is required'),
-  sex: Yup.string()
-    .oneOf(['For girl', 'For man'], 'Invalid sex')
-    .required('Sex is required'),
-  water: Yup.number('Must be number')
-    .positive('Water must be positive')
-    .required('Water is required'),
-});
 
 // const user = {
 //   sex: 'Girl'
 // }
 
 export const DailyNormaPortal = ({ onClose }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const [selectedSex, setSelectedSex] = useState('girl');
   // const user = useSelector(selectUser);
   const [formData, setFormData] = useState(initialValues);
   const [calculateWater, setCalculatedWater] = useState(0);
+   
 
   const calculateWaterFunction = values => {
     const { weight, sex, time } = values;
@@ -115,10 +103,12 @@ export const DailyNormaPortal = ({ onClose }) => {
 
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={dailyNormaValidationSchema}
         onSubmit={values => {
             onClose()
           console.log(values); // тут треба зробити функцію, яка передає на бекенд значення поля water
+          console.log(values.water*1000); 
+          dispatch(addWaterRateThunk(values.water*1000))
         }}
       >
         {formikProps => (

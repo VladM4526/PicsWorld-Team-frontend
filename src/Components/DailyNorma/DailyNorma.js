@@ -4,10 +4,14 @@ import { useState } from "react";
 import { LiterSpan} from "Components/DailyNormaModal/DailyNormaModal.styled";
 import { ModalWrapper } from "Components/Modal-window/ModalWrapper";
 import DailyNormaPortal from "Components/DailyNormaModal/DailyNormaPortal";
+import { useSelector } from "react-redux";
+import { selectDailyNorma } from "../../Redux/Auth/selectors";
 
 const DailyNorma = () => {
     // const [isEditing, setIsEditing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const water = useSelector(selectDailyNorma)
+    console.log(water)
     const toggleModal = e => {
       setIsOpen(isOpen => !isOpen);
     };
@@ -24,7 +28,7 @@ const DailyNorma = () => {
     <DailyNormaWrapper>
         <DailyNormaHeader>My daily norma</DailyNormaHeader>
         <LiterWrapper>
-        <LiterSpan>2.0 L</LiterSpan>
+        <LiterSpan>{water/1000} L</LiterSpan>
        <EditButton onClick={toggleModal}>Edit</EditButton>
        </LiterWrapper>
       {/* {isEditing && (
@@ -36,7 +40,7 @@ const DailyNorma = () => {
       )} */}
       {isOpen && (
         <ModalWrapper title="My daily norma" onClose={toggleModal}>
-<DailyNormaPortal onClose={toggleModal}/>
+            <DailyNormaPortal onClose={toggleModal}/>
         </ModalWrapper>
       )}
     </DailyNormaWrapper>
