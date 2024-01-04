@@ -4,3 +4,5 @@ export const selectUserToken = state => state.auth.token;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const selectorUserProfile = state => state.auth.users;
+
+export const selectDailyNorma = state => state.auth.user.waterRate;

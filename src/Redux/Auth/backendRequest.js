@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { signin, signup, refreshUser, setToken } from '../API/api';
+import { signin, signup, refreshUser, setToken, addWaterRate } from '../API/api';
 
 export const signInThunk = createAsyncThunk(
   'auth/signin',
@@ -62,6 +62,32 @@ export const refreshUserAccount = createAsyncThunk(
       return responce.data.token;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addWaterRateThunk = createAsyncThunk(
+  'users/waterrate',
+  async (waterRate, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    // if (persistedToken === null) {
+    //   return thunkAPI.rejectWithValue('Unable to fetch user');
+    // }
+    console.log(waterRate)
+    console.log(persistedToken)
+    try {
+      setToken(persistedToken);
+      const responce = await addWaterRate(waterRate);
+      console.log(responce)
+      toast.success(`Ok`);
+      return responce;
+    } catch (error) {
+      (console.log('oops', error))
+      toast.error(
+        `Oops! Something goes wrong. Please try again! ${error.message}`
+      );
+      return thunkAPI.rejectWithValue(error.message);;
     }
   }
 );

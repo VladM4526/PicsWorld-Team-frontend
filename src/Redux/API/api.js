@@ -32,5 +32,12 @@ export const signin = async body => {
 export const refreshUser = async token => {
   const { data } = await axios.get('/users/current');
   setToken(token);
+  console.log(data)
   return data;
+};
+
+export const addWaterRate = async (waterRate) => {
+    const { data } = await axios.put(`/users/waterrate`, {waterRate: waterRate});
+    console.log(data.waterRate)
+    return data.waterRate;
 };
