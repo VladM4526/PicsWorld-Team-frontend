@@ -10,8 +10,7 @@ import { selectDailyNorma } from "../../Redux/Auth/selectors";
 const DailyNorma = () => {
     // const [isEditing, setIsEditing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const water = useSelector(selectDailyNorma)
-    console.log(water)
+    const water = 2000
     const toggleModal = e => {
       setIsOpen(isOpen => !isOpen);
     };
