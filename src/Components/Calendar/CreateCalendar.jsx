@@ -6,11 +6,11 @@ import { DaysGeneralStats } from './DaysGeneralStats';
 import { nanoid } from 'nanoid';
 import { useWater } from 'redux-files/hooks/useWater';
 
-const water = {
-  norma: 1500,
-  fulfillment: 0.6,
-  count: 5,
-};
+// const water = {
+//   norma: 1500,
+//   fulfillment: 0.6,
+//   count: 5,
+// };
 
 export const CreateCalendar = ({ year, month, currentDate }) => {
   const [hoveredDayStats, setHoveredDayStats] = useState(null);

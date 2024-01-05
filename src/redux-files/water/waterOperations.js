@@ -6,6 +6,7 @@ import {
   editWaterNote,
   getWaterNotes,
   addWaterNote,
+  getWaterStats,
 } from 'helpers/api/apiWater.js';
 
 export const fetchWater = createAsyncThunk(
@@ -28,7 +29,7 @@ export const fetchStats = createAsyncThunk(
   'water/stats',
   async (month, { rejectWithValue }) => {
     try {
-      const data = await getWaterNotes(month);
+      const data = await getWaterStats(month);
       toast.success(`Ok`);
       return data;
     } catch (error) {
