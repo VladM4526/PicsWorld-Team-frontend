@@ -6,6 +6,7 @@ export const selectIsLoading = state => state.water.isLoading;
 
 export const selectError = state => state.water.error;
 export const selectNotes = state => state.water.notes;
+export const selectStats = state => state.water.stats;
 
 // export const selectFilter = state => state.filter;
 

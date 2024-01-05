@@ -4,6 +4,7 @@ import { debounce } from 'helpers/debounce';
 import { getHoverPosition } from 'helpers/getHoverPosition';
 import { DaysGeneralStats } from './DaysGeneralStats';
 import { nanoid } from 'nanoid';
+import { useWater } from 'redux-files/hooks/useWater';
 
 const water = {
   norma: 1500,
@@ -12,39 +13,49 @@ const water = {
 };
 
 export const CreateCalendar = ({ year, month, currentDate }) => {
-  const [hoveredDay, setHoveredDay] = useState(null);
-  const [hover, setHover] = useState({ left: 0, top: 0, with: 0, height: 188 });
+  const [hoveredDayStats, setHoveredDayStats] = useState(null);
+  const [hoverPos, setHoverPos] = useState({ height: 188 });
+  const { stats } = useWater();
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const daysOfMonth = Array(daysInMonth).fill('');
 
   const parentRef = useRef(null);
 
-  const onMouseEnter = debounce((e, date) => {
-    handleOpen(e.target, date);
+  const handleClose = () => {
+    setHoveredDayStats(null);
+  };
+
+  const handleOpen = (target, dayStats) => {
+    const parentRect = parentRef.current.getBoundingClientRect();
+    setHoverPos(getHoverPosition(target, parentRect));
+    setHoveredDayStats(dayStats);
+  };
+
+  // Open stats to point to the Day (for desktop)
+  const onMouseEnter = debounce((e, dayStats) => {
+    handleOpen(e.target, dayStats);
   }, 50);
 
-  const handleClose = () => {
-    setHoveredDay(null);
-  };
-
-  const handleOpen = (target, date) => {
-    const parentRect = parentRef.current.getBoundingClientRect();
-    setHover(getHoverPosition(target, parentRect));
-    setHoveredDay(date);
-  };
-
-  const openHover = (e, date) => {
-    hoveredDay && hoveredDay.toDateString() === date.toDateString()
+  // Open stats to click on the Day (for tablet and mobile devices)
+  const openHoverOnClick = (e, dayStats) => {
+    hoveredDayStats && hoveredDayStats.date === dayStats.date
       ? handleClose()
-      : handleOpen(e.target, date);
+      : handleOpen(e.target, dayStats);
+  };
+
+  // get statistic data for creating calendar and values for hover
+  const getDayStats = day => {
+    const dayStats = stats.find(i => new Date(i.date).getDate() === day) || {};
+    return { day, dayStats };
   };
 
   return (
     <div style={{ position: 'relative' }}>
       <ul ref={parentRef}>
-        {daysOfMonth.map((_, i) => {
-          const date = new Date(year, month, i + 1);
+        {daysOfMonth.map((_, idx) => {
+          const { day, dayStats } = getDayStats(idx + 1);
+          const date = new Date(year, month, day);
           const isNow = currentDate.toDateString() === date.toDateString();
           const isFuture = currentDate < date;
           return (
@@ -53,31 +64,32 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
                 <DayStyled
                   data-day={!isFuture}
                   disabled={isFuture}
-                  onMouseEnter={isFuture ? null : e => onMouseEnter(e, date)}
+                  onMouseEnter={
+                    isFuture ? null : e => onMouseEnter(e, dayStats)
+                  }
                   onMouseLeave={handleClose}
                 >
-                  {i + 1}
+                  {day}
                 </DayStyled>
               ) : (
                 <DayStyled
                   data-day
                   disabled={isFuture}
-                  onClick={isFuture ? null : e => openHover(e, date)}
+                  onClick={isFuture ? null : e => openHoverOnClick(e, dayStats)}
                 >
-                  {i + 1}
+                  {day}
                 </DayStyled>
               )}
-              <p>{isFuture ? '0%' : '100%'}</p>
+              <p>{isFuture ? '-' : dayStats.percentage || '0%'}</p>
             </li>
           );
         })}
       </ul>
-      {!!hoveredDay && (
+      {hoveredDayStats && (
         <DaysGeneralStats
-          hover={hover}
-          date={hoveredDay}
-          water={water}
+          hoverPos={hoverPos}
           onClose={handleClose}
+          dayStats={hoveredDayStats}
         />
       )}
     </div>

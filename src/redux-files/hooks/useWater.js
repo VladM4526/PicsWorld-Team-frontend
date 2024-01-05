@@ -1,12 +1,14 @@
+import { useSelector } from 'react-redux';
 import {
   selectError,
   selectIsLoading,
   selectNotes,
+  selectStats,
 } from '../water/waterSelectors';
-import { useSelector } from 'react-redux';
 
 export const useWater = () => {
   //   const filter = useSelector(selectFilter);
+  const stats = useSelector(selectStats);
   const waterNotes = useSelector(selectNotes);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
@@ -14,6 +16,7 @@ export const useWater = () => {
 
   return {
     // filter,
+    stats,
     waterNotes,
     error,
     isLoading,

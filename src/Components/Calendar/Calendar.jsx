@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import svgIcons from 'img/set-icons.svg';
 
 import { getMonthName } from 'helpers/getMonthName';
@@ -8,12 +8,19 @@ import {
   CalendarHeaderStyled,
   CalendarStyled,
 } from './Calendar.styled';
+import { fetchStats } from 'redux-files/water/waterOperations';
+import { useDispatch } from 'react-redux';
 
 const currentDate = new Date();
 
 export function Calendar() {
   const [month, setMonth] = useState(currentDate.getMonth());
   const [year, setYear] = useState(currentDate.getFullYear());
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchStats(`${year}+${month + 1}`));
+  }, [dispatch, year, month]);
 
   const goToPrevMonth = () => {
     if (month === 0) {

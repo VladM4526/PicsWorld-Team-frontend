@@ -1,10 +1,9 @@
-import { getMonthName } from 'helpers/getMonthName';
 import { CalendarHoverStyled } from './Calendar.styled';
 import { useEffect } from 'react';
 import icons from '../../img/set-icons.svg';
 import { useState } from 'react';
 
-export const DaysGeneralStats = ({ hover, date, water, onClose }) => {
+export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
   const [isMobil, setIsMobil] = useState(window.innerWidth < 1440);
 
   useEffect(() => {
@@ -32,9 +31,9 @@ export const DaysGeneralStats = ({ hover, date, water, onClose }) => {
   }, [onClose]);
 
   return (
-    <CalendarHoverStyled hover={hover} data-hover>
+    <CalendarHoverStyled hover={hoverPos} data-hover>
       <div>
-        <h4>{`${date.getDate()}, ${getMonthName(date.getMonth())}`}</h4>
+        <h4>{dayStats.date}</h4>
         {isMobil && (
           <button type="button" onClick={() => onClose()}>
             <svg width="16" height="16">
@@ -44,13 +43,14 @@ export const DaysGeneralStats = ({ hover, date, water, onClose }) => {
         )}
       </div>
       <p>
-        Daily norma: <span>{water.norma / 1000} L</span>
+        Daily norma: <span>{dayStats.dailyWaterRate || 'no data'}</span>
       </p>
       <p>
-        Fulfillment of the daily norm: <span>{water.fulfillment * 100} %</span>
+        Fulfillment of the daily norm:{' '}
+        <span>{dayStats.percentage || 'no data'}</span>
       </p>
       <p>
-        How many servings of water: <span>{water.count}</span>
+        How many servings of water: <span>{dayStats.count || 'no data'}</span>
       </p>
     </CalendarHoverStyled>
   );
