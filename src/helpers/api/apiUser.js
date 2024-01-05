@@ -27,8 +27,8 @@ export const signin = async body => {
 };
 
 export const refreshUser = async token => {
-  const { data } = await axios.get('/users/current');
   setToken(token);
+  const { data } = await axios.get('/users/current');
   console.log(data)
   return data;
 };
