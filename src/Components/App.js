@@ -13,8 +13,8 @@ import WelcomePage from 'pages/WelcomePage';
 import HomePage from 'pages/HomePage';
 import FormReg from 'pages/FormReg';
 import LoginPage from 'pages/LoginPage';
-import { selectUserToken } from '../redux/Auth/selectors';
-import { refreshUserAccount } from '../redux/Auth/backendRequest';
+import { selectUserToken } from '../redux-files/auth/selectors';
+import { refreshUserAccount } from '../redux-files/auth/backendRequest';
 // import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
 
 export const App = () => {

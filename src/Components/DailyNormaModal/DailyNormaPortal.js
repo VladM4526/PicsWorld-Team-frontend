@@ -17,7 +17,7 @@ import {
   WrapperLiter,
   TextLiter,
 } from './DailyNormaModal.styled';
-import { addWaterRateThunk } from '../../redux/Auth/backendRequest';
+import { addWaterRateThunk } from '../../redux-files/auth/backendRequest';
 // import { selectUserToken } from '../../Redux/Auth/selectors';
 import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
 
