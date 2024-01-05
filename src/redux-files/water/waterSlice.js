@@ -4,12 +4,14 @@ import {
   addWater,
   deleteWater,
   editWater,
+  fetchStats,
 } from './waterOperations';
 
 const waterSlice = createSlice({
   name: 'water',
   initialState: {
     notes: [],
+    stats: [],
     isLoading: false,
     error: null,
   },
@@ -24,8 +26,7 @@ const waterSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchWater.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
+        rejectError(state, payload);
       })
       /// Add
       .addCase(addWater.pending, state => {
@@ -36,20 +37,18 @@ const waterSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addWater.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
+        rejectError(state, payload);
       })
       /// Edit
       .addCase(editWater.pending, state => {
         state.isLoading = true;
       })
       .addCase(editWater.fulfilled, (state, { payload }) => {
-        state.notes = state.notes.map(i => (i.id !== payload.id ? i : payload));
+        state.notes = payload;
         state.isLoading = false;
       })
       .addCase(editWater.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
+        rejectError(state, payload);
       })
       /// Delete
       .addCase(deleteWater.pending, state => {
@@ -60,9 +59,24 @@ const waterSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(deleteWater.rejected, (state, { payload }) => {
+        rejectError(state, payload);
+      })
+      /// get statistic data for month
+      .addCase(fetchStats.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchStats.fulfilled, (state, { payload }) => {
+        state.stats = state.stats(note => note.id !== payload);
         state.isLoading = false;
-        state.error = payload;
+      })
+      .addCase(fetchStats.rejected, (state, { payload }) => {
+        rejectError(state, payload);
       }),
 });
+
+function rejectError(state, payload) {
+  state.isLoading = false;
+  state.error = payload;
+}
 
 export const waterReducer = waterSlice.reducer;
