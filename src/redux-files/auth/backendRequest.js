@@ -6,7 +6,7 @@ import {
   refreshUser,
   setToken,
   addWaterRate,
-} from '../api/api';
+} from '../../helpers/api/apiUser';
 
 export const signInThunk = createAsyncThunk(
   'auth/signin',

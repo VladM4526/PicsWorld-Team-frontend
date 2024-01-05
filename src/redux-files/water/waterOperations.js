@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import {
-  addWaterNote,
   deleteWaterNote,
   editWaterNote,
   getWaterNotes,
-} from '../api/apiWaters.js';
-import { toast } from 'react-toastify';
+  addWaterNote,
+} from 'helpers/api/apiWater.js';
 
 export const fetchWater = createAsyncThunk(
   'water/fetchAll',

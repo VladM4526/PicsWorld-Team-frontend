@@ -1,7 +1,7 @@
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signInThunk } from '../../redux/Auth/backendRequest';
+import { signInThunk } from '../../redux-files/auth/backendRequest';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 import {
   Button,
