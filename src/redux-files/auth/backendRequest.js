@@ -13,7 +13,7 @@ export const signInThunk = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const data = await signin(body);
-      setToken(data.newUser.token);
+      // setToken(data.user.token);
       if (data) {
         toast.success('Hello! You are successful login in', {
           position: toast.POSITION.TOP_CENTER,
@@ -52,12 +52,11 @@ export const signUpThunk = createAsyncThunk(
 );
 
 export const refreshUserAccount = createAsyncThunk(
-  'auth/users/current',
+  'users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     console.log(state);
-
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }

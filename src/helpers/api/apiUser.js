@@ -8,8 +8,6 @@ export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-console.log(setToken());
-
 // const removeToken = () => {
 //   delete baseURL.defaults.headers.common['Authorization'];
 //   localStorage.removeItem('token');
@@ -24,8 +22,7 @@ export const signup = async body => {
 
 export const signin = async body => {
   const { data } = await axios.post('/auth/signin', body);
-  setToken(data.newUser.token);
-  console.log(data.newUser.token);
+  setToken(data.user.token);
   return data;
 };
 

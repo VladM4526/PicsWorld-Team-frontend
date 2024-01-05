@@ -8,7 +8,7 @@ const initialState = {
     password: null,
     avatarURL: null,
     gender: null,
-    waterRate: null, 
+    waterRate: null,
   },
   token: null,
   isLoggedIn: false,
@@ -21,16 +21,17 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(signInThunk.fulfilled, (state, action) => {
-        state.user = action.payload.users;
-        state.token = action.payload.newUser.token;
+        state.user = action.payload.user;
+        console.log(action.payload)
+        state.token = action.payload.user.token;
         state.isLoggedIn = false;
-      })
+      })  
 
       .addCase(refreshUserAccount.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(refreshUserAccount.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
