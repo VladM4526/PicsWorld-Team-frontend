@@ -22,7 +22,6 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchWater.fulfilled, (state, { payload }) => {
-        console.log(payload)
         state.notes = payload;
         state.isLoading = false;
       })
@@ -67,7 +66,7 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchStats.fulfilled, (state, { payload }) => {
-        state.stats = payload;
+        state.stats = state.stats(note => note.id !== payload);
         state.isLoading = false;
       })
       .addCase(fetchStats.rejected, (state, { payload }) => {
