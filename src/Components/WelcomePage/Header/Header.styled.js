@@ -2,19 +2,18 @@ import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
   margin: 0 auto;
-  padding: 8px 20px 0;
+  padding: 8px 20px;
 
   display: flex;
   justify-content: space-between;
 
   @media (min-width: 768px) {
     width: 100%;
-    padding: 16px 32px 0;
+    padding: 16px 32px;
   }
 
   @media (min-width: 1440px) {
-    max-width: 1440px;
-    padding: 12px 112px 0;
+    max-width: 1216px;
   }
 `;
 
