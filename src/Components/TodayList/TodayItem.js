@@ -50,6 +50,11 @@ const TodayItem = ({ water, time }) => {
           <SvgDelete>
             <use href={`${WaterTrackerIcons}#icon-delete`}></use>
           </SvgDelete>
+        {isOpen && (
+          <ModalWrapper title="Edit water" onClose={toggleModal}>
+            <AddEditWater onClose={toggleModal} isEdit={true} />
+          </ModalWrapper>
+        )}
         </ButtonDelete>
       </SvgWrapper>
     </WaterItem>

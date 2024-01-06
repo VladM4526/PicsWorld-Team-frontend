@@ -10,7 +10,8 @@ import {
 const waterSlice = createSlice({
   name: 'water',
   initialState: {
-    notes: [],
+    percentage: 0,
+    waterRecords: [],
     stats: [],
     isLoading: false,
     error: null,
@@ -22,7 +23,8 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchWater.fulfilled, (state, { payload }) => {
-        state.notes = payload;
+        state.percentage = payload[0].percentage;
+        state.waterRecords = payload[0].waterRecords;
         state.isLoading = false;
       })
       .addCase(fetchWater.rejected, (state, { payload }) => {

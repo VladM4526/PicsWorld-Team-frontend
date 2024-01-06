@@ -22,7 +22,7 @@ export const fetchWater = createAsyncThunk(
     try {
       setToken(persistedToken)
       const data = await getWaterNotes();
-      toast.success(`Ok`);
+      // toast.success(`Ok`);
       return data;
     } catch (error) {
       toast.error(

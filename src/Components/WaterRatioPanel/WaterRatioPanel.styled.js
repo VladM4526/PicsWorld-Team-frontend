@@ -43,7 +43,6 @@ export const WaterPanel = styled.div`
     background-color: #FFFFFF;
     border: 1px solid #407BFF;
     border-radius: 100%;
-    z-index: 1;
   }
 
   &::before {
