@@ -1,32 +1,54 @@
+import {
+  TrackerInfoContainer,
+  TrackerInfoDescribe,
+  TrackerInfoList,
+  TrackerInfoListItem,
+  TrackerInfoTitle,
+} from './TrackerInfo.styled';
+
 export const TrackerInfo = () => {
   return (
     <>
-      <div>
-        <h1>Why drink water</h1>
-        <ul>
-          <li>
-            <p>Supply of nutrients to all organs</p>
-          </li>
-          <li>
-            <p>Providing oxygen to the lungs</p>
-          </li>
-          <li>
-            <p>Maintaining the work of the heart</p>
-          </li>
-          <li>
-            <p>Release of processed substances</p>
-          </li>
-          <li>
-            <p>Ensuring the stabiInfoItemsty of the internal environment</p>
-          </li>
-          <li>
-            <p>Maintaining within the normal temperature</p>
-          </li>
-          <li>
-            <p>Maintaining an immune system capable of resisting disease</p>
-          </li>
-        </ul>
-      </div>
+      <TrackerInfoContainer>
+        <TrackerInfoTitle>Why drink water</TrackerInfoTitle>
+        <TrackerInfoList>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Supply of nutrients to all organs
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Providing oxygen to the lungs
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Maintaining the work of the heart
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Release of processed substances
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Ensuring the stabiInfoItemsty of the internal environment
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Maintaining within the normal temperature
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+          <TrackerInfoListItem>
+            <TrackerInfoDescribe>
+              Maintaining an immune system capable of resisting disease
+            </TrackerInfoDescribe>
+          </TrackerInfoListItem>
+        </TrackerInfoList>
+      </TrackerInfoContainer>
     </>
   );
 };

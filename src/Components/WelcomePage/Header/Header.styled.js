@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const HeaderSection = styled.header`
   margin: 0 auto;
   padding: 8px 20px 0;
-  max-width: 320px;
+
   display: flex;
   justify-content: space-between;
 
   @media (min-width: 768px) {
-    max-width: 704px;
+    width: 100%;
     padding: 16px 32px 0;
   }
 
