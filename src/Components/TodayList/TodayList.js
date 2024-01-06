@@ -35,7 +35,7 @@ const TodayList = () => {
       <TodayHeader>Today</TodayHeader>
       <WaterList>
         {waterNotes.map(item => (
-          <TodayItem key={item._id} water={item.waterVolume} time={item.time} />
+          <TodayItem key={item._id} id={item._id} water={item.waterVolume} time={item.time} />
         ))}
         <AddLink onClick={toggleModal}>
           <SvgPlus>
