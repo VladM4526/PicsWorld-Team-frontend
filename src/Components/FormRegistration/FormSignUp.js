@@ -8,7 +8,6 @@ import FormRegistration from './FormRegistration';
 export const FormSignUp = () => {
   return (
     <>
-      {/* <Header /> */}
       <ImgBottle>
         <FormSection>
           <FormRegistration />

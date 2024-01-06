@@ -6,10 +6,8 @@ import { FormSection, ImgBottle } from './Form.styled';
 export const FormSignIn = () => {
   return (
     <>
-      {/* <Header /> */}
       <ImgBottle>
         <FormSection>
-          {/* <BgPicture /> */}
           <FormLogin />
         </FormSection>
       </ImgBottle>

@@ -33,4 +33,24 @@ export const TodayWrapStyled = styled.div`
   }
 `;
 
-export const DailyTrackerWrapStyled = styled.div``;
+export const DailyTrackerWrapStyled = styled.div`
+position: relative;
+  width: 100%;
+
+  img {
+    margin: 0 auto;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 1440px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 50%;
+    img {
+      height: 548px;
+      object-fit: cover;
+    }
+  }
+`;
