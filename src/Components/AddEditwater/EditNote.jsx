@@ -12,7 +12,7 @@ export const EditNote = ({ editNote }) => {
         <use href={`${svgIcons}#icon-glass`}></use>
       </svg>
       <div>
-        <p className="edit-volume"> {editNote.volumeWater + ' ml'}</p>
+        <p className="edit-volume"> {editNote.waterVolume + ' ml'}</p>
         <p className="edit-time">{moment(editNote.date).format(timeFormat)}</p>
       </div>
     </EditWaterStyled>
