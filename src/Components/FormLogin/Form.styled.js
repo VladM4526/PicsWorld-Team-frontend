@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import bottleDesktop from '../../img/bottle_desktop_edited.png';
 import bottleMob from '../../img/bottle_phone_edited.png';
 import bottleTab from '../../img/bottle_tablet_edited.png';
+import bgDesktop from '../../img/bottle_sign_in_desktop@1x-min.png'
+import bgTab from '../../img/bottle_sign_in_tablet@1x-min.png'
+import bgMob from '../../img/background_sign_in_mobile@1x-min.png'
 import { Field } from 'formik';
 
 // export const Form = styled.div`
@@ -54,13 +57,13 @@ export const ImgBottle = styled.div`
     background-repeat: no-repeat;
 
     @media screen and (min-width: 768px) {
-      background-image: url(${bottleTab});
+      background-image: url(${bgTab});
       background-size: 80%;
       background-position: right 20px top 20px;
     }
 
     @media screen and (min-width: 1440px) {
-      background-image: url(${bottleDesktop});
+      background-image: url(${bgDesktop});
       background-position: left 0px top -20px;
       background-size: 60%;
     }
@@ -80,6 +83,7 @@ export const FormWrapper = styled.div`
   @media (min-width: 1440px) {
     width: 384px;
   }
+
 `;
 
 export const SignInHeader = styled.h2`

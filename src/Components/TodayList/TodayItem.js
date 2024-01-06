@@ -15,16 +15,16 @@ import WaterTrackerIcons from '../../img/set-icons.svg';
 import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
 
-const TodayItem = ({ water, date }) => {
+const TodayItem = ({ water, time }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
 
-  const time = `${date.getHours()}:${date
-    .getMinutes()
-    .toString()
-    .padStart(2, '0')}`;
+  // const time = `${date.getHours()}:${date
+  //   .getMinutes()
+  //   .toString()
+  //   .padStart(2, '0')}`;
 
   return (
     <WaterItem>

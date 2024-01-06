@@ -21,7 +21,7 @@ export const TodayWrapStyled = styled.div`
   align-items: center;
   gap: 24px;
   border-radius: 10px;
-  background: var(--Secondary-color-2, #ecf2ff);
+  background: #ecf2ff;
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 
   @media only screen and (min-width: 768px) {
@@ -34,9 +34,6 @@ export const TodayWrapStyled = styled.div`
 `;
 
 export const DailyTrackerWrapStyled = styled.div`
-position: relative;
-  width: 100%;
-
   img {
     margin: 0 auto;
     margin-bottom: 16px;

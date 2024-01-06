@@ -8,19 +8,27 @@ import {
   addWaterNote,
   getWaterStats,
 } from 'helpers/api/apiWater.js';
+import { setToken } from 'helpers/api/apiUser';
 
 export const fetchWater = createAsyncThunk(
-  'water/fetchAll',
-  async (_, { rejectWithValue }) => {
+  'water/today',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+    console.log(persistedToken);
     try {
+      setToken(persistedToken)
       const data = await getWaterNotes();
       toast.success(`Ok`);
       return data;
     } catch (error) {
       toast.error(
-        `Oops. Something goes wrong. Please try again! ${error.message}`
+        `Oops. Something goes wrong. Please try again! hi ${error.message}`
       );
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

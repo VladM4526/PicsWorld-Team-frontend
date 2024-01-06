@@ -1,16 +1,16 @@
 import { Header } from './Header/Header';
 import { TrackerInfo } from './TrackerInfo';
 import { TrackerWelcome } from './TrackerWelcome';
-import { WelcomeComtainer } from './WelcomePage.styled';
+import { Container, WelcomeContainer } from './WelcomePage.styled';
 
 export const WelcomePage = () => {
   return (
-    <>
+    <Container>
       <Header />
-      <WelcomeComtainer>
+      <WelcomeContainer>
         <TrackerWelcome />
         <TrackerInfo />
-      </WelcomeComtainer>
-    </>
+      </WelcomeContainer>
+    </Container>
   );
 };

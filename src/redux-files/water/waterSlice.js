@@ -66,7 +66,7 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchStats.fulfilled, (state, { payload }) => {
-        state.stats = payload;
+        state.stats = payload
         state.isLoading = false;
       })
       .addCase(fetchStats.rejected, (state, { payload }) => {

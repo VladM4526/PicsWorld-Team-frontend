@@ -8,18 +8,39 @@ import {
 } from './Today.styled';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 import TodayItem from './TodayItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
 import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWater } from 'redux-files/water/waterOperations';
+import { selectNotes } from 'redux-files/water/waterSelectors';
 
-const arrayItemsWater = [];
+// const arrayItemsTest = [];
 
-for (let i = 0; i <= 5; i += 1) {
-  arrayItemsWater[i] = { id: nanoid(), water: 200, date: new Date() };
-}
+// for (let i = 0; i <= 5; i += 1) {
+//   arrayItemsTest[i] = { _id: nanoid(), waterVolume: 200, time: new Date() };
+// }
 
 const TodayList = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const[arrayItemsWater, setarrayItemsWater]=useState([])
+  const dispatch = useDispatch ()
+  const waterNotes = useSelector(selectNotes)
+  console.log(waterNotes[0])
+
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+              await dispatch(fetchWater());
+              setarrayItemsWater(waterNotes[0].waterRecords)
+          } catch (error) {
+            console.log(error)
+            console.error('Error', error);
+          }
+        };
+        fetchData();
+      }, [])
+  
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
@@ -28,7 +49,7 @@ const TodayList = () => {
       <TodayHeader>Today</TodayHeader>
       <WaterList>
         {arrayItemsWater.map(item => (
-          <TodayItem key={nanoid()} water={item.water} date={item.date} />
+          <TodayItem key={item._id} water={item.waterVolume} time={item.time} />
         ))}
         <AddLink onClick={toggleModal}>
           <SvgPlus>
