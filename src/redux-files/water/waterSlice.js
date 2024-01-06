@@ -10,7 +10,7 @@ import {
 const waterSlice = createSlice({
   name: 'water',
   initialState: {
-    percentage: 0,
+    percentage: "0%",
     waterRecords: [],
     stats: [],
     isLoading: false,
