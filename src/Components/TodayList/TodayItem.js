@@ -16,7 +16,7 @@ import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
 import DeleteEntry from 'Components/DeleteEntry/DeleteEntry';
 
-const TodayItem = ({ water, time }) => {
+const TodayItem = ({ id, water, time }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setIsTitle] = useState("Edit water");
   
@@ -59,7 +59,7 @@ const TodayItem = ({ water, time }) => {
       {isOpen && (
           <ModalWrapper title={title} onClose={toggleModal}>
           {title === "Edit water" ? <AddEditWater onClose={toggleModal} isEdit={true} /> :
-         <DeleteEntry onClose={toggleModal}/> }
+            <DeleteEntry onClose={toggleModal} id={ id } /> }
           </ModalWrapper>
         )}
     </WaterItem>
