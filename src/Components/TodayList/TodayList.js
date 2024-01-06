@@ -22,24 +22,11 @@ import { selectNotes } from 'redux-files/water/waterSelectors';
 
 const TodayList = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const[arrayItemsWater, setarrayItemsWater]=useState([])
   const dispatch = useDispatch ()
   const waterNotes = useSelector(selectNotes)
-  console.log(waterNotes[0])
-
       useEffect(() => {
-        const fetchData = async () => {
-          try {
-              await dispatch(fetchWater());
-              setarrayItemsWater(waterNotes[0].waterRecords)
-          } catch (error) {
-            console.log(error)
-            console.error('Error', error);
-          }
-        };
-        fetchData();
-      }, [dispatch, waterNotes])
-  
+              dispatch(fetchWater());
+      }, [dispatch])
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
@@ -47,8 +34,8 @@ const TodayList = () => {
     <TodayWrapper>
       <TodayHeader>Today</TodayHeader>
       <WaterList>
-        {arrayItemsWater.map(item => (
-          <TodayItem key={item._id} water={item.waterVolume} time={item.time} />
+        {waterNotes.map(item => (
+          <TodayItem key={item._id} id={item._id} water={item.waterVolume} time={item.time} />
         ))}
         <AddLink onClick={toggleModal}>
           <SvgPlus>

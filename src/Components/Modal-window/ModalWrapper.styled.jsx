@@ -25,7 +25,7 @@ export const ModalWindowStyled = styled.div`
   color: #2f2f2f;
   background-color: #fff;
   border-radius: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   @media only screen and (min-width: 768px) {
     width: 704px;
     padding: 32px 24px;
