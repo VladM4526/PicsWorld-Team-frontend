@@ -1,17 +1,21 @@
 {
   "files": {
     "main.css": "/PicsWorld-Team-frontend/static/css/main.34395e71.css",
-    "main.js": "/PicsWorld-Team-frontend/static/js/main.03e4f6ac.js",
-    "static/media/bottle_desktop_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_desktop_edited.ee0ace430d38328969a0.png",
-    "static/media/bottle_tablet_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_tablet_edited.50816e4236cc311f0d10.png",
+    "main.js": "/PicsWorld-Team-frontend/static/js/main.9ba40286.js",
     "static/media/set-icons.svg": "/PicsWorld-Team-frontend/static/media/set-icons.811d459dda80ce1471a7040e715a21e8.svg",
     "static/media/bottle_phone_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_phone_edited.b5b424b4c983460cf839.png",
+    "static/media/bottle_sign_in_desktop@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_sign_in_desktop@1x-min.c5cbb30ff4060e764b7e.png",
+    "static/media/bottle_sign_in_tablet@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_sign_in_tablet@1x-min.646e6397e8e7a3260a12.png",
+    "static/media/bottle_home_desktop@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_home_desktop@1x-min.b62f95888def15f22959.png",
+    "static/media/background_main_tablet@1x-min.png": "/PicsWorld-Team-frontend/static/media/background_main_tablet@1x-min.b8ce020766dc17e8b0b7.png",
+    "static/media/background_main_desktop@1x-min.png": "/PicsWorld-Team-frontend/static/media/background_main_desktop@1x-min.7a38ceedd9fb229f6253.png",
+    "static/media/bottle_home_tablet@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_home_tablet@1x-min.4996c4e69903c9aeab08.png",
     "index.html": "/PicsWorld-Team-frontend/index.html",
     "main.34395e71.css.map": "/PicsWorld-Team-frontend/static/css/main.34395e71.css.map",
-    "main.03e4f6ac.js.map": "/PicsWorld-Team-frontend/static/js/main.03e4f6ac.js.map"
+    "main.9ba40286.js.map": "/PicsWorld-Team-frontend/static/js/main.9ba40286.js.map"
   },
   "entrypoints": [
     "static/css/main.34395e71.css",
-    "static/js/main.03e4f6ac.js"
+    "static/js/main.9ba40286.js"
   ]
 }
