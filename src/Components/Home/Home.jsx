@@ -26,7 +26,7 @@ export const Home = () => {
         />
         <source
           media="(min-width: 768px)"
-          srcSet={`${bottleDesktop} 1x, ${bottleDesktop} 2x`}
+          srcSet={`${bottleTab} 1x, ${bottleTab} 2x`}
           type="image/png"
         />
         <source
