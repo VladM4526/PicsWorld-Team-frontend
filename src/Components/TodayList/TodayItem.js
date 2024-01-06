@@ -14,12 +14,20 @@ import {
 import WaterTrackerIcons from '../../img/set-icons.svg';
 import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
+import DeleteEntry from 'Components/DeleteEntry/DeleteEntry';
 
 const TodayItem = ({ water, time }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [title, setIsTitle] = useState("Edit water");
+  
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
+
+  const onClickBtn = (title) => {
+    setIsTitle(title);
+    toggleModal()
+  }
 
   // const time = `${date.getHours()}:${date
   //   .getMinutes()
@@ -36,27 +44,24 @@ const TodayItem = ({ water, time }) => {
       <TimeText>{time}</TimeText>
 
       <SvgWrapper>
-        <ButtonEdit onClick={toggleModal}>
+        <ButtonEdit onClick={() => onClickBtn("Edit water")}>
           <SvgEdit>
             <use href={`${WaterTrackerIcons}#icon-edit`}></use>
           </SvgEdit>
         </ButtonEdit>
-        {isOpen && (
-          <ModalWrapper title="Edit water" onClose={toggleModal}>
-            <AddEditWater onClose={toggleModal} isEdit={true} />
-          </ModalWrapper>
-        )}
-        <ButtonDelete>
+
+        <ButtonDelete onClick={() => onClickBtn("Delete Entry")}>
           <SvgDelete>
             <use href={`${WaterTrackerIcons}#icon-delete`}></use>
           </SvgDelete>
-        {isOpen && (
-          <ModalWrapper title="Edit water" onClose={toggleModal}>
-            <AddEditWater onClose={toggleModal} isEdit={true} />
-          </ModalWrapper>
-        )}
         </ButtonDelete>
       </SvgWrapper>
+      {isOpen && (
+          <ModalWrapper title={title} onClose={toggleModal}>
+          {title === "Edit water" ? <AddEditWater onClose={toggleModal} isEdit={true} /> :
+         <DeleteEntry onClose={toggleModal}/> }
+          </ModalWrapper>
+        )}
     </WaterItem>
   );
 };
