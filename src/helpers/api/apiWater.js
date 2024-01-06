@@ -7,6 +7,7 @@ import axios from 'axios';
 
 export const getWaterNotes = async () => {
   const { data } = await axios.get('/water/today');
+  console.log(data)
   return data;
 };
 
