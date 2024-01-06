@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import {
   AddLink,
   SvgPlus,
@@ -39,7 +38,7 @@ const TodayList = () => {
           }
         };
         fetchData();
-      }, [])
+      }, [dispatch, waterNotes])
   
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);

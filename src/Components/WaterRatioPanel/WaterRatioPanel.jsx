@@ -1,9 +1,9 @@
 import { PanelContainer, WaterPanel, WaterPercent} from "./WaterRatioPanel.styled"
 
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
-import { fetchWater } from "redux-files/water/waterOperations"
-import { selectNotes } from "redux-files/water/waterSelectors"
+// import { useDispatch, useSelector } from "react-redux"
+// import { useEffect } from "react"
+// import { fetchWater } from "redux-files/water/waterOperations"
+// import { selectNotes } from "redux-files/water/waterSelectors"
 const percentage = 40
 const WaterRatioPanel = () => {
   
