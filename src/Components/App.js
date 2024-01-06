@@ -20,7 +20,6 @@ import { refreshUserAccount } from '../redux-files/auth/backendRequest';
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectUserToken);
-  console.log(token);
 
   useEffect(() => {
     if (token) {
@@ -33,6 +32,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
+          {/* add navlink after when user sign up made */}
           <Route
             path="FormReg"
             element={
