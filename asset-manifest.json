@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PicsWorld-Team-frontend/static/css/main.34395e71.css",
-    "main.js": "/PicsWorld-Team-frontend/static/js/main.e9e76c77.js",
-    "static/media/set-icons.svg": "/PicsWorld-Team-frontend/static/media/set-icons.811d459dda80ce1471a7040e715a21e8.svg",
+    "main.js": "/PicsWorld-Team-frontend/static/js/main.a32e63e7.js",
+    "static/media/set-icons.svg": "/PicsWorld-Team-frontend/static/media/set-icons.530a347b712462ca918660e8cd61fbbb.svg",
     "static/media/bottle_phone_edited.png": "/PicsWorld-Team-frontend/static/media/bottle_phone_edited.b5b424b4c983460cf839.png",
     "static/media/bottle_sign_in_desktop@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_sign_in_desktop@1x-min.c5cbb30ff4060e764b7e.png",
     "static/media/bottle_sign_in_tablet@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_sign_in_tablet@1x-min.646e6397e8e7a3260a12.png",
@@ -12,10 +12,10 @@
     "static/media/bottle_home_tablet@1x-min.png": "/PicsWorld-Team-frontend/static/media/bottle_home_tablet@1x-min.4996c4e69903c9aeab08.png",
     "index.html": "/PicsWorld-Team-frontend/index.html",
     "main.34395e71.css.map": "/PicsWorld-Team-frontend/static/css/main.34395e71.css.map",
-    "main.e9e76c77.js.map": "/PicsWorld-Team-frontend/static/js/main.e9e76c77.js.map"
+    "main.a32e63e7.js.map": "/PicsWorld-Team-frontend/static/js/main.a32e63e7.js.map"
   },
   "entrypoints": [
     "static/css/main.34395e71.css",
-    "static/js/main.e9e76c77.js"
+    "static/js/main.a32e63e7.js"
   ]
 }
