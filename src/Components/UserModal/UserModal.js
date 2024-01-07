@@ -4,23 +4,21 @@ import {
   UserModalBtn,
   UserModalText,
 } from './UserLogoModal.styled';
+import WaterTracker from '../../img/set-icons.svg';
 
-export const UserLogoModal = ({ setModalName, isModalOpened }) => {
-  return isModalOpened ? (
+export const UserLogoModal = () => {
+  return (
     <UserModalWrapper>
       <UserModalDiv>
-        <UserModalBtn type="button" onClick={() => setModalName('settings')}>
+        <UserModalBtn>
+          <use href={`${WaterTracker}#icon-setting`}></use>
           <UserModalText>Setting</UserModalText>
         </UserModalBtn>
-        <UserModalBtn
-          onClick={() => {
-            setModalName('logout');
-          }}
-          type="button"
-        >
+        <UserModalBtn>
+          <use href={`${WaterTracker}#icon-log-out`}></use>
           <UserModalText>Log out</UserModalText>
         </UserModalBtn>
       </UserModalDiv>
     </UserModalWrapper>
-  ) : null;
+  );
 };
