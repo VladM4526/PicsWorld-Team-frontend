@@ -13,7 +13,7 @@ export const Home = () => {
       <HomeWrapStyled>
         <DailyTrackerWrapStyled>
           <DailyNorma />
-          {/* <picture>
+          <picture>
             <source
               media="(min-width: 1440px)"
               srcSet={`${bottleDesktop} 1x, ${bottleDesktop} 2x`}
@@ -30,7 +30,7 @@ export const Home = () => {
               type="image/png"
             />
             <img src={bottleDesktop} alt="bottle" />
-          </picture> */}
+          </picture>
           <WaterRatioPanel />
         </DailyTrackerWrapStyled>
         <Today />
