@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
   const [isMobil, setIsMobil] = useState(window.innerWidth < 1440);
-
   useEffect(() => {
     // change hover dimentions according to screen resolutions
     const onChangeScreen = () => {
@@ -33,7 +32,7 @@ export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
   return (
     <CalendarHoverStyled hover={hoverPos} data-hover>
       <div>
-        <h4>{dayStats.date}</h4>
+        <h4>{dayStats.dateName}</h4>
         {isMobil && (
           <button type="button" onClick={() => onClose()}>
             <svg width="16" height="16">
@@ -43,14 +42,13 @@ export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
         )}
       </div>
       <p>
-        Daily norma: <span>{dayStats.dailyWaterRate || 'no data'}</span>
+        Daily norma: <span>{dayStats.dailyWaterRate}</span>
       </p>
       <p>
-        Fulfillment of the daily norm:{' '}
-        <span>{dayStats.percentage || 'no data'}</span>
+        Fulfillment of the daily norm: <span>{`${dayStats.percentage}%`}</span>
       </p>
       <p>
-        How many servings of water: <span>{dayStats.count || 'no data'}</span>
+        How many servings of water: <span>{dayStats.count}</span>
       </p>
     </CalendarHoverStyled>
   );

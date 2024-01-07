@@ -55,7 +55,7 @@ export const CloseButtonStyled = styled.button`
   background-color: inherit;
   transition: all 300ms ease;
   &:hover {
-    transform: rotate(90deg) scale(1.3);
+    transform: scale(1.3);
     > svg {
       filter: drop-shadow(0 0 2px #407bff);
     }

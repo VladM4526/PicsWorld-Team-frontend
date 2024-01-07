@@ -108,13 +108,19 @@ export const ButtonStyled = styled.button`
   border-radius: 10px;
   background: #407bff;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  p {
+  & p {
     font-size: 16px;
     line-height: 1.25;
   }
-  svg {
+  & svg {
     stroke: #fff;
     fill: #407bff;
+  }
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+  &:active {
+    box-shadow: none;
   }
 
   @media screen and (min-width: 768px) {

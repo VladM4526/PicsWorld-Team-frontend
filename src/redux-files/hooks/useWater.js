@@ -3,23 +3,25 @@ import {
   selectError,
   selectIsLoading,
   selectNotes,
+  selectPercentToday,
+  selectPercentage,
   selectStats,
 } from '../water/waterSelectors';
 
 export const useWater = () => {
-  //   const filter = useSelector(selectFilter);
   const stats = useSelector(selectStats);
   const waterNotes = useSelector(selectNotes);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  //   const filteredContacts = useSelector(selectFilteredContacts);
+  const percentageToday = useSelector(selectPercentToday);
+  const percentage = useSelector(selectPercentage);
 
   return {
-    // filter,
     stats,
     waterNotes,
     error,
     isLoading,
-    // filteredContacts,
+    percentageToday,
+    percentage,
   };
 };

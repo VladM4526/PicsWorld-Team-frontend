@@ -15,8 +15,9 @@ import WaterTrackerIcons from '../../img/set-icons.svg';
 import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
 import DeleteEntry from 'Components/DeleteEntry/DeleteEntry';
+import { localeTime } from 'helpers/localeTime';
 
-const TodayItem = ({ id, water, time }) => {
+const TodayItem = ({ id, editWater, editDate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setIsTitle] = useState('Edit water');
 
@@ -29,19 +30,14 @@ const TodayItem = ({ id, water, time }) => {
     toggleModal();
   };
 
-  // const time = `${date.getHours()}:${date
-  //   .getMinutes()
-  //   .toString()
-  //   .padStart(2, '0')}`;
-
   return (
     <WaterItem>
       <SvgCup>
         <use href={`${WaterTrackerIcons}#icon-glass`}></use>
       </SvgCup>
-      <WaterText>{`${water} ml`}</WaterText>
+      <WaterText>{`${editWater} ml`}</WaterText>
 
-      <TimeText>{time}</TimeText>
+      <TimeText>{localeTime(editDate)}</TimeText>
 
       <SvgWrapper>
         <ButtonEdit onClick={() => onClickBtn('Edit water')}>
@@ -63,10 +59,8 @@ const TodayItem = ({ id, water, time }) => {
               onClose={toggleModal}
               isEdit={true}
               id={id}
-              waterVolume={water}
-              // ------------------------------------------
-              HHmm={time.split(':')}
-              // ---------------------------------------
+              editWaterVolume={editWater}
+              editDate={editDate}
             />
           ) : (
             <DeleteEntry onClose={toggleModal} id={id} />
