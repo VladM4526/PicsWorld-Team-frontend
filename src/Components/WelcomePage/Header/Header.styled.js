@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
   margin: 0 auto;
-  padding: 8px 20px;
+  padding: 0px 20px;
 
   display: flex;
   justify-content: space-between;
 
   @media (min-width: 768px) {
     width: 100%;
-    padding: 16px 32px;
+    padding: 0px 32px;
   }
 
   @media (min-width: 1440px) {
@@ -18,6 +18,7 @@ export const HeaderSection = styled.header`
 `;
 
 export const LogoApp = styled.svg`
+  display: block;
   width: 102px;
   height: 48px;
 `;

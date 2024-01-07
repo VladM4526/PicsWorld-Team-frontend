@@ -18,16 +18,16 @@ import DeleteEntry from 'Components/DeleteEntry/DeleteEntry';
 
 const TodayItem = ({ id, water, time }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [title, setIsTitle] = useState("Edit water");
-  
+  const [title, setIsTitle] = useState('Edit water');
+
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
 
-  const onClickBtn = (title) => {
+  const onClickBtn = title => {
     setIsTitle(title);
-    toggleModal()
-  }
+    toggleModal();
+  };
 
   // const time = `${date.getHours()}:${date
   //   .getMinutes()
@@ -44,24 +44,35 @@ const TodayItem = ({ id, water, time }) => {
       <TimeText>{time}</TimeText>
 
       <SvgWrapper>
-        <ButtonEdit onClick={() => onClickBtn("Edit water")}>
+        <ButtonEdit onClick={() => onClickBtn('Edit water')}>
           <SvgEdit>
             <use href={`${WaterTrackerIcons}#icon-edit`}></use>
           </SvgEdit>
         </ButtonEdit>
 
-        <ButtonDelete onClick={() => onClickBtn("Delete Entry")}>
+        <ButtonDelete onClick={() => onClickBtn('Delete Entry')}>
           <SvgDelete>
             <use href={`${WaterTrackerIcons}#icon-delete`}></use>
           </SvgDelete>
         </ButtonDelete>
       </SvgWrapper>
       {isOpen && (
-          <ModalWrapper title={title} onClose={toggleModal}>
-          {title === "Edit water" ? <AddEditWater onClose={toggleModal} isEdit={true} /> :
-            <DeleteEntry onClose={toggleModal} id={ id } /> }
-          </ModalWrapper>
-        )}
+        <ModalWrapper title={title} onClose={toggleModal}>
+          {title === 'Edit water' ? (
+            <AddEditWater
+              onClose={toggleModal}
+              isEdit={true}
+              id={id}
+              waterVolume={water}
+              // ------------------------------------------
+              HHmm={time.split(':')}
+              // ---------------------------------------
+            />
+          ) : (
+            <DeleteEntry onClose={toggleModal} id={id} />
+          )}
+        </ModalWrapper>
+      )}
     </WaterItem>
   );
 };

@@ -9,6 +9,7 @@ import {
   getWaterStats,
 } from 'helpers/api/apiWater.js';
 import { setToken } from 'helpers/api/apiUser';
+import { localeTime } from 'helpers/localeTime';
 
 export const fetchWater = createAsyncThunk(
   'water/today',
@@ -20,10 +21,12 @@ export const fetchWater = createAsyncThunk(
     }
     console.log(persistedToken);
     try {
-      setToken(persistedToken)
+      setToken(persistedToken);
       const data = await getWaterNotes();
+      // console.log('dataall', data);
+
       // toast.success(`Ok`);
-      return data;
+      return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
     } catch (error) {
       toast.error(
         `Oops. Something goes wrong. Please try again! hi ${error.message}`
@@ -53,9 +56,12 @@ export const addWater = createAsyncThunk(
   'water/addWater',
   async (waterNote, { rejectWithValue }) => {
     try {
+      // console.log('waterNote', waterNote);
       const data = await addWaterNote(waterNote);
+      // console.log('dataadd', data);
       toast.success(`Ok`);
       return data;
+      // return { ...data, date: localeTime(data.date) };
     } catch (error) {
       toast.error(
         `Oops! Something goes wrong. Please try again! ${error.message}`
@@ -85,6 +91,7 @@ export const editWater = createAsyncThunk(
   'water/editWater',
   async ({ waterNoteId, newNote }, { rejectWithValue }) => {
     try {
+      console.log('newNote', waterNoteId, newNote);
       const data = await editWaterNote(waterNoteId, newNote);
       toast.success(`Ok`);
       return data;

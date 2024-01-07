@@ -13,33 +13,39 @@ import {
 import { EditNote } from './EditNote';
 import { addWater, editWater } from '../../redux-files/water/waterOperations';
 import { useWater } from 'redux-files/hooks/useWater';
-import moment, { locale } from 'moment';
+import { localeTime } from 'helpers/localeTime';
 
-const initialValues = {
-  date: new Date(),
-  waterVolume: 0,
-};
+const currentDay = new Date();
 const step = 50;
-const timeFormat = locale === 'eu' ? 'HH:mm' : 'hh:mm A';
 
-export const AddEditWater = ({ onClose, data, isEdit, id }) => {
+export const AddEditWater = ({
+  onClose,
+  isEdit,
+  id,
+  waterVolume = 0,
+  HHmm,
+}) => {
   const dispatch = useDispatch();
 
   const { isLoading } = useWater();
 
-  const handleSubmit = ({ date, waterVolume }) => {
-    const time = moment(date).format(timeFormat);
-    if (isEdit) {
-      dispatch(editWater(id, { date: time, waterVolume }));
-      onClose();
-    } else {
-      dispatch(addWater({ date: time, waterVolume }));
-    }
+  const handleSubmit = values => {
+    console.log('values', values);
+    const newNote = {
+      date: localeTime(values.date),
+      waterVolume: values.waterVolume,
+    };
+    console.log('newNote', newNote);
+    isEdit ? dispatch(editWater({ id, newNote })) : dispatch(addWater(newNote));
+    onClose();
   };
 
+  if (isEdit) {
+    currentDay.setHours(Number(HHmm[0]), Number(HHmm[1]));
+  }
   return (
     <Formik
-      initialValues={data || initialValues}
+      initialValues={{ waterVolume, date: currentDay }}
       onSubmit={handleSubmit}
       validationSchema={volumeWaterSchema}
     >
@@ -56,7 +62,7 @@ export const AddEditWater = ({ onClose, data, isEdit, id }) => {
 
         return (
           <FormStyled name="addWater">
-            {isEdit && <EditNote editNote={data} />}
+            {isEdit && <EditNote waterVolume={waterVolume} date={date} />}
 
             <h3>{isEdit ? 'Correct entered data:' : 'Choose a value:'}</h3>
 

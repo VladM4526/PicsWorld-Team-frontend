@@ -17,7 +17,7 @@ export const CalendarStyled = styled.div`
     align-items: center;
     gap: 4px;
   }
-  & li[data-active='true'] {
+  & li[data-active='true'] span {
     font-weight: bold;
   }
   & li > p {
@@ -140,8 +140,8 @@ export const CalendarHoverStyled = styled.div`
 `;
 
 export const DayStyled = styled.button`
-  font-size: 14px;
-  line-height: 1;
+  /* font-size: 14px; */
+  /* line-height: 1; */
   width: 32px;
   height: 32px;
   display: flex;
@@ -151,9 +151,17 @@ export const DayStyled = styled.button`
   background-color: #fff;
   border-radius: 50%;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  span {
+    font-size: 14px;
+    line-height: 1.2857;
+  }
 
   @media only screen and (min-width: 768px) {
     width: 34px;
     height: 34px;
+    span {
+      font-size: 16px;
+      line-height: 1.25;
+    }
   }
 `;

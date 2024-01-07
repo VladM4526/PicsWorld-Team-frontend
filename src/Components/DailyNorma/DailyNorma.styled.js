@@ -12,12 +12,10 @@ export const DailyNormaWrapper = styled.div`
   border: 1px solid #ecf2ff;
   background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-  margin-top: 24px;
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
   }
   @media screen and (min-width: 1440px) {
-    margin-top: 52px;
+    margin-top: 32px;
   }
 `;
 

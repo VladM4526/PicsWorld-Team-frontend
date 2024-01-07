@@ -34,6 +34,9 @@ export const TodayWrapStyled = styled.div`
 `;
 
 export const DailyTrackerWrapStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 232px;
   img {
     margin: 0 auto;
     margin-bottom: 16px;
@@ -44,7 +47,12 @@ export const DailyTrackerWrapStyled = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    gap: 326px;
+  }
+
+  @media screen and (min-width: 1440px) {
     width: 50%;
+    gap: 466px;
     img {
       height: 548px;
       object-fit: cover;
