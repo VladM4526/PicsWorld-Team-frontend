@@ -9,6 +9,7 @@ import {
   getWaterStats,
 } from 'helpers/api/apiWater.js';
 import { setToken } from 'helpers/api/apiUser';
+import { localeFormat } from 'helpers/localeTime';
 // import { localeTime } from 'helpers/localeTime';
 
 export const fetchWater = createAsyncThunk(
@@ -23,7 +24,7 @@ export const fetchWater = createAsyncThunk(
     try {
       setToken(persistedToken);
       const data = await getWaterNotes();
-      // console.log('dataall', data);
+      console.log('dataall', data);
 
       // toast.success(`Ok`);
       return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
@@ -60,7 +61,14 @@ export const addWater = createAsyncThunk(
       const data = await addWaterNote(waterNote);
       // console.log('dataadd', data);
       toast.success(`Ok`);
-      return data;
+      // const convertedDate = new Date(data.date).toString();
+
+      return {
+        _id: data._id,
+        waterVolume: data.waterVolume,
+        date: data.date,
+        // date: convertedDate,
+      };
       // return { ...data, date: localeTime(data.date) };
     } catch (error) {
       toast.error(
@@ -75,9 +83,9 @@ export const deleteWater = createAsyncThunk(
   'water/deleteWater',
   async (waterNoteId, { rejectWithValue }) => {
     try {
-      const { id } = await deleteWaterNote(waterNoteId);
+      await deleteWaterNote(waterNoteId);
       toast.success(`Ok`);
-      return id;
+      return waterNoteId;
     } catch (error) {
       toast.error(
         `Oops. Something goes wrong. Please try again! ${error.message}`
@@ -89,11 +97,12 @@ export const deleteWater = createAsyncThunk(
 
 export const editWater = createAsyncThunk(
   'water/editWater',
-  async ({ waterNoteId, newNote }, { rejectWithValue }) => {
+  async (note, { rejectWithValue }) => {
     try {
-      console.log('newNote', waterNoteId, newNote);
-      const data = await editWaterNote(waterNoteId, newNote);
+      console.log('newNote', note);
+      const data = await editWaterNote(note);
       toast.success(`Ok`);
+      console.log('data', data);
       return data;
     } catch (error) {
       toast.error(

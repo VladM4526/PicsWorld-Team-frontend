@@ -3,9 +3,10 @@ import ReactDatePicker, {
   setDefaultLocale,
 } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import eu from 'date-fns/locale/eu';
+import { eu, uk } from 'date-fns/locale';
 import { localeFormat } from 'helpers/localeTime';
 registerLocale('eu', eu);
+registerLocale('uk', uk);
 
 setDefaultLocale(localeFormat);
 

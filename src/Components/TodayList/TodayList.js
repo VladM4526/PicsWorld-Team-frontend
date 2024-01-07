@@ -13,6 +13,7 @@ import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWater } from 'redux-files/water/waterOperations';
 import { selectNotes } from 'redux-files/water/waterSelectors';
+import { localeTime } from 'helpers/localeTime';
 
 // const arrayItemsTest = [];
 
@@ -22,11 +23,11 @@ import { selectNotes } from 'redux-files/water/waterSelectors';
 
 const TodayList = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch ()
-  const waterNotes = useSelector(selectNotes)
-      useEffect(() => {
-              dispatch(fetchWater());
-      }, [dispatch])
+  const dispatch = useDispatch();
+  const waterNotes = useSelector(selectNotes);
+  useEffect(() => {
+    dispatch(fetchWater());
+  }, [dispatch]);
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
@@ -35,7 +36,13 @@ const TodayList = () => {
       <TodayHeader>Today</TodayHeader>
       <WaterList>
         {waterNotes.map(item => (
-          <TodayItem key={item._id} id={item._id} water={item.waterVolume} time={item.time} />
+          <TodayItem
+            key={item._id}
+            id={item._id}
+            editWater={item.waterVolume}
+            editDate={item.date}
+            // time={localeTime(item.date)}
+          />
         ))}
         <AddLink onClick={toggleModal}>
           <SvgPlus>

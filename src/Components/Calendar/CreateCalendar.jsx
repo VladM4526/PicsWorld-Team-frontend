@@ -58,28 +58,25 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
           const date = new Date(year, month, day);
           const isNow = currentDate.toDateString() === date.toDateString();
           const isFuture = currentDate < date;
+          const isDesktop = window.innerWidth >= 1440;
           return (
             <li key={nanoid()} data-active={isNow}>
-              {window.innerWidth >= 1440 ? (
-                <DayStyled
-                  data-day={!isFuture}
-                  disabled={isFuture}
-                  onMouseEnter={
-                    isFuture ? null : e => onMouseEnter(e, dayStats)
-                  }
-                  onMouseLeave={handleClose}
-                >
-                  <span>{day}</span>
-                </DayStyled>
-              ) : (
-                <DayStyled
-                  data-day
-                  disabled={isFuture}
-                  onClick={isFuture ? null : e => openHoverOnClick(e, dayStats)}
-                >
-                  <span>{day}</span>
-                </DayStyled>
-              )}
+              <DayStyled
+                data-day={!isFuture}
+                disabled={isFuture}
+                onMouseEnter={
+                  isFuture || !isDesktop ? null : e => onMouseEnter(e, dayStats)
+                }
+                onMouseLeave={isFuture || !isDesktop ? null : handleClose}
+                onClick={
+                  isFuture || isDesktop
+                    ? null
+                    : e => openHoverOnClick(e, dayStats)
+                }
+              >
+                <p>{day}</p>
+              </DayStyled>
+
               <p>{isFuture ? '-' : dayStats.percentage || '0%'}</p>
             </li>
           );

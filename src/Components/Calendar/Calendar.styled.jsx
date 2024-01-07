@@ -17,7 +17,7 @@ export const CalendarStyled = styled.div`
     align-items: center;
     gap: 4px;
   }
-  & li[data-active='true'] span {
+  & li[data-active='true'] p {
     font-weight: bold;
   }
   & li > p {
@@ -151,7 +151,7 @@ export const DayStyled = styled.button`
   background-color: #fff;
   border-radius: 50%;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  span {
+  p {
     font-size: 14px;
     line-height: 1.2857;
   }
@@ -159,7 +159,7 @@ export const DayStyled = styled.button`
   @media only screen and (min-width: 768px) {
     width: 34px;
     height: 34px;
-    span {
+    p {
       font-size: 16px;
       line-height: 1.25;
     }

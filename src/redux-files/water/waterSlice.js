@@ -48,10 +48,9 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(editWater.fulfilled, (state, { payload }) => {
-        const noteIdx = state.waterRecords.findIndex(
-          note => note.id === payload.id
+        state.waterRecords = state.waterRecords.map(record =>
+          record._id === payload._id ? payload : record
         );
-        state.waterRecords.splice(noteIdx, 1, payload);
         state.isLoading = false;
       })
       .addCase(editWater.rejected, (state, { payload }) => {
@@ -63,7 +62,7 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.waterRecords = state.waterRecords.filter(
-          waterRecords => waterRecords.id !== payload
+          waterRecords => waterRecords._id !== payload
         );
         state.isLoading = false;
       })

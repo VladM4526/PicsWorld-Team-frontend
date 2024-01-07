@@ -19,7 +19,7 @@ export function Calendar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchStats(`${year}+${month + 1}`));
+    dispatch(fetchStats(`${year}-${month + 1}`));
   }, [dispatch, year, month]);
 
   const goToPrevMonth = () => {
