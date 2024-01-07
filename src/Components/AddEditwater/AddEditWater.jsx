@@ -13,8 +13,6 @@ import {
 import { EditNote } from './EditNote';
 import { addWater, editWater } from '../../redux-files/water/waterOperations';
 import { useWater } from 'redux-files/hooks/useWater';
-import { localeTime } from 'helpers/localeTime';
-import { useMemo } from 'react';
 
 const currentDay = new Date();
 const step = 50;
@@ -27,24 +25,18 @@ export const AddEditWater = ({
   editDate,
 }) => {
   const dispatch = useDispatch();
-  // console.log('editDate', editDate);
 
   const { isLoading } = useWater();
 
   const handleSubmit = values => {
-    // console.log('values', values);
     const newNote = {
-      date: values.date.toISOString(),
+      date: values.date,
       waterVolume: values.waterVolume,
     };
-    // console.log('id', { id, newNote });
     isEdit ? dispatch(editWater({ id, newNote })) : dispatch(addWater(newNote));
     onClose();
   };
 
-  // if (isEdit) {
-  //   currentDay.setHours(Number(HHmm[0]), Number(HHmm[1]));
-  // }
   return (
     <Formik
       initialValues={{

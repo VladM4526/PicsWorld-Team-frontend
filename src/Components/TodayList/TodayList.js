@@ -13,13 +13,6 @@ import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWater } from 'redux-files/water/waterOperations';
 import { selectNotes } from 'redux-files/water/waterSelectors';
-import { localeTime } from 'helpers/localeTime';
-
-// const arrayItemsTest = [];
-
-// for (let i = 0; i <= 5; i += 1) {
-//   arrayItemsTest[i] = { _id: nanoid(), waterVolume: 200, time: new Date() };
-// }
 
 const TodayList = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +34,6 @@ const TodayList = () => {
             id={item._id}
             editWater={item.waterVolume}
             editDate={item.date}
-            // time={localeTime(item.date)}
           />
         ))}
         <AddLink onClick={toggleModal}>

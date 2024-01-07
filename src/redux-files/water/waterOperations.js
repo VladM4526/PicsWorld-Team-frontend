@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import toast from 'react-hot-toast';
 import { toast } from 'react-toastify';
 import {
   deleteWaterNote,
@@ -9,8 +8,6 @@ import {
   getWaterStats,
 } from 'helpers/api/apiWater.js';
 import { setToken } from 'helpers/api/apiUser';
-import { localeFormat } from 'helpers/localeTime';
-// import { localeTime } from 'helpers/localeTime';
 
 export const fetchWater = createAsyncThunk(
   'water/today',
@@ -24,9 +21,8 @@ export const fetchWater = createAsyncThunk(
     try {
       setToken(persistedToken);
       const data = await getWaterNotes();
-      console.log('dataall', data);
 
-      // toast.success(`Ok`);
+      toast.success(`Ok`);
       return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
     } catch (error) {
       toast.error(
@@ -57,19 +53,14 @@ export const addWater = createAsyncThunk(
   'water/addWater',
   async (waterNote, { rejectWithValue }) => {
     try {
-      // console.log('waterNote', waterNote);
       const data = await addWaterNote(waterNote);
-      // console.log('dataadd', data);
       toast.success(`Ok`);
-      // const convertedDate = new Date(data.date).toString();
 
       return {
         _id: data._id,
         waterVolume: data.waterVolume,
         date: data.date,
-        // date: convertedDate,
       };
-      // return { ...data, date: localeTime(data.date) };
     } catch (error) {
       toast.error(
         `Oops! Something goes wrong. Please try again! ${error.message}`

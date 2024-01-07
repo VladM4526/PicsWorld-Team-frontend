@@ -18,6 +18,8 @@ export function Calendar() {
   const [year, setYear] = useState(currentDate.getFullYear());
   const dispatch = useDispatch();
 
+  const monthName = getMonthName(month);
+
   useEffect(() => {
     dispatch(fetchStats(`${year}-${month + 1}`));
   }, [dispatch, year, month]);
@@ -49,7 +51,7 @@ export function Calendar() {
               <use href={`${svgIcons}#icon-arrow`}></use>
             </svg>
           </BtnArrowCalendarStyled>
-          <p>{`${getMonthName(month)}, ${year}`}</p>
+          <p>{`${monthName}, ${year}`}</p>
           <BtnArrowCalendarStyled
             onClick={goToNextMonth}
             disabled={currentDate < new Date(year, month + 1)}
@@ -60,7 +62,12 @@ export function Calendar() {
           </BtnArrowCalendarStyled>
         </div>
       </CalendarHeaderStyled>
-      <CreateCalendar year={year} month={month} currentDate={currentDate} />
+      <CreateCalendar
+        year={year}
+        month={month}
+        monthName={monthName}
+        currentDate={currentDate}
+      />
     </CalendarStyled>
   );
 }

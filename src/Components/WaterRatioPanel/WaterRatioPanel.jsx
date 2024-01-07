@@ -6,40 +6,22 @@ import {
   WaterPercent,
 } from './WaterRatioPanel.styled';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchWater } from 'redux-files/water/waterOperations';
-import { selectPercentege } from 'redux-files/water/waterSelectors';
 import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
 import icons from '../../img/set-icons.svg';
+import { useWater } from 'redux-files/hooks/useWater';
 
-// const percentage = 40
 const WaterRatioPanel = () => {
-  const percentage = parseInt(useSelector(selectPercentege));
-  console.log(percentage);
+  const { percentageToday } = useWater();
   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
-
-  // const percentage = (waterNotes[0].percentage)
-  // console.log(percentage)
-
-  //  useEffect (() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await dispatch(fetchWater());
-  //       console.log(response)
-  //     } catch (error) {
-  //       console.error('Error getting water data in useEffect:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  //  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchWater());
@@ -50,7 +32,7 @@ const WaterRatioPanel = () => {
       <RatioWrapStyled>
         <PanelContainer>
           <p>Today</p>
-          <WaterPanel $percentage={percentage}></WaterPanel>
+          <WaterPanel $percentage={percentageToday}></WaterPanel>
           <WaterPercent>
             <div>0%</div>
             <div>50%</div>

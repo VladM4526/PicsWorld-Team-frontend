@@ -5,6 +5,8 @@ import { getHoverPosition } from 'helpers/getHoverPosition';
 import { DaysGeneralStats } from './DaysGeneralStats';
 import { nanoid } from 'nanoid';
 import { useWater } from 'redux-files/hooks/useWater';
+import { useSelector } from 'react-redux';
+import { selectDailyNorma } from 'redux-files/auth/selectors';
 
 // const water = {
 //   norma: 1500,
@@ -12,10 +14,11 @@ import { useWater } from 'redux-files/hooks/useWater';
 //   count: 5,
 // };
 
-export const CreateCalendar = ({ year, month, currentDate }) => {
+export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
   const [hoveredDayStats, setHoveredDayStats] = useState(null);
   const [hoverPos, setHoverPos] = useState({ height: 188 });
-  const { stats } = useWater();
+  const { stats, percentageToday } = useWater();
+  const dailyWaterRate = useSelector(selectDailyNorma);
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const daysOfMonth = Array(daysInMonth).fill('');
@@ -43,10 +46,27 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
       ? handleClose()
       : handleOpen(e.target, dayStats);
   };
-
   // get statistic data for creating calendar and values for hover
   const getDayStats = day => {
-    const dayStats = stats.find(i => new Date(i.date).getDate() === day) || {};
+    let dayStats = {
+      dateName: `${day}, ${monthName}`,
+      count: 0,
+      dailyWaterRate: dailyWaterRate / 1000 + ' L',
+      percentage: 0,
+    };
+
+    const dayStatsDraft = stats.find(i => new Date(i.date).getDate() === day);
+
+    if (!dayStatsDraft) {
+      return { day, dayStats };
+    }
+    dayStats = { ...dayStats, ...dayStatsDraft };
+    !dayStatsDraft.percentage
+      ? (dayStats.percentage = 0)
+      : (dayStats.percentage = Math.min(
+          parseInt(dayStatsDraft.percentage),
+          100
+        ));
     return { day, dayStats };
   };
 
@@ -60,8 +80,9 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
           const isFuture = currentDate < date;
           const isDesktop = window.innerWidth >= 1440;
           return (
-            <li key={nanoid()} data-active={isNow}>
+            <li key={nanoid()}>
               <DayStyled
+                data-active={isNow}
                 data-day={!isFuture}
                 disabled={isFuture}
                 onMouseEnter={
@@ -74,10 +95,13 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
                     : e => openHoverOnClick(e, dayStats)
                 }
               >
-                <p>{day}</p>
+                {day}
               </DayStyled>
-
-              <p>{isFuture ? '-' : dayStats.percentage || '0%'}</p>
+              {isNow ? (
+                <p>{`${percentageToday}%`}</p>
+              ) : (
+                <p>{isFuture ? '-' : `${dayStats.percentage}%`}</p>
+              )}
             </li>
           );
         })}

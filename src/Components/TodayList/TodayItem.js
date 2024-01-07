@@ -30,11 +30,6 @@ const TodayItem = ({ id, editWater, editDate }) => {
     toggleModal();
   };
 
-  // const time = `${date.getHours()}:${date
-  //   .getMinutes()
-  //   .toString()
-  //   .padStart(2, '0')}`;
-
   return (
     <WaterItem>
       <SvgCup>
@@ -66,9 +61,6 @@ const TodayItem = ({ id, editWater, editDate }) => {
               id={id}
               editWaterVolume={editWater}
               editDate={editDate}
-              // ------------------------------------------
-              // HHmm={time.split(':')}
-              // ---------------------------------------
             />
           ) : (
             <DeleteEntry onClose={toggleModal} id={id} />
