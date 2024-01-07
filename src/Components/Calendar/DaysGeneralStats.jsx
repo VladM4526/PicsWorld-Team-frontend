@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
   const [isMobil, setIsMobil] = useState(window.innerWidth < 1440);
-  console.log('dayStats', dayStats);
   useEffect(() => {
     // change hover dimentions according to screen resolutions
     const onChangeScreen = () => {

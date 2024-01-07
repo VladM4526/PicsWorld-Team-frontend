@@ -8,12 +8,6 @@ import { useWater } from 'redux-files/hooks/useWater';
 import { useSelector } from 'react-redux';
 import { selectDailyNorma } from 'redux-files/auth/selectors';
 
-// const water = {
-//   norma: 1500,
-//   fulfillment: 0.6,
-//   count: 5,
-// };
-
 export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
   const [hoveredDayStats, setHoveredDayStats] = useState(null);
   const [hoverPos, setHoverPos] = useState({ height: 188 });
@@ -82,6 +76,9 @@ export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
           return (
             <li key={nanoid()}>
               <DayStyled
+                borderColor={
+                  dayStats.percentage >= 100 ? 'transparent' : '#ff9d43'
+                }
                 data-active={isNow}
                 data-day={!isFuture}
                 disabled={isFuture}
