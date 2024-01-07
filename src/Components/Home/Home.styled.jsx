@@ -14,6 +14,7 @@ export const HomeWrapStyled = styled.div`
 export const DailyWrapStyled = styled.div``;
 
 export const TodayWrapStyled = styled.div`
+  position: relative;
   padding: 24px 8px;
   min-width: 280px;
   display: flex;
@@ -34,28 +35,30 @@ export const TodayWrapStyled = styled.div`
 `;
 
 export const DailyTrackerWrapStyled = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 232px;
-  img {
-    margin: 0 auto;
-    margin-bottom: 16px;
 
-    @media screen and (min-width: 1440px) {
+  gap: 16px;
+  /* img {
+    margin: 0 auto;
+    margin-bottom: 16px; */
+
+  /* @media screen and (min-width: 1440px) {
       margin-bottom: 24px;
     }
-  }
+  } */
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
     gap: 326px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 50%;
     gap: 466px;
-    img {
+    /* img {
       height: 548px;
       object-fit: cover;
-    }
+    } */
   }
 `;
