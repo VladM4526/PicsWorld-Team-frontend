@@ -3,7 +3,7 @@ import Spinner from 'react-spinner-material';
 import { Field, Formik } from 'formik';
 import { TimePicker } from './TimePicker';
 import { AmountWater } from './AmountWater';
-import { volumeWaterSchema } from 'helpers/volumeWaterSchema';
+import { volumeWaterSchema } from 'schemas/volumeWaterSchema';
 import {
   AddWaterFooterStyled,
   ErrorMsgStyled,
@@ -13,38 +13,47 @@ import {
 import { EditNote } from './EditNote';
 import { addWater, editWater } from '../../redux-files/water/waterOperations';
 import { useWater } from 'redux-files/hooks/useWater';
+import { localeTime } from 'helpers/localeTime';
 
-const initialValues = {
-  date: new Date(),
-  volumeWater: 0,
-};
+const currentDay = new Date();
 const step = 50;
 
-export const AddEditWater = ({ onClose, data, isEdit }) => {
+export const AddEditWater = ({
+  onClose,
+  isEdit,
+  id,
+  waterVolume = 0,
+  HHmm,
+}) => {
   const dispatch = useDispatch();
 
   const { isLoading } = useWater();
 
   const handleSubmit = values => {
-    if (isEdit) {
-      dispatch(editWater(values));
-      onClose();
-    } else {
-      dispatch(addWater(values));
-    }
+    console.log('values', values);
+    const newNote = {
+      date: localeTime(values.date),
+      waterVolume: values.waterVolume,
+    };
+    console.log('newNote', newNote);
+    isEdit ? dispatch(editWater({ id, newNote })) : dispatch(addWater(newNote));
+    onClose();
   };
 
+  if (isEdit) {
+    currentDay.setHours(Number(HHmm[0]), Number(HHmm[1]));
+  }
   return (
     <Formik
-      initialValues={data || initialValues}
+      initialValues={{ waterVolume, date: currentDay }}
       onSubmit={handleSubmit}
       validationSchema={volumeWaterSchema}
     >
-      {({ values: { volumeWater, date }, setFieldValue }) => {
+      {({ values: { waterVolume, date }, setFieldValue }) => {
         const handleAmountChange = amount => {
-          let value = volumeWater / step;
+          let value = waterVolume / step;
           value = amount < 0 ? Math.ceil(value) : Math.floor(value);
-          setFieldValue('volumeWater', value * step + amount);
+          setFieldValue('waterVolume', value * step + amount);
         };
 
         const handleChangeTime = newDate => {
@@ -53,18 +62,18 @@ export const AddEditWater = ({ onClose, data, isEdit }) => {
 
         return (
           <FormStyled name="addWater">
-            {isEdit && <EditNote editNote={data} />}
+            {isEdit && <EditNote waterVolume={waterVolume} date={date} />}
 
             <h3>{isEdit ? 'Correct entered data:' : 'Choose a value:'}</h3>
 
             <FormWrapStyled>
-              <label htmlFor="volumeWaterDisplay">
+              <label htmlFor="waterVolumeDisplay">
                 <h4>Amount of water:</h4>
                 <AmountWater
                   onClick={handleAmountChange}
                   step={step}
-                  volumeWater={volumeWater}
-                  name="volumeWaterDisplay"
+                  waterVolume={waterVolume}
+                  name="waterVolumerDisplay"
                 />
               </label>
 
@@ -78,22 +87,22 @@ export const AddEditWater = ({ onClose, data, isEdit }) => {
                 />
               </label>
 
-              <label htmlFor="volumeWater">
+              <label htmlFor="waterVolume">
                 <h3>Enter the value of the water used:</h3>
-                <ErrorMsgStyled name="volumeWater" component="div" />
+                <ErrorMsgStyled name="waterVolume" component="div" />
                 <Field
-                  type="text"
-                  name="volumeWater"
-                  placeholder={volumeWater}
+                  type="number"
+                  name="waterVolume"
+                  placeholder={waterVolume}
                 />
               </label>
 
               <AddWaterFooterStyled>
-                <p>{volumeWater + 'ml'}</p>
+                <p>{waterVolume + 'ml'}</p>
                 <button type="submit">
                   {isLoading ? (
                     <Spinner
-                      radius={25}
+                      radius={20}
                       color={'#333'}
                       stroke={3}
                       visible={true}

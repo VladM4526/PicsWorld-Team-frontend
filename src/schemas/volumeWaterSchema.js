@@ -2,9 +2,9 @@ import * as Yup from 'yup';
 
 export const volumeWaterSchema = Yup.object().shape({
   date: Yup.date().required('Required'),
-  volumeWater: Yup.number()
+  waterVolume: Yup.number()
     .positive('Must be a positive number')
     .min(1, 'Too small amount!')
-    .max(5000, 'Too much!')
+    .max(3000, 'Too much!')
     .required('Required'),
 });

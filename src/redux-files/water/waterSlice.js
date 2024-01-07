@@ -10,7 +10,7 @@ import {
 const waterSlice = createSlice({
   name: 'water',
   initialState: {
-    percentage: "0%",
+    percentage: '0%',
     waterRecords: [],
     stats: [],
     isLoading: false,
@@ -23,7 +23,9 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchWater.fulfilled, (state, { payload }) => {
-        state.percentage = payload[0].percentage;
+        let percentage = parseInt(payload[0].percentage);
+        percentage = percentage > 100 ? 100 : percentage;
+        state.percentage = percentage;
         state.waterRecords = payload[0].waterRecords;
         state.isLoading = false;
       })
@@ -35,7 +37,7 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
-        state.notes.push(payload);
+        state.waterRecords.push(payload);
         state.isLoading = false;
       })
       .addCase(addWater.rejected, (state, { payload }) => {
@@ -46,7 +48,10 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(editWater.fulfilled, (state, { payload }) => {
-        state.notes = payload;
+        const noteIdx = state.waterRecords.findIndex(
+          note => note.id === payload.id
+        );
+        state.waterRecords.splice(noteIdx, 1, payload);
         state.isLoading = false;
       })
       .addCase(editWater.rejected, (state, { payload }) => {
@@ -57,7 +62,9 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
-        state.waterRecords = state.waterRecords.filter(waterRecords => waterRecords.id !== payload);
+        state.waterRecords = state.waterRecords.filter(
+          waterRecords => waterRecords.id !== payload
+        );
         state.isLoading = false;
       })
       .addCase(deleteWater.rejected, (state, { payload }) => {
@@ -68,7 +75,7 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchStats.fulfilled, (state, { payload }) => {
-        state.stats = payload
+        state.stats = payload;
         state.isLoading = false;
       })
       .addCase(fetchStats.rejected, (state, { payload }) => {

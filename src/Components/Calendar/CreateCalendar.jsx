@@ -69,7 +69,7 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
                   }
                   onMouseLeave={handleClose}
                 >
-                  {day}
+                  <span>{day}</span>
                 </DayStyled>
               ) : (
                 <DayStyled
@@ -77,7 +77,7 @@ export const CreateCalendar = ({ year, month, currentDate }) => {
                   disabled={isFuture}
                   onClick={isFuture ? null : e => openHoverOnClick(e, dayStats)}
                 >
-                  {day}
+                  <span>{day}</span>
                 </DayStyled>
               )}
               <p>{isFuture ? '-' : dayStats.percentage || '0%'}</p>
