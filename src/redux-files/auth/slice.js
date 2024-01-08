@@ -39,7 +39,6 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        console.log(action);
       })
       .addCase(refreshUserAccount.rejected, state => {
         state.isRefreshing = false;
@@ -48,6 +47,13 @@ const authSlice = createSlice({
         // console.log(payload);
         state.isLoggedIn = true;
         state.user.waterRate = payload;
+        state.isRefreshing = false;
+      })
+      .addCase(addWaterRateThunk.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(addWaterRateThunk.rejected, state => {
+        state.isRefreshing = false;
       });
   },
 });

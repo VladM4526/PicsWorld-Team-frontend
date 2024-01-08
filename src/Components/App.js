@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Layout } from './Layout/Layout';
@@ -13,12 +13,14 @@ import { WelcomePage } from './WelcomePage/Welcome';
 import { HomePage } from 'pages/HomePage';
 import FormReg from 'pages/FormReg';
 import LoginPage from 'pages/LoginPage';
-import { selectUserToken } from '../redux-files/auth/selectors';
+import { selectIsRefreshing, selectUserToken } from '../redux-files/auth/selectors';
 import { refreshUserAccount } from '../redux-files/auth/backendRequest';
+import { Loader } from './Loader/Loader';
 // import { MyDailyNormaPage } from 'pages/MyDailyNormaPage';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
   const token = useSelector(selectUserToken);
 
   useEffect(() => {
@@ -26,8 +28,9 @@ export const App = () => {
       dispatch(refreshUserAccount());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return (
+  }, [dispatch]);
+
+  return isRefreshing ? <Loader /> : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -52,6 +55,7 @@ export const App = () => {
             }
           />
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );

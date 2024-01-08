@@ -63,37 +63,6 @@ line-height: 1.11;
 margin-bottom: 16px;
 `;
 
-// export const customStyles = {
-//   overlay: {
-//         position: 'fixed',
-//         top: '0',
-//         left: '0',
-//         width: '100vw',
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: 'rgba(0, 0, 0, 0.80)',
-//         zIndex: '1200',        
-// },
-//   content: {
-//       top: '50%', 
-//       left: '50%', 
-//       right: 'auto',
-//       bottom: 'auto',
-//       transform: 'translate(-50%, -50%)', 
-//       padding: '24px 12px', 
-//       border: 'none',
-//       borderRadius: '10px', 
-//       maxWidth: 'calc(100vw - 48px)',
-//       maxHeight: 'calc(100vh - 24px)',
-//       overflow: 'hidden',
-//       '@media screen (max-width: 769px)': {
-//         padding: '32px 24px', 
-//       }, 
-//   },
-// };
-
 
 export const StyledForm = styled(Form)`
   display: flex;

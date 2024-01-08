@@ -22,7 +22,7 @@ export const signInThunk = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
-      // toast.error(`Email or password is wrong. Try again`);
+      toast.error(`Email or password is wrong. Try again`);
       return rejectWithValue(error.message);
     }
   }
@@ -77,16 +77,12 @@ export const addWaterRateThunk = createAsyncThunk(
     // if (persistedToken === null) {
     //   return thunkAPI.rejectWithValue('Unable to fetch user');
     // }
-    console.log(waterRate);
-    console.log(persistedToken);
     try {
       setToken(persistedToken);
       const responce = await addWaterRate(waterRate);
-      console.log(responce);
-      toast.success(`Ok`);
+      toast.success(`Your daily norma was edited`);
       return responce;
     } catch (error) {
-      console.log('oops', error);
       toast.error(
         `Oops! Something goes wrong. Please try again! ${error.message}`
       );
