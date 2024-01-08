@@ -6,6 +6,8 @@ import {
   refreshUser,
   setToken,
   addWaterRate,
+  updateAvatarUsers,
+  updateUserAccount,
 } from '../../helpers/api/apiUser';
 
 export const signInThunk = createAsyncThunk(
@@ -87,6 +89,56 @@ export const addWaterRateThunk = createAsyncThunk(
         `Oops! Something goes wrong. Please try again! ${error.message}`
       );
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatarUser = createAsyncThunk(
+  'users/avatars',
+  async (updateAvatar, { rejectWithValue }) => {
+    try {
+      const avatarURL = await updateAvatarUsers(updateAvatar);
+
+      console.log(avatarURL);
+      if (avatarURL) {
+        toast.success('The photo has been successfully uploaded.', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+      return avatarURL;
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        `Unfortunately, the photo wasn't upload successfully. Please try again.`,
+        {
+          position: toast.POSITION.TOP_CENTER,
+        }
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserProfileThunk = createAsyncThunk(
+  'auth/UserProfile',
+  async (updateUser, { rejectWithValue }) => {
+    try {
+      const response = await updateUserAccount(updateUser);
+      return response;
+    } catch (error) {
+      switch (error.response.status) {
+        case 409:
+          toast.error(
+            `This email is already in use. Please try a others email.`
+          );
+          return rejectWithValue(error.massage);
+        case 400:
+          toast.error(`Wrong password. Please repeat again.`);
+          return rejectWithValue(error.massage);
+        default:
+          toast.error(`Error. Please try again later.`);
+          return rejectWithValue(error.massage);
+      }
     }
   }
 );

@@ -8,10 +8,10 @@ export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const removeToken = () => {
-//   delete baseURL.defaults.headers.common['Authorization'];
-//   localStorage.removeItem('token');
-// };
+const removeToken = () => {
+  delete baseURL.defaults.headers.common['Authorization'];
+  localStorage.removeItem('token');
+};
 
 export const signup = async body => {
   const { data } = await axios.post('/auth/signup', body);
@@ -32,7 +32,33 @@ export const refreshUser = async token => {
   return data;
 };
 
-export const addWaterRate = async (waterRate) => {
-    const { data } = await axios.put(`/users/waterrate`, {waterRate: waterRate});
-    return data.waterRate;
+export const addWaterRate = async waterRate => {
+  const { data } = await axios.put(`/users/waterrate`, {
+    waterRate: waterRate,
+  });
+  return data.waterRate;
+};
+
+export const updateAvatarUsers = async updateAvatar => {
+  const { avatarURL } = await axios.patch('/users/avatars', updateAvatar, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return avatarURL;
+};
+
+export const updateUserAccount = async updateUser => {
+  const datasForSend = {};
+  const entries = Object.entries(updateUser);
+  entries.forEach(([key, value]) => {
+    if (value) {
+      datasForSend[key] = value;
+    }
+  });
+  if (!datasForSend.newPassword) {
+    delete datasForSend.oldPassword;
+  }
+  const { data } = await axios.patch('/users/userinfo', datasForSend);
+  return data;
 };

@@ -17,9 +17,8 @@ import {
   WrapperLiter,
   TextLiter,
 } from './DailyNormaModal.styled';
-import { addWaterRateThunk } from '../../redux-files/auth/backendRequest';
+import { addWaterRateThunk } from '../../redux-files/auth/thunk';
 import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
-
 
 const initialValues = {
   weight: 0,
@@ -27,8 +26,6 @@ const initialValues = {
   time: 0,
   water: 0,
 };
-
-
 
 export const DailyNormaModal = ({ onClose }) => {
   const dispatch = useDispatch();

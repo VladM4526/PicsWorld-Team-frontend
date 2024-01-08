@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+export const HeaderContainer = styled.div`
+  @media (min-width: 1440px) {
+    max-width: 1216px;
+    margin: 0 auto;
+
+    position: relative;
+  }
+`;
+
+export const UserData = styled.p`
+  cursor: pointer;
+`;
+
 export const HeaderSection = styled.header`
   margin: 0 auto;
   padding: 0px 20px;

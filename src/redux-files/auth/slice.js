@@ -3,13 +3,12 @@ import {
   addWaterRateThunk,
   refreshUserAccount,
   signInThunk,
-} from './backendRequest';
+  // updateAvatarUser,
+} from './thunk';
 
-// const valueUser = 'V';
 // add name after login or registration
 const initialState = {
   user: {
-    name: null,
     email: null,
     password: null,
     avatarURL: null,
@@ -47,13 +46,6 @@ const authSlice = createSlice({
         // console.log(payload);
         state.isLoggedIn = true;
         state.user.waterRate = payload;
-        state.isRefreshing = false;
-      })
-      .addCase(addWaterRateThunk.pending, state => {
-        state.isRefreshing = true;
-      })
-      .addCase(addWaterRateThunk.rejected, state => {
-        state.isRefreshing = false;
       });
   },
 });
