@@ -8,10 +8,10 @@ export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const removeToken = () => {
-  delete baseURL.defaults.headers.common['Authorization'];
-  localStorage.removeItem('token');
-};
+// const removeToken = () => {
+//   delete baseURL.defaults.headers.common['Authorization'];
+//   localStorage.removeItem('token');
+// };
 
 export const signup = async body => {
   const { data } = await axios.post('/auth/signup', body);
