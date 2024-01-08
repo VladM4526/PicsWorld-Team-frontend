@@ -6,6 +6,7 @@ import {
   refreshUser,
   setToken,
   addWaterRate,
+  signout,
 } from '../../helpers/api/apiUser';
 
 export const signInThunk = createAsyncThunk(
@@ -13,16 +14,16 @@ export const signInThunk = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const data = await signin(body);
-      // setToken(data.user.token);
-      if (data) {
-        toast.success('Hello! You are successful login in', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      }
+      // if (!data) {
+      toast.success('Hello! You are successful login in', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      setToken(data.user.token);
+      // }
       return data;
     } catch (error) {
-      console.log(error);
-      // toast.error(`Email or password is wrong. Try again`);
+      // console.log(error);
+      toast.error(`Email or password is wrong. Try again`);
       return rejectWithValue(error.message);
     }
   }
@@ -34,15 +35,16 @@ export const signUpThunk = createAsyncThunk(
     try {
       const responce = await signup(body);
 
-      console.log(responce);
-      if (responce) {
-        toast.success('Hello! You are successful registration', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      }
+      // console.log(responce);
+      // if (responce) {
+      toast.success('Hello! You register successfully ', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      setToken(responce.token);
+      // }
       return responce;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(`Email or password is wrong. Try again`, {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -53,40 +55,56 @@ export const signUpThunk = createAsyncThunk(
 
 export const refreshUserAccount = createAsyncThunk(
   'users/current',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+  async (_, { getState, rejectWithValue }) => {
+    // const state = thunkAPI.getState();
+    const persistedToken = getState().auth.token;
     if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
+      return rejectWithValue('Please, signin or signup in app');
     }
     try {
       setToken(persistedToken);
       const userData = await refreshUser(persistedToken);
+      toast.success(`Hi ${userData.name && userData.email}! You are in`);
       return userData;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(
+        `Oops! Something goes wrong. Please try again! ${error.message}`
+      );
+      return rejectWithValue(error.message);
     }
   }
 );
 
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await signout();
+    toast.success(`Bye-bye. See you later!`);
+  } catch (error) {
+    toast.error(
+      `Oops. Something goes wrong. Please try again! ${error.message}`
+    );
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const addWaterRateThunk = createAsyncThunk(
   'users/waterrate',
   async (waterRate, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    // const state = thunkAPI.getState();
+    // const persistedToken = state.auth.token;
     // if (persistedToken === null) {
     //   return thunkAPI.rejectWithValue('Unable to fetch user');
     // }
-    console.log(waterRate);
-    console.log(persistedToken);
+    // console.log(waterRate);
+    // console.log(persistedToken);
     try {
-      setToken(persistedToken);
+      // setToken(persistedToken);
       const responce = await addWaterRate(waterRate);
-      console.log(responce);
+      // console.log(responce);
       toast.success(`Ok`);
       return responce;
     } catch (error) {
-      console.log('oops', error);
+      // console.log('oops', error);
       toast.error(
         `Oops! Something goes wrong. Please try again! ${error.message}`
       );

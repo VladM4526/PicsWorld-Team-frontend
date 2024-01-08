@@ -12,21 +12,20 @@ import { setToken } from 'helpers/api/apiUser';
 export const fetchWater = createAsyncThunk(
   'water/today',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
+    console.log('water/today');
+    // const state = thunkAPI.getState();
+    // const persistedToken = state.auth.token;
+    // if (persistedToken === null) {
+    //   return thunkAPI.rejectWithValue('Unable to fetch user');
+    // }
     try {
-      setToken(persistedToken);
+      // setToken(persistedToken);
       const data = await getWaterNotes();
 
-      toast.success(`Ok`);
+      toast.success(`Ok fetch water`);
       return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
     } catch (error) {
-      toast.error(
-        `Oops. Something goes wrong. Please try again! hi ${error.message}`
-      );
+      toast.error(`Oops. Something goes wrong. ${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -35,6 +34,8 @@ export const fetchWater = createAsyncThunk(
 export const fetchStats = createAsyncThunk(
   'water/stats',
   async (month, { rejectWithValue }) => {
+    console.log('water/stats');
+
     try {
       const data = await getWaterStats(month);
       toast.success(`Ok`);
@@ -51,6 +52,8 @@ export const fetchStats = createAsyncThunk(
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (waterNote, { rejectWithValue }) => {
+    console.log('water/addWater');
+
     try {
       const data = await addWaterNote(waterNote);
       toast.success(`Ok`);
@@ -71,6 +74,8 @@ export const addWater = createAsyncThunk(
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
   async (waterNoteId, { rejectWithValue }) => {
+    console.log('water/deleteWater');
+
     try {
       await deleteWaterNote(waterNoteId);
       toast.success(`Ok`);
@@ -87,6 +92,8 @@ export const deleteWater = createAsyncThunk(
 export const editWater = createAsyncThunk(
   'water/editWater',
   async (note, { rejectWithValue }) => {
+    console.log('water / editWater');
+
     try {
       const data = await editWaterNote(note);
       toast.success(`Ok`);

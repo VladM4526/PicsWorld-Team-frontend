@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Layout } from './Layout/Layout';
@@ -19,14 +19,11 @@ import { refreshUserAccount } from '../redux-files/auth/backendRequest';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const token = useSelector(selectUserToken);
+  // const token = useSelector(selectUserToken);
 
   useEffect(() => {
-    if (token) {
-      dispatch(refreshUserAccount());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(refreshUserAccount());
+  }, [dispatch]);
   return (
     <>
       <Routes>
@@ -51,6 +48,7 @@ export const App = () => {
               <PrivateRoute redirectTo="/HomePage" component={<HomePage />} />
             }
           />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </>

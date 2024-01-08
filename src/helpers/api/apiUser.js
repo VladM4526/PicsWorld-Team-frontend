@@ -15,24 +15,30 @@ export const setToken = token => {
 
 export const signup = async body => {
   const { data } = await axios.post('/auth/signup', body);
-  setToken(data.token);
-  console.log(setToken(data.token));
+  // setToken(data.token);
+  // console.log(setToken(data.token));
   return data;
 };
 
 export const signin = async body => {
   const { data } = await axios.post('/auth/signin', body);
-  setToken(data.user.token);
   return data;
 };
 
+export const signout = async () => {
+  return await axios.post('/auth/signout');
+};
+
 export const refreshUser = async token => {
-  setToken(token);
+  // setToken(token);
   const { data } = await axios.get('/users/current');
   return data;
 };
 
-export const addWaterRate = async (waterRate) => {
-    const { data } = await axios.put(`/users/waterrate`, {waterRate: waterRate});
-    return data.waterRate;
+export const addWaterRate = async waterRate => {
+  console.log('waterRate', waterRate);
+  const { data } = await axios.put(`/users/waterrate`, {
+    waterRate: waterRate,
+  });
+  return data.waterRate;
 };
