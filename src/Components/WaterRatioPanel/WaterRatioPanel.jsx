@@ -1,3 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchWater } from 'redux-files/water/waterOperations';
+import Spinner from 'react-spinner-material';
+import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
+import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
+import icons from '../../img/set-icons.svg';
+import { useWater } from 'redux-files/hooks/useWater';
 import {
   ButtonStyled,
   PanelContainer,
@@ -6,27 +14,18 @@ import {
   WaterPercent,
 } from './WaterRatioPanel.styled';
 
-import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { fetchWater } from 'redux-files/water/waterOperations';
-import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
-import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
-import icons from '../../img/set-icons.svg';
-import { useWater } from 'redux-files/hooks/useWater';
-import Spinner from 'react-spinner-material';
-
 const WaterRatioPanel = () => {
   const { percentageToday, isLoading } = useWater();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
 
-  useEffect(() => {
-    dispatch(fetchWater());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchWater());
+  // }, [dispatch]);
 
   return (
     <>

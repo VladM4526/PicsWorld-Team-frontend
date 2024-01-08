@@ -1,3 +1,9 @@
+import { useState } from 'react';
+import TodayItem from './TodayItem';
+
+import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
+import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
+import { useWater } from 'redux-files/hooks/useWater';
 import {
   AddLink,
   SvgPlus,
@@ -6,21 +12,15 @@ import {
   TodayHeader,
 } from './Today.styled';
 import WaterTrackerIcons from '../../img/set-icons.svg';
-import TodayItem from './TodayItem';
-import { useEffect, useState } from 'react';
-import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
-import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchWater } from 'redux-files/water/waterOperations';
-import { selectNotes } from 'redux-files/water/waterSelectors';
 
 const TodayList = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
-  const waterNotes = useSelector(selectNotes);
-  useEffect(() => {
-    dispatch(fetchWater());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  const { waterNotes } = useWater();
+
+  // useEffect(() => {
+  //   dispatch(fetchWater());
+  // }, [dispatch]);
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
   };
