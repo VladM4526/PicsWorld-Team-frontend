@@ -8,17 +8,27 @@ import {
   getWaterStats,
 } from 'helpers/api/apiWater.js';
 import { setToken } from 'helpers/api/apiUser';
+import axios from 'axios';
+console.log('first', axios.defaults.headers.common.Authorization);
+
+const headerAxiosToken = axios.defaults.headers.common.Authorization;
+// const checkToken = token => {
+//   if (!axios.defaults.headers.common.Authorization) {
+//     setToken(token);
+//   }
+//   return;
+// };
 
 export const fetchWater = createAsyncThunk(
   'water/today',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
+    if (!headerAxiosToken) {
+      setToken(thunkAPI.getState().auth.token);
     }
+    // const state = thunkAPI.getState();
+    // }
     try {
-      setToken(persistedToken);
+      //
       const data = await getWaterNotes();
 
       toast.success(`Ok`);
@@ -34,7 +44,10 @@ export const fetchWater = createAsyncThunk(
 
 export const fetchStats = createAsyncThunk(
   'water/stats',
-  async (month, { rejectWithValue }) => {
+  async (month, { rejectWithValue, getState }) => {
+    if (!headerAxiosToken) {
+      setToken(getState().auth.token);
+    }
     try {
       const data = await getWaterStats(month);
       toast.success(`Ok`);
