@@ -10,22 +10,49 @@ export const ModalWrapStyled = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
-  align-items: center;
   justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    padding-top: 40px;
+  }
+  @media only screen and (min-width: 1440px) {
+    align-items: center;
+  }
+
+  & div[name='scroll-container'] {
+    width: auto;
+    height: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    @media only screen and (min-width: 1440px) {
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #737272;
+      border-radius: 10px;
+    }
+  }
 `;
 
 export const ModalWindowStyled = styled.div`
   /* position: absolute; */
-  /* top: 50%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  /* top: 10%; */
   width: 280px;
-  max-height: 100%;
+  margin: auto;
+  height: auto;
   padding: 24px 12px;
   color: #2f2f2f;
   background-color: #fff;
   border-radius: 10px;
-  overflow-y: auto;
+
   @media only screen and (min-width: 768px) {
     width: 704px;
     padding: 32px 24px;

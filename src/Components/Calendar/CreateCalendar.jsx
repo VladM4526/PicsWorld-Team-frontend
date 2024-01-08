@@ -1,11 +1,11 @@
+import { useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
+import { nanoid } from 'nanoid';
+import { DaysGeneralStats } from './DaysGeneralStats';
 import { DayStyled } from './Calendar.styled';
 import { debounce } from 'helpers/debounce';
 import { getHoverPosition } from 'helpers/getHoverPosition';
-import { DaysGeneralStats } from './DaysGeneralStats';
-import { nanoid } from 'nanoid';
 import { useWater } from 'redux-files/hooks/useWater';
-import { useSelector } from 'react-redux';
 import { selectDailyNorma } from 'redux-files/auth/selectors';
 
 export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
@@ -32,7 +32,7 @@ export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
   // Open stats to point to the Day (for desktop)
   const onMouseEnter = debounce((e, dayStats) => {
     handleOpen(e.target, dayStats);
-  }, 50);
+  }, 100);
 
   // Open stats to click on the Day (for tablet and mobile devices)
   const openHoverOnClick = (e, dayStats) => {
@@ -76,7 +76,7 @@ export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
           return (
             <li key={nanoid()}>
               <DayStyled
-                borderColor={
+                $borderClr={
                   dayStats.percentage >= 100 ? 'transparent' : '#ff9d43'
                 }
                 data-active={isNow}

@@ -17,7 +17,6 @@ export const fetchWater = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    console.log(persistedToken);
     try {
       setToken(persistedToken);
       const data = await getWaterNotes();
@@ -55,7 +54,6 @@ export const addWater = createAsyncThunk(
     try {
       const data = await addWaterNote(waterNote);
       toast.success(`Ok`);
-
       return {
         _id: data._id,
         waterVolume: data.waterVolume,
@@ -90,10 +88,8 @@ export const editWater = createAsyncThunk(
   'water/editWater',
   async (note, { rejectWithValue }) => {
     try {
-      console.log('newNote', note);
       const data = await editWaterNote(note);
       toast.success(`Ok`);
-      console.log('data', data);
       return data;
     } catch (error) {
       toast.error(

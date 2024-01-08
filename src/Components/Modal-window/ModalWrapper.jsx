@@ -30,22 +30,24 @@ export function ModalWrapper({ title, children, onClose }) {
 
   return createPortal(
     <ModalWrapStyled onClick={handleClose}>
-      <ModalWindowStyled>
-        <ModalTitleWrapStyled>
-          <h2>{title}</h2>
-          <CloseButtonStyled
-            type="button"
-            onClick={() => {
-              onClose();
-            }}
-          >
-            <svg height="24" width="24">
-              <use href={`${svgIcons}#icon-close`}></use>
-            </svg>
-          </CloseButtonStyled>
-        </ModalTitleWrapStyled>
-        {children}
-      </ModalWindowStyled>
+      <div name="scroll-container">
+        <ModalWindowStyled>
+          <ModalTitleWrapStyled>
+            <h2>{title}</h2>
+            <CloseButtonStyled
+              type="button"
+              onClick={() => {
+                onClose();
+              }}
+            >
+              <svg height="24" width="24">
+                <use href={`${svgIcons}#icon-close`}></use>
+              </svg>
+            </CloseButtonStyled>
+          </ModalTitleWrapStyled>
+          {children}
+        </ModalWindowStyled>
+      </div>
     </ModalWrapStyled>,
     modalRoot
   );

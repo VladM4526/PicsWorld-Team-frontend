@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import svgIcons from 'img/set-icons.svg';
+import { useDispatch } from 'react-redux';
 
-import { getMonthName } from 'helpers/getMonthName';
 import { CreateCalendar } from './CreateCalendar';
 import {
   BtnArrowCalendarStyled,
   CalendarHeaderStyled,
   CalendarStyled,
 } from './Calendar.styled';
+import { getMonthName } from 'helpers/getMonthName';
 import { fetchStats } from 'redux-files/water/waterOperations';
-import { useDispatch } from 'react-redux';
+import svgIcons from 'img/set-icons.svg';
 
 const currentDate = new Date();
 

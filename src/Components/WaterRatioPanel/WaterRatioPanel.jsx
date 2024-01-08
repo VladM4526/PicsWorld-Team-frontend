@@ -13,9 +13,10 @@ import { ModalWrapper } from 'Components/Modal-window/ModalWrapper';
 import { AddEditWater } from 'Components/AddEditwater/AddEditWater';
 import icons from '../../img/set-icons.svg';
 import { useWater } from 'redux-files/hooks/useWater';
+import Spinner from 'react-spinner-material';
 
 const WaterRatioPanel = () => {
-  const { percentageToday } = useWater();
+  const { percentageToday, isLoading } = useWater();
   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,11 @@ const WaterRatioPanel = () => {
           <svg width={24} height={24}>
             <use href={`${icons}#icon-circle-plus`}></use>
           </svg>
-          <p>Add Water</p>
+          {isLoading ? (
+            <Spinner radius={20} color={'#333'} stroke={3} visible={true} />
+          ) : (
+            <p>Add Water</p>
+          )}
         </ButtonStyled>
       </RatioWrapStyled>
       {isOpen && (

@@ -39,6 +39,9 @@ export const AddLink = styled.button`
 
   &:hover {
     color: #ff9d43;
+    & svg {
+      stroke: #ff9d43;
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -51,7 +54,7 @@ export const SvgPlus = styled.svg`
   width: 16px;
   height: 16px;
   margin-right: 8px;
-  fill: currentColor;
+  stroke: #407bff;
 
   @media screen and (min-width: 768px) {
     width: 24px;

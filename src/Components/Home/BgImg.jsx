@@ -5,9 +5,6 @@ import bottleTab from '../../img/bottle_home_tablet@1x-min.png';
 
 const PictureStyled = styled.picture`
   display: block;
-  /* position: absolute; */
-  /* bottom: 16px; */
-  /* top: 82px; */
   img {
     width: 280px;
     height: auto;
@@ -18,6 +15,7 @@ const PictureStyled = styled.picture`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    z-index: -1;
     img {
       width: 516px;
     }
