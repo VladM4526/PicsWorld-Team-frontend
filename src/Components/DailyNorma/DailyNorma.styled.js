@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DailyNormaWrapper = styled.div`
+  position: relative;
   padding: 8px 20px;
   width: 166px;
   height: 76px;

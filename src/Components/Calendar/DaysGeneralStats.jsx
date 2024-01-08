@@ -1,7 +1,7 @@
-import { CalendarHoverStyled } from './Calendar.styled';
-import { useEffect } from 'react';
-import icons from '../../img/set-icons.svg';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { CalendarHoverStyled } from './Calendar.styled';
+import icons from '../../img/set-icons.svg';
 
 export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
   const [isMobil, setIsMobil] = useState(window.innerWidth < 1440);

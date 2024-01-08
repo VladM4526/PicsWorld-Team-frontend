@@ -156,7 +156,7 @@ export const DayStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: ${({ borderColor }) => `1px solid ${borderColor}`};
+  border: ${({ $borderClr }) => `1px solid ${$borderClr}`};
   background-color: #fff;
   border-radius: 50%;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
