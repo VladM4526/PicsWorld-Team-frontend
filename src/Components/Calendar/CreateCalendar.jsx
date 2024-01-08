@@ -78,7 +78,7 @@ export const CreateCalendar = ({ year, month, monthName, currentDate }) => {
               <DayStyled
                 $borderClr={
                   (isNow && percentageToday >= 100) ||
-                  (!isNow && dayStats.percentage) >= 100
+                  (!isNow && dayStats.percentage >= 100)
                     ? 'transparent'
                     : '#ff9d43'
                 }
