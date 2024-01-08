@@ -98,8 +98,6 @@ export const DailyNormaModal = ({ onClose }) => {
         validationSchema={dailyNormaValidationSchema}
         onSubmit={values => {
           onClose();
-          console.log(values); // тут треба зробити функцію, яка передає на бекенд значення поля water
-          console.log(values.water * 1000);
           dispatch(addWaterRateThunk(values.water * 1000));
         }}
       >
