@@ -9,7 +9,7 @@ import {
   UserData,
 } from 'Components/WelcomePage/Header/Header.styled';
 import WaterTracker from '../../img/set-icons.svg';
-import { selectIsLoggedIn, selectUser } from '../../redux-files/auth/selectors';
+import { selectUser, selectIsLoggedIn } from '../../redux-files/auth/selectors';
 import { UserLogoModal } from 'Components/UserModal/UserModal';
 
 export const Menu = () => {
@@ -18,15 +18,11 @@ export const Menu = () => {
   const user = useSelector(selectUser);
   const [isActive, setIsActive] = useState(false);
 
-  const closeOutside = e => {
-    isActive(false);
-  };
-
   return (
     <HeaderContainer>
       <HeaderSection>
         <LogoContainer>
-          <NavLink to="/">
+          <NavLink to={isLoggedIn ? '/HomePage' : '/'}>
             {isLoggedIn && (
               <>
                 <LogoApp>
@@ -40,7 +36,7 @@ export const Menu = () => {
           onClick={e => setIsActive(!isActive)}
         >{`${user.email}`}</UserData>
       </HeaderSection>
-      {isActive && <UserLogoModal onClick={e => closeOutside()} />}
+      {isActive && <UserLogoModal />}
     </HeaderContainer>
   );
 };

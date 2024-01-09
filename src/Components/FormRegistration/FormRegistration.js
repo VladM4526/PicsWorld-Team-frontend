@@ -129,5 +129,3 @@ export const FormRegistration = () => {
     </FormWrapper>
   );
 };
-
-export default FormRegistration;

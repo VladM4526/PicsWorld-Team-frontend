@@ -28,7 +28,7 @@ const authSlice = createSlice({
       .addCase(signInThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.user.token;
-        state.isLoggedIn = true;
+        state.selectIsLoggedIn = true;
       })
 
       .addCase(refreshUserAccount.pending, state => {
@@ -36,7 +36,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserAccount.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLoggedIn = true;
+        state.selectIsLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshUserAccount.rejected, state => {
@@ -44,7 +44,7 @@ const authSlice = createSlice({
       })
       .addCase(addWaterRateThunk.fulfilled, (state, { payload }) => {
         // console.log(payload);
-        state.isLoggedIn = true;
+        state.selectIsLoggedIn = true;
         state.user.waterRate = payload;
       });
   },
