@@ -13,13 +13,17 @@ export const UserSettingModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const users = useSelector(selectUser);
 
-  const handelChange = e => {
-    const formaData = new FormData();
-    formaData.append('avatar', e.target.file);
-    if (e.target.files[0]) {
-      dispatch(updateAvatarUser(formaData));
+  const handleChange = e => {
+    const files = e.target.files;
+    if (files.length > 0) {
+      const newPictureUser = new FormData();
+      newPictureUser.append('avatar', files[0]);
+      dispatch(updateAvatarUser(newPictureUser));
+      console.log(newPictureUser);
+    } else {
+      // Handle the case where the user canceled file selection
+      console.log('No file selected');
     }
-    console.log(formaData);
   };
 
   const filePecker = useRef(null);
@@ -37,7 +41,7 @@ export const UserSettingModal = ({ onClose }) => {
           ref={filePecker}
           type="file"
           accept=".png"
-          onChange={handelChange}
+          onChange={handleChange}
         />
         <button type="button" onClick={handlerClick}>
           <span>Upload a photo</span>

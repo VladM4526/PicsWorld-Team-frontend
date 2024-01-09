@@ -98,12 +98,11 @@ export const updateAvatarUser = createAsyncThunk(
   async (newPictureUser, { rejectWithValue }) => {
     try {
       const avatarURL = await updateAvatarUsers(newPictureUser);
-
-      console.log(avatarURL);
       toast.success('The photo has been successfully uploaded.', {
         position: toast.POSITION.TOP_CENTER,
       });
-      return avatarURL;
+      console.log(avatarURL);
+      return avatarURL.responce;
     } catch (error) {
       console.log(error.avatarURL);
       toast.error(

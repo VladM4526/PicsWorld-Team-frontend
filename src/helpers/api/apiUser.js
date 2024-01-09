@@ -40,13 +40,12 @@ export const addWaterRate = async waterRate => {
 };
 
 export const updateAvatarUsers = async newPictureUser => {
-  const {
-    data: { avatarURL },
-  } = await axios.patch('/users/avatars', newPictureUser, {
+  const avatarURL = await axios.patch('/users/avatars', newPictureUser, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   });
+  console.log(avatarURL);
   return avatarURL;
 };
 
