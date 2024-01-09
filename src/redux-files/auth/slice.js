@@ -29,7 +29,7 @@ const authSlice = createSlice({
       .addCase(signInThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.user.token;
-        state.selectIsLoggedIn = true;
+        state.isLoggedIn = true;
       })
 
       .addCase(refreshUserAccount.pending, state => {
@@ -37,7 +37,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserAccount.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.selectIsLoggedIn = true;
+        state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshUserAccount.rejected, state => {
@@ -45,10 +45,13 @@ const authSlice = createSlice({
       })
       .addCase(addWaterRateThunk.fulfilled, (state, { payload }) => {
         // console.log(payload);
-        state.selectIsLoggedIn = true;
+        state.isLoggedIn = true;
         state.user.waterRate = payload;
       })
-      .addCase(updateAvatarUser.fulfilled, updateAvatarUser);
+      .addCase(updateAvatarUser.fulfilled, (state, { payload }) => {
+        state.isLoggedIn = true;
+        state.user.avatarURL = payload;
+      });
   },
 });
 

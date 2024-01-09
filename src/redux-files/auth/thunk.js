@@ -102,7 +102,7 @@ export const updateAvatarUser = createAsyncThunk(
         position: toast.POSITION.TOP_CENTER,
       });
       console.log(avatarURL);
-      return avatarURL.responce;
+      return avatarURL;
     } catch (error) {
       console.log(error.avatarURL);
       toast.error(
