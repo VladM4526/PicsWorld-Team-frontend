@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
   @media (min-width: 1440px) {
-    max-width: 1216px;
+    width: 1216px;
     margin: 0 auto;
 
     position: relative;
@@ -15,18 +15,22 @@ export const UserData = styled.p`
 
 export const HeaderSection = styled.header`
   margin: 0 auto;
-  padding: 0px 20px;
+
+  width: 280px;
+  padding: 8px 20px 0px;
 
   display: flex;
   justify-content: space-between;
 
   @media (min-width: 768px) {
-    width: 100%;
-    padding: 0px 32px;
+    width: 704px;
+    padding: 16px 32px 0px;
   }
 
   @media (min-width: 1440px) {
-    max-width: 1216px;
+    width: 1216px;
+
+    padding: 12px 0px;
   }
 `;
 

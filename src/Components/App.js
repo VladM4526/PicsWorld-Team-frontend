@@ -56,11 +56,10 @@ export const App = () => {
             }
           />
         </Route>
-        {/* Private route only accessible to logged-in users */}
+
         {isLoggedIn ? (
           <Route path="/HomePage" element={<HomePage />} />
         ) : (
-          // Redirect to the welcome page if the user is not logged in
           <Route path="/" element={<WelcomePage />} />
         )}
       </Routes>

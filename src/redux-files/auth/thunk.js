@@ -95,19 +95,17 @@ export const addWaterRateThunk = createAsyncThunk(
 
 export const updateAvatarUser = createAsyncThunk(
   'users/avatars',
-  async (updateAvatar, { rejectWithValue }) => {
+  async (newPictureUser, { rejectWithValue }) => {
     try {
-      const avatarURL = await updateAvatarUsers(updateAvatar);
+      const avatarURL = await updateAvatarUsers(newPictureUser);
 
       console.log(avatarURL);
-      if (avatarURL) {
-        toast.success('The photo has been successfully uploaded.', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      }
+      toast.success('The photo has been successfully uploaded.', {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return avatarURL;
     } catch (error) {
-      console.log(error);
+      console.log(error.avatarURL);
       toast.error(
         `Unfortunately, the photo wasn't upload successfully. Please try again.`,
         {

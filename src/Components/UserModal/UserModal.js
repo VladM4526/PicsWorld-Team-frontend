@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   UserModalWrapper,
   UserModalDiv,
@@ -8,8 +9,17 @@ import {
   UserListItem,
 } from './UserModal.styled.js';
 import WaterTracker from '../../img/set-icons.svg';
+import { ModalWrapper } from '../../Components/Modal-window/ModalWrapper.jsx';
+
+import { UserSettingModal } from '../UserSettingModal/UserSettingModal';
 
 export const UserLogoModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = e => {
+    setIsOpen(isOpen => !isOpen);
+  };
+
   return (
     <UserModalWrapper>
       <UserModalDiv>
@@ -19,7 +29,14 @@ export const UserLogoModal = () => {
               <UserModalBtnSvg>
                 <use href={`${WaterTracker}#icon-setting`}></use>
               </UserModalBtnSvg>
-              <UserModalText>Setting</UserModalText>
+              Setting
+              {isOpen && (
+                <UserModalText>
+                  <ModalWrapper title="User Setting" onClose={toggleModal}>
+                    <UserSettingModal />
+                  </ModalWrapper>
+                </UserModalText>
+              )}
             </UserModalBtn>
           </UserListItem>
           <UserListItem>

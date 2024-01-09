@@ -11,6 +11,7 @@ export const UserModalDiv = styled.div`
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
   position: absolute;
   right: 0px;
+  z-index: 1;
 `;
 
 export const UserList = styled.ul``;

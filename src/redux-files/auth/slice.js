@@ -3,12 +3,13 @@ import {
   addWaterRateThunk,
   refreshUserAccount,
   signInThunk,
-  // updateAvatarUser,
+  updateAvatarUser,
 } from './thunk';
 
 // add name after login or registration
 const initialState = {
   user: {
+    name: null,
     email: null,
     password: null,
     avatarURL: null,
@@ -46,7 +47,8 @@ const authSlice = createSlice({
         // console.log(payload);
         state.selectIsLoggedIn = true;
         state.user.waterRate = payload;
-      });
+      })
+      .addCase(updateAvatarUser.fulfilled, updateAvatarUser);
   },
 });
 

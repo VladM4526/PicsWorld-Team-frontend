@@ -8,14 +8,14 @@ import { updateAvatarUser } from '../../redux-files/auth/thunk';
 
 // import WaterTrackerIcons from '../../img/set-icons.svg';
 
-export const UserSettingModal = () => {
+export const UserSettingModal = ({ onClose }) => {
   //   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const users = useSelector(selectUser);
 
   const handelChange = e => {
     const formaData = new FormData();
-    formaData.append('avatar', e.target.files);
+    formaData.append('avatar', e.target.file);
     if (e.target.files[0]) {
       dispatch(updateAvatarUser(formaData));
     }
