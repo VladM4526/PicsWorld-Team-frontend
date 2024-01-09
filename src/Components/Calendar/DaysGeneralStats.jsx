@@ -30,7 +30,7 @@ export const DaysGeneralStats = ({ hoverPos, dayStats, onClose }) => {
   }, [onClose]);
 
   return (
-    <CalendarHoverStyled hover={hoverPos} data-hover>
+    <CalendarHoverStyled $hover={hoverPos} data-hover>
       <div>
         <h4>{dayStats.dateName}</h4>
         {isMobil && (

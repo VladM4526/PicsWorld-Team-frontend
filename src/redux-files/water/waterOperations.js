@@ -9,15 +9,8 @@ import {
 } from 'helpers/api/apiWater.js';
 import { setToken } from 'helpers/api/apiUser';
 import axios from 'axios';
-console.log('first', axios.defaults.headers.common.Authorization);
 
 const headerAxiosToken = axios.defaults.headers.common.Authorization;
-// const checkToken = token => {
-//   if (!axios.defaults.headers.common.Authorization) {
-//     setToken(token);
-//   }
-//   return;
-// };
 
 export const fetchWater = createAsyncThunk(
   'water/today',
@@ -25,10 +18,7 @@ export const fetchWater = createAsyncThunk(
     if (!headerAxiosToken) {
       setToken(thunkAPI.getState().auth.token);
     }
-    // const state = thunkAPI.getState();
-    // }
     try {
-      //
       const data = await getWaterNotes();
 
       toast.success(`Ok`);
