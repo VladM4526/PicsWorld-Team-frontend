@@ -15,10 +15,10 @@ export const LogOutModal = ({ onClose }) => {
     <>
         <DeleteText>Do you really want to leave?</DeleteText>
       <LogOutBtns>
-        <Button typeStyle="button" $width="160px" onClick={onClose}>
+        <Button type="button" onClick={onClose}>
           Cancel
         </Button>
-        <Button typeStyle="accept" $width="160px" onClick={handleSubmit}>
+        <Button type="button" onClick={handleSubmit}>
           Log out
         </Button>
       </LogOutBtns>

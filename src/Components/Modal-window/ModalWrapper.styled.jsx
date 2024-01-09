@@ -11,6 +11,7 @@ export const ModalWrapStyled = styled.div`
   padding-bottom: 20px;
   display: flex;
   justify-content: center;
+  z-index: 100;
 
   @media only screen and (min-width: 768px) {
     padding-top: 40px;

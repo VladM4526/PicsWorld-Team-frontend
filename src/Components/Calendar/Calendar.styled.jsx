@@ -99,10 +99,10 @@ export const BtnArrowCalendarStyled = styled.button`
 
 export const CalendarHoverStyled = styled.div`
   position: absolute;
-  width: ${({ hover: { width } }) => width}px;
-  height: ${({ hover: { height } }) => height}px;
+  width: ${({ $hover: { width } }) => width}px;
+  height: ${({ $hover: { height } }) => height}px;
   left: 50%;
-  top: ${({ hover: { top } }) => top}px;
+  top: ${({ $hover: { top } }) => top}px;
   transform: translateX(-50%);
   display: flex;
   padding: 24px 13px;
@@ -142,8 +142,8 @@ export const CalendarHoverStyled = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-    top: ${({ hover: { top } }) => top}px;
-    right: ${({ hover: { right } }) => right}px;
+    top: ${({ $hover: { top } }) => top}px;
+    right: ${({ $hover: { right } }) => right}px;
     left: unset;
     transform: none;
     padding: 24px 16px;

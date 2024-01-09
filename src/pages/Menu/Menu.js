@@ -39,14 +39,14 @@ export const Menu = () => {
             )}
           </NavLink>
         </LogoContainer>
-        <UserData onClick={e => setIsActive(!isActive)}>
+        <UserData onClick={toggleModal}>
           {user.name ? user.name.split('')[0].toUpperCase() : 'V'}
           {users.avatarURL && (
             <img src={users.avatarURL} alt="avatar" width="50px" />
           )}
         </UserData>
       </HeaderSection>
-      {isActive && <UserLogoModal onClose={toggleModal} />}
+      {isActive && <UserLogoModal onCloseSetting={toggleModal} />}
     </HeaderContainer>
   );
 };

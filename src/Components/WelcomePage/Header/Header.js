@@ -20,7 +20,6 @@ export const Header = () => {
             </LogoApp>
           </NavLink>
         </LogoContainer>
-
         <HeaderWrapper>
           <HeaderBtn type="button">
             <NavLink to="/FormLogin">Sign in</NavLink>

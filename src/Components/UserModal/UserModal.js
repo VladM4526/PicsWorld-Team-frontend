@@ -14,18 +14,19 @@ import { ModalWrapper } from '../../Components/Modal-window/ModalWrapper.jsx';
 import { UserSettingModal } from '../UserSettingModal/UserSettingModal';
 import { LogOutModal } from 'Components/LogOutModal/LogOutModal.js';
 
-export const UserLogoModal = () => {
+export const UserLogoModal = ({onCloseSetting}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setIsTitle] = useState('Setting');
 
-  const toggleModal = e => {
+  const toggleModal = e => { 
     setIsOpen(isOpen => !isOpen);
-  };
+     };
 
   const onClickBtn = title => {
     setIsTitle(title);
     toggleModal();
   };
+
 
   return (
     <UserModalWrapper>
@@ -49,7 +50,8 @@ export const UserLogoModal = () => {
           </UserListItem>
         </UserList>
       </UserModalDiv>
-            {isOpen && (
+
+      {isOpen && (
         <ModalWrapper title={title} onClose={toggleModal}>
           {title === 'Setting' ? (
             <UserSettingModal onClose={toggleModal}/>
@@ -58,6 +60,7 @@ export const UserLogoModal = () => {
           )}
         </ModalWrapper>
       )}
+
     </UserModalWrapper>
   );
 };
