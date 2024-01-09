@@ -2,9 +2,21 @@ import { useRef } from 'react';
 // import { Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux-files/auth/selectors';
-
+import WaterTracker from '../../img/set-icons.svg';
 // import { validateSchema } from 'schemas/validationSchema';
 import { updateAvatarUser } from '../../redux-files/auth/thunk';
+import {
+  ButtonIconUpload,
+  ButtonUpload,
+  ContainerGender,
+  ContainerUpload,
+  GenderList,
+  GenderListItem,
+  ImageUser,
+  TextUpload,
+  Title,
+  Upload,
+} from './UserSettingModal.styled';
 
 // import WaterTrackerIcons from '../../img/set-icons.svg';
 
@@ -21,7 +33,6 @@ export const UserSettingModal = ({ onClose }) => {
       dispatch(updateAvatarUser(newPictureUser));
       console.log(newPictureUser);
     } else {
-      // Handle the case where the user canceled file selection
       console.log('No file selected');
     }
   };
@@ -33,25 +44,37 @@ export const UserSettingModal = ({ onClose }) => {
   };
   return (
     <>
-      <h1>Setting</h1>
       <div>
-        <h1>Your photo</h1>
-        {users.avatarURL && <img src={users.avatarURL} alt="avatar" />}
-        <input
-          ref={filePecker}
-          type="file"
-          accept=".png"
-          onChange={handleChange}
-        />
-        <button type="button" onClick={handlerClick}>
-          <span>Upload a photo</span>
-        </button>
+        <Title>Your photo</Title>
+        <ContainerUpload>
+          {users.avatarURL && <ImageUser src={users.avatarURL} alt="avatar" />}
+          <Upload
+            ref={filePecker}
+            type="file"
+            accept=".png"
+            onChange={handleChange}
+          />
+          <ButtonUpload type="button" onClick={handlerClick}>
+            <ButtonIconUpload>
+              <use href={`${WaterTracker}#icon-upload`}></use>
+            </ButtonIconUpload>
+            <TextUpload>Upload a photo</TextUpload>
+          </ButtonUpload>
+        </ContainerUpload>
 
-        <h1>Your gender identity</h1>
-        <input type="radio" />
-        <p>Girl</p>
-        <input type="radio" />
-        <p>Men</p>
+        <Title>Your gender identity</Title>
+        <ContainerGender>
+          <GenderList>
+            <GenderListItem>
+              <input type="radio" />
+              <p>Girl</p>
+            </GenderListItem>
+            <GenderListItem>
+              <input type="radio" />
+              <p>Men</p>
+            </GenderListItem>
+          </GenderList>
+        </ContainerGender>
       </div>
     </>
   );

@@ -46,7 +46,7 @@ export const updateAvatarUsers = async newPictureUser => {
     },
   });
   console.log(avatarURL);
-  return avatarURL;
+  return avatarURL.data;
 };
 
 export const updateUserAccount = async updateUser => {

@@ -27,6 +27,10 @@ export const App = () => {
     if (token) {
       dispatch(refreshUserAccount());
     }
+
+    if (!token) {
+      dispatch(refreshUserAccount());
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

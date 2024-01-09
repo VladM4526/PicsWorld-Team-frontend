@@ -35,7 +35,6 @@ export const HeaderSection = styled.header`
 `;
 
 export const LogoApp = styled.svg`
-  display: block;
   width: 102px;
   height: 48px;
 `;
@@ -78,11 +77,5 @@ export const LogoContainer = styled.div`
 
   @media only screen and (max-width: 768px) {
     max-width: 1216px;
-  }
-`;
-export const LogoIcon = styled.svg`
-  width: 40px;
-  @media only screen and (max-width: 767px) {
-    height: 48px;
   }
 `;

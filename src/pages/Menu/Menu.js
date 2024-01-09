@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import {
   HeaderContainer,
   HeaderSection,
@@ -14,10 +13,8 @@ import { selectUser, selectIsLoggedIn } from '../../redux-files/auth/selectors';
 import { UserLogoModal } from 'Components/UserModal/UserModal';
 
 export const Menu = () => {
-  // const dispatch = useDispatch();
   const users = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  //   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [isActive, setIsActive] = useState(false);
 
@@ -29,7 +26,7 @@ export const Menu = () => {
     <HeaderContainer>
       <HeaderSection>
         <LogoContainer>
-          <NavLink to={isLoggedIn ? '/HomePage' : '/'}>
+          <NavLink path="/">
             {isLoggedIn && (
               <>
                 <LogoApp>
