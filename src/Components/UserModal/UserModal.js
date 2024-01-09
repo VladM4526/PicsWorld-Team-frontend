@@ -12,12 +12,19 @@ import WaterTracker from '../../img/set-icons.svg';
 import { ModalWrapper } from '../../Components/Modal-window/ModalWrapper.jsx';
 
 import { UserSettingModal } from '../UserSettingModal/UserSettingModal';
+import { LogOutModal } from 'Components/LogOutModal/LogOutModal.js';
 
 export const UserLogoModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [title, setIsTitle] = useState('Setting');
 
   const toggleModal = e => {
     setIsOpen(isOpen => !isOpen);
+  };
+
+  const onClickBtn = title => {
+    setIsTitle(title);
+    toggleModal();
   };
 
   return (
@@ -25,22 +32,15 @@ export const UserLogoModal = () => {
       <UserModalDiv>
         <UserList>
           <UserListItem>
-            <UserModalBtn>
+            <UserModalBtn onClick={() => onClickBtn('Setting')}>
               <UserModalBtnSvg>
                 <use href={`${WaterTracker}#icon-setting`}></use>
-              </UserModalBtnSvg>
-              Setting
-              {isOpen && (
-                <UserModalText>
-                  <ModalWrapper title="User Setting" onClose={toggleModal}>
-                    <UserSettingModal />
-                  </ModalWrapper>
-                </UserModalText>
-              )}
+              </UserModalBtnSvg>           
+                <UserModalText>Setting</UserModalText>
             </UserModalBtn>
           </UserListItem>
           <UserListItem>
-            <UserModalBtn>
+            <UserModalBtn onClick={() => onClickBtn('Log out')}>
               <UserModalBtnSvg>
                 <use href={`${WaterTracker}#icon-log-out`}></use>
               </UserModalBtnSvg>
@@ -49,6 +49,15 @@ export const UserLogoModal = () => {
           </UserListItem>
         </UserList>
       </UserModalDiv>
+            {isOpen && (
+        <ModalWrapper title={title} onClose={toggleModal}>
+          {title === 'Setting' ? (
+            <UserSettingModal onClose={toggleModal}/>
+          ) : (
+            <LogOutModal  onClose={toggleModal}/>
+          )}
+        </ModalWrapper>
+      )}
     </UserModalWrapper>
   );
 };

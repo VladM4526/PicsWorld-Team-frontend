@@ -1,38 +1,27 @@
+import { Button, DeleteText } from 'Components/DeleteEntry/DeleteEntry.styled.js';
 import {
   LogOutBtns,
-  LogOutClose,
-  LogOutHeader,
-  LogOutText,
-  LogOutWindow,
-  HoverCloseBtn,
-  Button,
 } from './LogOutModal.styled.js';
-import WaterTracker from '../WelcomePage/img/set-icons.svg';
+
 
 export const LogOutModal = ({ onClose }) => {
+  // const dispatch = useDispatch()
+  const handleSubmit = () => {
+    // dispatch(); // сюди треба доставити функцію виходу користувача і розкоментувати dispatch
+    onClose()
+  }
+  
   return (
-    <LogOutWindow>
-      <LogOutHeader>
-        <p>Log out</p>
-        <LogOutClose>
-          <HoverCloseBtn>
-            <svg>
-              <use href={`${WaterTracker}#icon-open-closed`}></use>
-            </svg>
-          </HoverCloseBtn>
-        </LogOutClose>
-      </LogOutHeader>
-      <LogOutText>
-        <p>Do you really want to leave?</p>
-      </LogOutText>
+    <>
+        <DeleteText>Do you really want to leave?</DeleteText>
       <LogOutBtns>
-        <Button typeStyle="escape" $width="160px">
+        <Button typeStyle="button" $width="160px" onClick={onClose}>
           Cancel
         </Button>
-        <Button typeStyle="accept" $width="160px">
+        <Button typeStyle="accept" $width="160px" onClick={handleSubmit}>
           Log out
         </Button>
       </LogOutBtns>
-    </LogOutWindow>
+    </>
   );
 };
