@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { validateSchema } from '../../schemas/validationSchema';
 
 import WaterTrackerIcons from '../../img/set-icons.svg';
-import { signUpThunk } from '../../redux-files/auth/backendRequest';
+import { signUpThunk } from '../../redux-files/auth/thunk';
 
 const initialValues = {
   email: '',
@@ -129,5 +129,3 @@ export const FormRegistration = () => {
     </FormWrapper>
   );
 };
-
-export default FormRegistration;

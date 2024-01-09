@@ -3,9 +3,9 @@ import {
   addWaterRateThunk,
   refreshUserAccount,
   signInThunk,
-} from './backendRequest';
+  updateAvatarUser,
+} from './thunk';
 
-// const valueUser = 'V';
 // add name after login or registration
 const initialState = {
   user: {
@@ -29,7 +29,7 @@ const authSlice = createSlice({
       .addCase(signInThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.user.token;
-        state.isLoggedIn = true;
+        state.selectIsLoggedIn = true;
       })
 
       .addCase(refreshUserAccount.pending, state => {
@@ -37,18 +37,18 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserAccount.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLoggedIn = true;
+        state.selectIsLoggedIn = true;
         state.isRefreshing = false;
-        console.log(action);
       })
       .addCase(refreshUserAccount.rejected, state => {
         state.isRefreshing = false;
       })
       .addCase(addWaterRateThunk.fulfilled, (state, { payload }) => {
         // console.log(payload);
-        state.isLoggedIn = true;
+        state.selectIsLoggedIn = true;
         state.user.waterRate = payload;
-      });
+      })
+      .addCase(updateAvatarUser.fulfilled, updateAvatarUser);
   },
 });
 

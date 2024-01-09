@@ -1,5 +1,5 @@
 import { FormSection, ImgBottle } from 'Components/FormLogin/Form.styled';
-import FormRegistration from './FormRegistration';
+import { FormRegistration } from './FormRegistration';
 
 export const FormSignUp = () => {
   return (

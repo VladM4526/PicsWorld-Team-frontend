@@ -32,7 +32,35 @@ export const refreshUser = async token => {
   return data;
 };
 
-export const addWaterRate = async (waterRate) => {
-    const { data } = await axios.put(`/users/waterrate`, {waterRate: waterRate});
-    return data.waterRate;
+export const addWaterRate = async waterRate => {
+  const { data } = await axios.put(`/users/waterrate`, {
+    waterRate: waterRate,
+  });
+  return data.waterRate;
+};
+
+export const updateAvatarUsers = async newPictureUser => {
+  const {
+    data: { avatarURL },
+  } = await axios.patch('/users/avatars', newPictureUser, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return avatarURL;
+};
+
+export const updateUserAccount = async updateUser => {
+  const datasForSend = {};
+  const entries = Object.entries(updateUser);
+  entries.forEach(([key, value]) => {
+    if (value) {
+      datasForSend[key] = value;
+    }
+  });
+  if (!datasForSend.newPassword) {
+    delete datasForSend.oldPassword;
+  }
+  const { data } = await axios.patch('/users/userinfo', datasForSend);
+  return data;
 };

@@ -20,8 +20,6 @@ export const fetchWater = createAsyncThunk(
     }
     try {
       const data = await getWaterNotes();
-
-      toast.success(`Ok`);
       return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
     } catch (error) {
       toast.error(
@@ -40,7 +38,6 @@ export const fetchStats = createAsyncThunk(
     }
     try {
       const data = await getWaterStats(month);
-      toast.success(`Ok`);
       return data;
     } catch (error) {
       toast.error(
@@ -56,7 +53,7 @@ export const addWater = createAsyncThunk(
   async (waterNote, { rejectWithValue }) => {
     try {
       const data = await addWaterNote(waterNote);
-      toast.success(`Ok`);
+       toast.success(`Your record was added`);
       return {
         _id: data._id,
         waterVolume: data.waterVolume,
@@ -76,7 +73,7 @@ export const deleteWater = createAsyncThunk(
   async (waterNoteId, { rejectWithValue }) => {
     try {
       await deleteWaterNote(waterNoteId);
-      toast.success(`Ok`);
+      toast.success(`Your record was deleted`);
       return waterNoteId;
     } catch (error) {
       toast.error(
@@ -92,7 +89,7 @@ export const editWater = createAsyncThunk(
   async (note, { rejectWithValue }) => {
     try {
       const data = await editWaterNote(note);
-      toast.success(`Ok`);
+      toast.success(`Your record was edited`);
       return data;
     } catch (error) {
       toast.error(
