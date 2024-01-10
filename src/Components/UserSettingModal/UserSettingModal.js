@@ -9,7 +9,7 @@ import {
   StyledField,
   SvgStyled,
 } from 'Components/FormLogin/Form.styled';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 
 import { useRef, useState } from 'react';
@@ -59,7 +59,7 @@ export const UserSettingModal = ({ onClose }) => {
       const userEmail = values.email;
       const userOldPassword = values.oldPassword;
       const userNewPassword = values.newPassword;
-      // const userRepeatPassword = values.repeatPassword;
+      const userRepeatPassword = values.repeatNewPassword;
       const userGender = values.gender;
       
       let data = null;
@@ -77,14 +77,15 @@ export const UserSettingModal = ({ onClose }) => {
       }
       // || userNewPassword || userRepeatPassword) && user.password === userOldPassword
       if (userOldPassword ){
-      //   if (userNewPassword !== userRepeatPassword) {
-      //     toast.error(`Password must be the same`, {
-      //       position: toast.POSITION.TOP_CENTER,
-      //     }); 
-      // } else{
-        
-      // }
-      data = {...data, oldPassword: userOldPassword, newPassword: userNewPassword}
+        if (userNewPassword !== userRepeatPassword) {
+          toast.error(`Password must be the same`, {
+            position: toast.POSITION.TOP_CENTER,
+          }); 
+          return;
+      } else{
+        data = {...data, oldPassword: userOldPassword, newPassword: userNewPassword}
+      }
+      
     }
 
     if (data){
@@ -93,11 +94,11 @@ export const UserSettingModal = ({ onClose }) => {
   };
 
   const togglePasswordVisibility = field => {
-    if (field === 'newPasword') {
+    if (field === 'newPassword') {
       setShowPassword(!showPassword);
     } else if (field === 'repeatNewPassword') {
       setRepeatNewPassword(!showRepeatNewPassword);
-    }else if (field === 'oldPasword') {
+    }else if (field === 'oldPassword') {
       setOldShowPassword(!oldShowPassword);
     }
   };
@@ -238,7 +239,7 @@ export const UserSettingModal = ({ onClose }) => {
                     }`}
                   ></use>
                 </SvgStyled>
-                <ErrorMessage name="repeatPassword" component={ErrorMsg} />
+                <ErrorMessage name="newPassword" component={ErrorMsg} />
               </InputWrapper>
             </Label>
             <Label>
