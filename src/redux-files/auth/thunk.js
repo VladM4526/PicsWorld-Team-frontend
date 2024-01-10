@@ -118,6 +118,8 @@ export const updateUserProfileThunk = createAsyncThunk(
   async (updateUser, { rejectWithValue }) => {
     try {
       const response = await updateUserAccount(updateUser);
+      console.log(updateUser);
+      console.log(response);
       return response;
     } catch (error) {
       switch (error.response.status) {
