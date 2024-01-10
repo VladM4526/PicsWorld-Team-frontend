@@ -6,6 +6,7 @@ import {
   editWater,
   fetchStats,
 } from './waterOperations';
+// import { logout } from 'redux-files/error/errorSlice';
 
 const waterSlice = createSlice({
   name: 'water',
@@ -80,6 +81,16 @@ const waterSlice = createSlice({
       .addCase(fetchStats.rejected, (state, { payload }) => {
         rejectError(state, payload);
       }),
+      // .addCase(logout, state => {
+      //   return {
+      //     percentage: '0%',
+      //     waterRecords: [],
+      //     stats: [],
+      //     isLoading: false,
+      //     error: null,
+      //   }
+      // }),
+
 });
 
 function rejectError(state, payload) {

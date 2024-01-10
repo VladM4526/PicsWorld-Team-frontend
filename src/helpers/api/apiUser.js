@@ -48,17 +48,7 @@ export const updateAvatarUsers = async newPictureUser => {
 };
 
 export const updateUserAccount = async updateUser => {
-  const datasForSend = {};
-  const entries = Object.entries(updateUser);
-  entries.forEach(([key, value]) => {
-    if (value) {
-      datasForSend[key] = value;
-    }
-  });
-  if (!datasForSend.newPassword) {
-    delete datasForSend.oldPassword;
-  }
-  const { data } = await axios.patch('/users/userinfo', datasForSend);
+  const { data } = await axios.patch('/users/userinfo', updateUser );
   return data;
 };
 
