@@ -9,7 +9,7 @@ import {
   StyledField,
   SvgStyled,
 } from 'Components/FormLogin/Form.styled';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 
 import { useRef, useState } from 'react';
@@ -42,24 +42,31 @@ const initialValues = {
   email: '',
   gender: '',
   oldPassword: '',
-  newPasword: '',
+  newPassword: '',
   repeatNewPassword: '',
 };
 
 export const UserSettingModal = ({ onClose }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const [repeatShowPassword, setRepeatShowPassword] = useState(false);
+  const [showRepeatNewPassword, setRepeatNewPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [oldShowPassword, setOldShowPassword] = useState(false);
 
   const handleSubmit = async values => {
       const userName = values.name;
       const userEmail = values.email;
       const userOldPassword = values.oldPassword;
       const userNewPassword = values.newPassword;
-      const userRepeatPassword = values.repeatPassword;
-
+      // const userRepeatPassword = values.repeatPassword;
+      const userGender = values.gender;
+      
       let data = null;
+
+      if (userGender){
+        data = {...data, gender: userGender}
+      }
       
       if (userName && user.name !== userName) {
         data = { ...data, name: userName };
@@ -68,14 +75,16 @@ export const UserSettingModal = ({ onClose }) => {
       if (userEmail && user.email !== userEmail) {
         data = { ...data, email: userEmail };
       }
-      if ((userOldPassword || userNewPassword || userRepeatPassword) && user.password === userOldPassword){
-        if (userNewPassword !== userRepeatPassword) {
-          toast.error(`Password must be the same`, {
-            position: toast.POSITION.TOP_CENTER,
-          }); 
-      } else{
-        data = {...data, oldPassword: userOldPassword, newPassword: userNewPassword}
-      }
+      // || userNewPassword || userRepeatPassword) && user.password === userOldPassword
+      if (userOldPassword ){
+      //   if (userNewPassword !== userRepeatPassword) {
+      //     toast.error(`Password must be the same`, {
+      //       position: toast.POSITION.TOP_CENTER,
+      //     }); 
+      // } else{
+        
+      // }
+      data = {...data, oldPassword: userOldPassword, newPassword: userNewPassword}
     }
 
     if (data){
@@ -87,7 +96,9 @@ export const UserSettingModal = ({ onClose }) => {
     if (field === 'newPasword') {
       setShowPassword(!showPassword);
     } else if (field === 'repeatNewPassword') {
-      setRepeatShowPassword(!repeatShowPassword);
+      setRepeatNewPassword(!showRepeatNewPassword);
+    }else if (field === 'oldPasword') {
+      setOldShowPassword(!oldShowPassword);
     }
   };
 
@@ -130,23 +141,6 @@ export const UserSettingModal = ({ onClose }) => {
             </ContainerUpload>
         </div>
 
-        {/* <PhotoWrapper>
-          <PhotoTitle>Your photo</PhotoTitle>
-          <UploadPhotoWrapper>
-            {userPhoto && <UserLogo src={userPhoto} />}
-            {!userPhoto && (
-              <UserNoLogo src={userPhoto}>
-                <UserIcon width={80} height={80} />
-              </UserNoLogo>
-            )}
-            <UploadPhotoButton>
-              <UploadPhoto src={userPhoto} alt={userName} />
-              Upload a photo
-              <UploadPhotoInput type="file" accept="image/*" onChange={handlerSetUserPhoto} />
-            </UploadPhotoButton>
-          </UploadPhotoWrapper>
-        </PhotoWrapper> */}
-
     <FormWrapper>
       <Formik
         initialValues={initialValues}
@@ -165,7 +159,7 @@ export const UserSettingModal = ({ onClose }) => {
                   type="radio"
                   name="gender"
                   value="female"
-                  // onChange={e => handleChange(e, formikProps)}
+                  
                 />
                 Girl
               </LabelRadio>
@@ -174,7 +168,7 @@ export const UserSettingModal = ({ onClose }) => {
                   type="radio"
                   name="gender"
                   value="male"
-                  // onChange={e => handleChange(e, formikProps)}
+                  
                 />
                 Man
               </LabelRadio>
@@ -185,7 +179,7 @@ export const UserSettingModal = ({ onClose }) => {
               type="name"
               name="name"
               placeholder="David"
-              $hasError={touched.email && errors.name}
+              $hasError={touched.name && errors.name}
               value={values.name}
             />
 
@@ -203,7 +197,7 @@ export const UserSettingModal = ({ onClose }) => {
             Outdated password:
               <InputWrapper>
                 <StyledField
-                  type={showPassword ? 'text' : 'password'}
+                  type={oldShowPassword ? 'text' : 'password'}
                   name="oldPassword"
                   placeholder="Password"
                   $hasError={touched.oldPassword && errors.oldPassword}
@@ -212,7 +206,7 @@ export const UserSettingModal = ({ onClose }) => {
                 <SvgStyled
                   height="16"
                   width="16"
-                  onClick={() => togglePasswordVisibility('password')}
+                  onClick={() => togglePasswordVisibility('oldPassword')}
                 >
                   <use
                     href={`${WaterTrackerIcons}#${
@@ -227,7 +221,7 @@ export const UserSettingModal = ({ onClose }) => {
             New Password:
               <InputWrapper>
                 <StyledField
-                  type={repeatShowPassword ? 'text' : 'password'}
+                  type={showPassword ? 'text' : 'password'}
                   name="newPassword"
                   placeholder="Password"
                   $hasError={touched.newPassword && errors.newPassword}
@@ -236,7 +230,7 @@ export const UserSettingModal = ({ onClose }) => {
                 <SvgStyled
                   height="16"
                   width="16"
-                  onClick={() => togglePasswordVisibility('repeatPassword')}
+                  onClick={() => togglePasswordVisibility('newPassword')}
                 >
                   <use
                     href={`${WaterTrackerIcons}#${
@@ -251,20 +245,20 @@ export const UserSettingModal = ({ onClose }) => {
             Repeat new password:
               <InputWrapper>
                 <StyledField
-                  type={repeatShowPassword ? 'text' : 'password'}
+                  type={showRepeatNewPassword ? 'text' : 'password'}
                   name="repeatNewPassword"
                   placeholder="Password"
                   $hasError={touched.repeatNewPassword && errors.repeatNewPassword}
-                  value={values.repeatPassword}
+                  value={values.repeatNewPassword}
                 />
                 <SvgStyled
                   height="16"
                   width="16"
-                  onClick={() => togglePasswordVisibility('repeatPassword')}
+                  onClick={() => togglePasswordVisibility('repeatNewPassword')}
                 >
                   <use
                     href={`${WaterTrackerIcons}#${
-                      showPassword ? 'icon-eye-open' : 'icon-open-closed'
+                      showRepeatNewPassword ? 'icon-eye-open' : 'icon-open-closed'
                     }`}
                   ></use>
                 </SvgStyled>

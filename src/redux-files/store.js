@@ -13,6 +13,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { waterReducer } from 'redux-files/water/waterSlice';
 import { authReducer } from 'redux-files/auth/slice';
+// import  errorReducer from 'redux-files/error/errorSlice';
+
 
 const PersistConfig = {
   key: 'token',
@@ -24,6 +26,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(PersistConfig, authReducer),
     water: waterReducer,
+    // error: errorReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -6,6 +6,7 @@ import {
   updateAvatarUser,
   logOutUser,
 } from './thunk';
+// import { logout } from 'redux-files/error/errorSlice';
 
 // add name after login or registration
 const initialState = {
@@ -37,6 +38,11 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       })
+      // .addCase(logout, state => {
+      //   state.user = { name: null, email: null };
+      //   state.token = null;
+      //   state.isLoggedIn = false;
+      // })
       .addCase(refreshUserAccount.pending, state => {
         state.isRefreshing = true;
       })

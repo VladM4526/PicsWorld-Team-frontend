@@ -15,6 +15,7 @@ import {
   selectIsLoggedIn,
 } from '../redux-files/auth/selectors';
 import { refreshUserAccount } from '../redux-files/auth/thunk';
+// import Error from './Error/Error';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ export const App = () => {
           <Route path="/WelcomePage" element={<WelcomePage />} />
         )}
       </Routes>
+      {/* <Error/> */}
     </>
   );
 };
