@@ -49,7 +49,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(addWaterRateThunk.fulfilled, (state, { payload }) => {
-        // console.log(payload);
         state.isLoggedIn = true;
         state.user.waterRate = payload;
       })

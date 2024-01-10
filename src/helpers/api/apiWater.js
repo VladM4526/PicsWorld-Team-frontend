@@ -22,7 +22,6 @@ export const addWaterNote = async newNote => {
 
 export const editWaterNote = async ({ id, newNote }) => {
   const { data } = await axios.patch(`/water/update/${id}`, newNote);
-  console.log('data', data);
   return data;
 };
 

@@ -15,7 +15,6 @@ const deleteToken = () => {
 export const signup = async body => {
   const { data } = await axios.post('/auth/signup', body);
   setToken(data.token);
-  console.log(setToken(data.token));
   return data;
 };
 

@@ -36,13 +36,13 @@ const TodayList = () => {
             editDate={item.date}
           />
         ))}
-        <AddLink onClick={toggleModal}>
+      </WaterList>
+              <AddLink onClick={toggleModal}>
           <SvgPlus>
             <use href={`${WaterTrackerIcons}#icon-plus-transparent`}></use>
           </SvgPlus>
           <span>Add water</span>
         </AddLink>
-      </WaterList>
       {isOpen && (
         <ModalWrapper title="Add water" onClose={toggleModal}>
           <AddEditWater onClose={toggleModal} />
