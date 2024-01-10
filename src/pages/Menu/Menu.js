@@ -8,10 +8,11 @@ import {
   LogoContainer,
   UserData,
   UserPicture,
+  UserLogoWrapper
 } from 'Components/WelcomePage/Header/Header.styled';
 import WaterTracker from '../../img/set-icons.svg';
 import { selectUser, selectIsLoggedIn } from '../../redux-files/auth/selectors';
-import { UserLogoModal } from 'Components/UserModal/UserModal';
+import { UserLogoModal} from 'Components/UserModal/UserModal';
 
 export const Menu = () => {
   const users = useSelector(selectUser);
@@ -37,14 +38,17 @@ export const Menu = () => {
             )}
           </NavLink>
         </LogoContainer>
+        <UserLogoWrapper>
         <UserData onClick={toggleModal}>
-          {user.name ? user.name.split('')[0].toUpperCase() : 'V'}
+          {user.name ? user.name : 'V'}
           {users.avatarURL && (
             <UserPicture src={users.avatarURL} alt="avatar" />
           )}
         </UserData>
+          {isActive && <UserLogoModal onCloseSetting={toggleModal} />}
+        </UserLogoWrapper>
       </HeaderSection>
-      {isActive && <UserLogoModal onCloseSetting={toggleModal} />}
+      
     </HeaderContainer>
   );
 };

@@ -9,6 +9,11 @@ export const HeaderContainer = styled.div`
   }
 `;
 
+export const UserLogoWrapper = styled.div`
+  position: relative;
+ align-self: center;
+`
+
 export const UserData = styled.p`
   cursor: pointer;
   display: flex;
@@ -23,7 +28,9 @@ export const HeaderSection = styled.header`
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
+  
   @media (min-width: 768px) {
     width: 704px;
     padding: 16px 32px 0px;

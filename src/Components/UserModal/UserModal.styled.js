@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const UserModalWrapper = styled.div`
   width: 118px;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
 `;
 
 export const UserModalDiv = styled.div`

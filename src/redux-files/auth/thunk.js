@@ -98,7 +98,7 @@ export const updateAvatarUser = createAsyncThunk(
       toast.success('The photo has been successfully uploaded.', {
         position: toast.POSITION.TOP_CENTER,
       });
-      console.log(avatarURL);
+      console.log(avatarURL)
       return avatarURL;
     } catch (error) {
       console.log(error.avatarURL);
@@ -119,6 +119,7 @@ export const updateUserProfileThunk = createAsyncThunk(
     try {
       const response = await updateUserAccount(updateUser);
       toast.success(`You are successful update profile`);
+      console.log(response)
       return response;
     } catch (error) {
       switch (error.response.status) {

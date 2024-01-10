@@ -12,7 +12,7 @@ import {
 import { toast } from 'react-toastify';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {  Formik, Form, ErrorMessage} from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux-files/auth/selectors';
@@ -39,6 +39,7 @@ import {
 
 
 const initialValues = {
+  name: '',
   email: '',
   gender: '',
   oldPassword: '',
@@ -62,7 +63,7 @@ export const UserSettingModal = ({ onClose }) => {
       const userRepeatPassword = values.repeatNewPassword;
       const userGender = values.gender;
       
-      let data = null;
+      let data = {};
 
       if (userGender){
         data = {...data, gender: userGender}
@@ -88,10 +89,14 @@ export const UserSettingModal = ({ onClose }) => {
       
     }
 
-    if (data){
+    if (Object.keys(data).length){
       dispatch(updateUserProfileThunk(data));
     }
   };
+
+  useEffect(() => {
+    onClose();
+  }, [user, onClose])
 
   const togglePasswordVisibility = field => {
     if (field === 'newPassword') {
@@ -144,10 +149,10 @@ export const UserSettingModal = ({ onClose }) => {
 
     <FormWrapper>
       <Formik
-        initialValues={initialValues}
+        initialValues={{...initialValues, name: user.name, email: user.email, gender: user.gender, oldPassword: '', }}
         validationSchema={settingsValidationSchema}
         onSubmit={values => {
-          onClose();
+          
           handleSubmit(values);
         }}
       >
@@ -159,8 +164,8 @@ export const UserSettingModal = ({ onClose }) => {
                 <StyledField
                   type="radio"
                   name="gender"
-                  value="female"
-                  
+                    value="female"
+                    checked={values.gender === "female"}  
                 />
                 Girl
               </LabelRadio>
@@ -169,7 +174,7 @@ export const UserSettingModal = ({ onClose }) => {
                   type="radio"
                   name="gender"
                   value="male"
-                  
+                  checked={values.gender === "male"}
                 />
                 Man
               </LabelRadio>
@@ -188,7 +193,7 @@ export const UserSettingModal = ({ onClose }) => {
             <StyledField
               type="email"
               name="email"
-              placeholder="david01@gmail.com"
+              placeholder={user.email}
               $hasError={touched.email && errors.email}
               value={values.email}
             />

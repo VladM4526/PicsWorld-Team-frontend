@@ -5,6 +5,7 @@ import {
   signInThunk,
   updateAvatarUser,
   logOutUser,
+  updateUserProfileThunk,
 } from './thunk';
 // import { logout } from 'redux-files/error/errorSlice';
 
@@ -60,8 +61,14 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatarUser.fulfilled, (state, { payload }) => {
         state.isLoggedIn = true;
-        state.user.avatarURL = payload;
-      });
+        state.user.avatarURL = payload.result.avatarURL;
+      })
+      .addCase(updateUserProfileThunk.fulfilled, (state, { payload }) => {
+        const { name, email, gender } = payload;
+        state.user = { ...state.user, name, email, gender}
+      })
+      ;
+    
   },
 });
 

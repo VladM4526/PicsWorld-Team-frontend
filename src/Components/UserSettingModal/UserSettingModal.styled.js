@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Field,ErrorMessage } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 
 export const LabelRadio = styled.label`
   color: #2F2F2F;
