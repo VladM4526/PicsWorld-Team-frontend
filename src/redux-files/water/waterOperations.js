@@ -24,9 +24,9 @@ export const fetchWater = createAsyncThunk(
       const data = await getWaterNotes();
       return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
     } catch (error) {
-      toast.error(
-        `Oops. Something goes wrong. Please try again! hi ${error.message}`
-      );
+      // toast.error(
+      //   `Oops. Something goes wrong. Please try again!`
+      // );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -43,7 +43,7 @@ export const fetchStats = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error(
-        `Oops. Something goes wrong. Please try again! ${error.message}`
+        `Oops. Something goes wrong. Please try again!`
       );
       return rejectWithValue(error.message);
     }
@@ -63,7 +63,7 @@ export const addWater = createAsyncThunk(
       };
     } catch (error) {
       toast.error(
-        `Oops! Something goes wrong. Please try again! ${error.message}`
+        `Oops! Something goes wrong. Please try again!`
       );
       return rejectWithValue(error.message);
     }
@@ -79,7 +79,7 @@ export const deleteWater = createAsyncThunk(
       return waterNoteId;
     } catch (error) {
       toast.error(
-        `Oops. Something goes wrong. Please try again! ${error.message}`
+        `Oops. Something goes wrong. Please try again!`
       );
       return rejectWithValue(error.message);
     }
@@ -95,7 +95,7 @@ export const editWater = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error(
-        `Oops. Something goes wrong. Please try again! ${error.message}`
+        `Oops. Something goes wrong. Please try again!`
       );
       return rejectWithValue(error.message);
     }

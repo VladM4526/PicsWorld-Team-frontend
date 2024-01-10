@@ -30,7 +30,7 @@ export const FormRegistration = () => {
   const [repeatShowPassword, setRepeatShowPassword] = useState(false);
 
   const handleSubmit = async values => {
-    console.log('Hello');
+
     if (values.password !== values.repeatPassword) {
       toast.error(`Password must be the same`, {
         position: toast.POSITION.TOP_CENTER,
