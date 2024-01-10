@@ -10,7 +10,7 @@ import { FormReg } from '../pages/FormReg';
 import { LoginPage } from '../pages/LoginPage';
 import { Loader } from './Loader/Loader';
 import {
-  selectUserToken,
+  // selectUserToken,
   selectIsRefreshing,
   selectIsLoggedIn,
 } from '../redux-files/auth/selectors';
@@ -20,15 +20,12 @@ import { refreshUserAccount } from '../redux-files/auth/thunk';
 export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const token = useSelector(selectUserToken);
+  // const token = useSelector(selectUserToken);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    if (token) {
-      dispatch(refreshUserAccount());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(refreshUserAccount());
+  }, [dispatch]);
 
   return isRefreshing ? (
     <Loader />
