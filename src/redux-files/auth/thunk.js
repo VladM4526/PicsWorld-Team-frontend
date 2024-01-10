@@ -24,7 +24,6 @@ export const signInThunk = createAsyncThunk(
       }
       return data;
     } catch (error) {
-      console.log(error);
       toast.error(`Email or password is wrong. Try again`);
       return rejectWithValue(error.message);
     }
@@ -36,8 +35,6 @@ export const signUpThunk = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const responce = await signup(body);
-
-      console.log(responce);
       if (responce) {
         toast.success('Hello! You are successful registration', {
           position: toast.POSITION.TOP_CENTER,
@@ -45,7 +42,6 @@ export const signUpThunk = createAsyncThunk(
       }
       return responce;
     } catch (error) {
-      console.log(error);
       toast.error(`Email or password is wrong. Try again`, {
         position: toast.POSITION.TOP_CENTER,
       });

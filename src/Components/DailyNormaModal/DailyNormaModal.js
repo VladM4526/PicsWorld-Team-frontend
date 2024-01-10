@@ -19,6 +19,7 @@ import {
 } from './DailyNormaModal.styled';
 import { addWaterRateThunk } from '../../redux-files/auth/thunk';
 import { dailyNormaValidationSchema } from 'schemas/dailyNormaValidationSchema';
+import { ErrorMsg } from 'Components/FormLogin/Form.styled';
 
 const initialValues = {
   weight: 0,
@@ -128,7 +129,7 @@ export const DailyNormaModal = ({ onClose }) => {
                 name="weight"
                 onChange={e => handleChange(e, formikProps)}
               />
-              <ErrorMessage name="weight" component="div" />
+              <ErrorMessage name="weight" component={ErrorMsg} />
             </Label>
             <Label>
               The time of active participation in sports or other activities
@@ -138,7 +139,7 @@ export const DailyNormaModal = ({ onClose }) => {
                 name="time"
                 onChange={e => handleChange(e, formikProps)}
               />
-              <ErrorMessage name="time" component="div" />
+              <ErrorMessage name="time" component={ErrorMsg} />
             </Label>
 
             <WrapperLiter>
@@ -151,7 +152,7 @@ export const DailyNormaModal = ({ onClose }) => {
             <LabelBold>
               Write down how much water you will drink:
               <StyledField type="number" name="water" />
-              <ErrorMessage name="water" component="div" />
+              <ErrorMessage name="water" component={ErrorMsg} />
             </LabelBold>
             <ButtonWrapper>
               <Button type="submit">Save</Button>
