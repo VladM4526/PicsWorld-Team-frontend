@@ -92,16 +92,7 @@ export const ButtonLogOut = styled(NavLink)`
   font-weight: 500;
   line-height: 1.33;
   border-radius: 10px;
-  background: #d7e3ff;
+  background: #ef5050;
+  color: #fff;
   cursor: pointer;
-  &:hover {
-    background: #ef5050;
-    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    color: #fff;
-  }
-  &:focus {
-    background: #ef5050;
-    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    color: #fff;
-  }
 `;
