@@ -179,7 +179,7 @@ export const UserSettingModal = ({ onClose }) => {
             <StyledField
               type="name"
               name="name"
-              placeholder="David"
+              placeholder={user.name}
               $hasError={touched.name && errors.name}
               value={values.name}
             />
