@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import bottleMob from '../../img/bottle_phone_edited.png';
-import bgDesktop from '../../img/bottle_sign_in_desktop@1x-min.png'
-import bgTab from '../../img/bottle_sign_in_tablet@1x-min.png'
+import bgDesktop from '../../img/bottle_sign_in_desktop@1x-min.png';
+import bgTab from '../../img/bottle_sign_in_tablet@1x-min.png';
 import { Field } from 'formik';
 
 // export const Form = styled.div`
@@ -80,7 +80,6 @@ export const FormWrapper = styled.div`
   @media (min-width: 1440px) {
     width: 384px;
   }
-
 `;
 
 export const SignInHeader = styled.h2`
@@ -142,6 +141,7 @@ export const Button = styled.button`
   border: none;
   width: 100%;
   margin-bottom: 16px;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);

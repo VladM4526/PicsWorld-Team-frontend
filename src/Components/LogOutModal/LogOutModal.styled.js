@@ -128,6 +128,7 @@ export const Button = styled.button`
     line-height: 1, 33;
     width: 336px;
     height: 44px;
+    cursor: pointer;
   }
   @media screen and (min-width: 1440px) {
     width: 384px;

@@ -16,5 +16,6 @@ button {
   border: none;
   outline: none;
   display: block;
+  cursor: pointer;
 }
 `;
