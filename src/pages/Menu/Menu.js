@@ -7,6 +7,7 @@ import {
   LogoApp,
   LogoContainer,
   UserData,
+  UserPicture,
 } from 'Components/WelcomePage/Header/Header.styled';
 import WaterTracker from '../../img/set-icons.svg';
 import { selectUser, selectIsLoggedIn } from '../../redux-files/auth/selectors';
@@ -39,7 +40,7 @@ export const Menu = () => {
         <UserData onClick={toggleModal}>
           {user.name ? user.name.split('')[0].toUpperCase() : 'V'}
           {users.avatarURL && (
-            <img src={users.avatarURL} alt="avatar" width="50px" />
+            <UserPicture src={users.avatarURL} alt="avatar" />
           )}
         </UserData>
       </HeaderSection>

@@ -1,10 +1,13 @@
 import { useRef } from 'react';
-// import { Formik, Form, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux-files/auth/selectors';
 import WaterTracker from '../../img/set-icons.svg';
 // import { validateSchema } from 'schemas/validationSchema';
-import { updateAvatarUser } from '../../redux-files/auth/thunk';
+import {
+  updateAvatarUser,
+  updateUserProfileThunk,
+} from '../../redux-files/auth/thunk';
 import {
   ButtonIconUpload,
   ButtonUpload,
@@ -20,8 +23,9 @@ import {
 
 // import WaterTrackerIcons from '../../img/set-icons.svg';
 
-export const UserSettingModal = ({ onClose }) => {
+export const UserSettingModal = () => {
   //   const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
   const users = useSelector(selectUser);
 
@@ -36,6 +40,17 @@ export const UserSettingModal = ({ onClose }) => {
       console.log('No file selected');
     }
   };
+
+  const onSubmitForm = e => {
+    dispatch(updateUserProfileThunk(e));
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+    },
+    onSubmit: onSubmitForm(),
+  });
 
   const filePecker = useRef(null);
 
@@ -61,7 +76,6 @@ export const UserSettingModal = ({ onClose }) => {
             <TextUpload>Upload a photo</TextUpload>
           </ButtonUpload>
         </ContainerUpload>
-
         <Title>Your gender identity</Title>
         <ContainerGender>
           <GenderList>
@@ -75,6 +89,46 @@ export const UserSettingModal = ({ onClose }) => {
             </GenderListItem>
           </GenderList>
         </ContainerGender>
+        <h1>Your Name</h1>
+        <form onSubmit={formik.onSubmitForm}>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="For example: David"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          <h1>Password</h1>
+          Outdated password:
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="For example: David"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          New Password:
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="For example: David"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          Repeat new password:
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="For example: David"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          <button type="submit">Save</button>
+        </form>
       </div>
     </>
   );

@@ -15,6 +15,7 @@ export const ContainerUpload = styled.div`
 export const ImageUser = styled.img`
   width: 80px;
   height: 80px;
+  border-radius: 50%;
 `;
 
 export const Upload = styled.input`
@@ -54,4 +55,9 @@ export const GenderList = styled.ul`
 
 export const GenderListItem = styled.li`
   display: flex;
+`;
+
+export const ErrorMsg = styled.div`
+  font-size: 14px;
+  color: red;
 `;

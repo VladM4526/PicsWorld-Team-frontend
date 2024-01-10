@@ -11,6 +11,8 @@ export const HeaderContainer = styled.div`
 
 export const UserData = styled.p`
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 export const HeaderSection = styled.header`
@@ -43,6 +45,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
 export const HeaderBtn = styled.button`
   width: 50px;
   background-color: transparent;
@@ -78,4 +81,10 @@ export const LogoContainer = styled.div`
   @media only screen and (max-width: 768px) {
     max-width: 1216px;
   }
+`;
+
+export const UserPicture = styled.img`
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
 `;
