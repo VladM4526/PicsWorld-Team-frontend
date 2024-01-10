@@ -95,4 +95,5 @@ export const ButtonLogOut = styled(NavLink)`
   background: #ef5050;
   color: #fff;
   cursor: pointer;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 `;
