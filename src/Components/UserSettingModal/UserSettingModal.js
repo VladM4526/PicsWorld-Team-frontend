@@ -93,8 +93,13 @@ export const UserSettingModal = ({ onClose }) => {
       dispatch(updateUserProfileThunk(data));
     }
   };
-
+  const firstRender = useRef(true)
+  
   useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return
+    }
     onClose();
   }, [user, onClose])
 
