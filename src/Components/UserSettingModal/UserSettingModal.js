@@ -12,7 +12,7 @@ import {
 import { toast } from 'react-toastify';
 import WaterTrackerIcons from '../../img/set-icons.svg';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {  Formik, Form, ErrorMessage} from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux-files/auth/selectors';
@@ -90,18 +90,25 @@ export const UserSettingModal = ({ onClose }) => {
     }
 
     if (Object.keys(data).length){
-      dispatch(updateUserProfileThunk(data));
+      dispatch(updateUserProfileThunk(data))
+        .then(
+          r => {
+            onClose()
+         }
+
+        );
+
     }
   };
-  const firstRender = useRef(true)
+  // const firstRender = useRef(true)
   
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return
-    }
-    onClose();
-  }, [user, onClose])
+  // useEffect(() => {
+  //   if (firstRender.current) {
+  //     firstRender.current = false;
+  //     return
+  //   }
+  //   onClose();
+  // }, [user, onClose])
 
   const togglePasswordVisibility = field => {
     if (field === 'newPassword') {
@@ -157,7 +164,6 @@ export const UserSettingModal = ({ onClose }) => {
         initialValues={{...initialValues, name: user.name, email: user.email, gender: user.gender, oldPassword: '', }}
         validationSchema={settingsValidationSchema}
         onSubmit={values => {
-          
           handleSubmit(values);
         }}
       >
