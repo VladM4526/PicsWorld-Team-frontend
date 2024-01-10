@@ -118,6 +118,7 @@ export const updateUserProfileThunk = createAsyncThunk(
   async (updateUser, { rejectWithValue }) => {
     try {
       const response = await updateUserAccount(updateUser);
+      toast.success(`You are successful update profile`);
       console.log(updateUser);
       console.log(response);
       return response;
