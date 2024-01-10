@@ -4,6 +4,7 @@ import {
   refreshUserAccount,
   signInThunk,
   updateAvatarUser,
+  logOutUser,
 } from './thunk';
 
 // add name after login or registration
@@ -31,7 +32,11 @@ const authSlice = createSlice({
         state.token = action.payload.user.token;
         state.isLoggedIn = true;
       })
-
+      .addCase(logOutUser.fulfilled, state => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
       .addCase(refreshUserAccount.pending, state => {
         state.isRefreshing = true;
       })

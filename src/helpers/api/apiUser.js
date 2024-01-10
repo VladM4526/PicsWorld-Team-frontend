@@ -8,10 +8,9 @@ export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const removeToken = () => {
-//   delete baseURL.defaults.headers.common['Authorization'];
-//   localStorage.removeItem('token');
-// };
+const deleteToken = () => {
+  delete axios.defaults.headers.common['Authorization'];
+};
 
 export const signup = async body => {
   const { data } = await axios.post('/auth/signup', body);
@@ -62,4 +61,9 @@ export const updateUserAccount = async updateUser => {
   }
   const { data } = await axios.patch('/users/userinfo', datasForSend);
   return data;
+};
+
+export const logout = async () => {
+  await axios.post('/auth/signout');
+  deleteToken();
 };

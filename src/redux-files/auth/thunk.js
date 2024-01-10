@@ -8,6 +8,7 @@ import {
   addWaterRate,
   updateAvatarUsers,
   updateUserAccount,
+  logout,
 } from '../../helpers/api/apiUser';
 
 export const signInThunk = createAsyncThunk(
@@ -136,6 +137,22 @@ export const updateUserProfileThunk = createAsyncThunk(
           toast.error(`Error. Please try again later.`);
           return rejectWithValue(error.massage);
       }
+    }
+  }
+);
+
+export const logOutUser = createAsyncThunk(
+  'auth/signout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await logout();
+      toast.success('You successfully exit', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    } catch (error) {
+      toast.error(`Error! User not logged in!`);
+      return rejectWithValue(error.message);
     }
   }
 );

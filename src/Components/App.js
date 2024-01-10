@@ -64,7 +64,7 @@ export const App = () => {
         {isLoggedIn ? (
           <Route path="/HomePage" element={<HomePage />} />
         ) : (
-          <Route path="/" element={<WelcomePage />} />
+          <Route path="/WelcomePage" element={<WelcomePage />} />
         )}
       </Routes>
     </>
