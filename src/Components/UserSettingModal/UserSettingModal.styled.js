@@ -1,4 +1,44 @@
 import styled from 'styled-components';
+import {Field,ErrorMessage } from 'formik';
+
+export const LabelRadio = styled.label`
+  color: #2F2F2F;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  display: flex;
+  gap: 8px;
+`;
+export const ErrorMsg = styled(ErrorMessage)`
+  font-size: 14px;
+  color: red;
+`;
+
+export const SexDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+ @media screen and (min-width: 768px) {
+  flex-direction: row;
+  gap: 24px;
+
+}
+`;
+
+export const StyledField = styled(Field)`
+  display: flex;
+  padding: 12px 10px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid #D7E3FF;
+  background: #FFF;
+  color: #407BFF;
+   &:focus-visible{
+        outline: 1px solid blue;
+  } 
+`;
 
 export const Title = styled.h1`
   font-size: 18px;
@@ -55,9 +95,4 @@ export const GenderList = styled.ul`
 
 export const GenderListItem = styled.li`
   display: flex;
-`;
-
-export const ErrorMsg = styled.div`
-  font-size: 14px;
-  color: red;
 `;
